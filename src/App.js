@@ -40,6 +40,9 @@ const mainTheme = createTheme({
     subtitle1: {
       fontSize: 25
     },
+    p: {
+      fontFamily: 'Lato',
+    },
     // body1 body subtitle1 subtitle2 caption button overline
   }
 
