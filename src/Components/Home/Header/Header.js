@@ -4,7 +4,7 @@ import Container from '@mui/material/Container';
 import { headerLayout } from './headerStyle';
 import { contantS } from './headerStyle';
 import { container } from './headerStyle';
-import { H1 } from './headerStyle';
+import { H1 } from './headerStyle' ;
 import { H3 } from './headerStyle';
 import { p } from './headerStyle';
 import { icon } from './headerStyle';
@@ -13,6 +13,7 @@ import { sectionTwo } from './headerStyle';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
 import ArrowDownIcon from '@mui/icons-material/ArrowDownwardOutlined';
+
  const Header= ()=>{
      
     return <Box sx={headerLayout} >

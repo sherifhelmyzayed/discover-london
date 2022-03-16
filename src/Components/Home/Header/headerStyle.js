@@ -1,11 +1,11 @@
-  import bg from '../../assets/headerHome.jpg'
+  import bg from '../../../assets/headerHome.jpg'
  export const headerLayout = {
            background : `url(${bg})`,
            height : '100vh',    
            backgroundPosition: 'center',
            backgroundSize :'cover'    
         }
-         
+
 export const contantS = {
     height : '100%',
     width : "100%",
@@ -81,18 +81,18 @@ export  const icon = {
     background : 'rgba(255, 255, 255, 0.2);',
     margin : "10px auto 30px",
     width : { 
-            xs: 50,
-            sm : 60,
-            md: 70,
-            lg: 80,
-            xl: 90,
+        xs: 45,
+        sm : 40,
+        md: 50,
+        lg: 60,
+        xl: 70,
 },
     height : { 
-        xs: 50,
-        sm : 60,
-        md: 70,
-        lg: 80,
-        xl: 90,
+        xs: 45,
+        sm : 40,
+        md: 50,
+        lg: 60,
+        xl: 70,
 },
 }
 
