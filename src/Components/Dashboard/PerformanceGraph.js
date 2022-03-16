@@ -5,10 +5,13 @@ import {
     Chart,
     ArgumentAxis,
     ValueAxis,
-    LineSeries,
+    // LineSeries,
     Title,
     Legend,
 } from '@devexpress/dx-react-chart-material-ui';
+import {
+    LineSeries
+} from '@devexpress/dx-react-chart';
 import { styled } from '@mui/material/styles';
 import { Animation, HoverState } from '@devexpress/dx-react-chart';
 // import { confidence as data } from '../../../demo-data/data-vizualization';
