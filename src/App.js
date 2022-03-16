@@ -22,7 +22,8 @@ const mainTheme = createTheme({
     newColor: {
       main: "#fffff"
     },
-    white: '#ffffff'
+    white: '#ffffff',
+    light: '#f7f7f7'
   },
 
   // Typography should be edit according to layout
@@ -32,14 +33,42 @@ const mainTheme = createTheme({
     fontWeightRegular: 200,
     fontWeightMedium: 200,
     fontWeightBold: 800,
-    fontSize: 24,
+    fontSize: 14,
     lineHeight: '50',
     h1: {
       fontSize: 30,
     },
-    subtitle1: {
-      fontSize: 25
+    h5: {
+      fontWeight: 500
     },
+    p: {
+      fontFamily: 'Lato',
+    },
+    subtitle1: {
+      fontFamily: 'lato',
+      fontWeight: 500,
+      fontSize: 14
+    },
+    subtitle2: {
+      fontFamily: 'lato',
+      fontWeight: 700,
+      fontSize: 13
+    },
+    OVERLINE: {
+      fontFamily: 'Montserrat',
+      fontWeight: 900,
+      fontSize: 13
+    },
+    clickable: {
+      fontFamily: 'Montserrat',
+      fontWeight: 900,
+      fontSize: 13,
+      marginTop: 10,
+      '&:hover': {
+        cursor: 'pointer'
+    },
+    }
+
     // body1 body subtitle1 subtitle2 caption button overline
   }
 
