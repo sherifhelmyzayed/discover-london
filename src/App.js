@@ -22,7 +22,7 @@ const mainTheme = createTheme({
     newColor: {
       main: "#fffff"
     },
-    white: '#ffffff',
+    ofwhite: '#ffffff',
     light: '#f7f7f7'
   },
 
