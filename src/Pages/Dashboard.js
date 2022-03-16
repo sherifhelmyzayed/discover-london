@@ -6,6 +6,7 @@ import { makeStyles } from '@mui/styles';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 import Header from '../Components/Dashboard/DashboardElements';
+import PerformanceGraph from '../Components/Dashboard/PerformanceGraph';
 
 const Dashboard = () => {
 
@@ -39,6 +40,7 @@ const Dashboard = () => {
 
     return (
         <>
+        
             <Grid
                 container
                 direction="row"
@@ -230,7 +232,7 @@ const Dashboard = () => {
                 </Grid>
 
                 <Grid item md={9}>
-                    graph is here
+                    <PerformanceGraph/>
                 </Grid>
             </Grid>
         </>
