@@ -1,13 +1,13 @@
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import { lapLayout } from './LaptopStyle';
-import { contantS } from './LaptopStyle';
+import { lapLayout } from './TabletStyle';
+import { contantS } from './TabletStyle';
 import { container } from '../Header/headerStyle';
-import { img } from './LaptopStyle';
-import { H1 } from './LaptopStyle';
-import { botton } from './LaptopStyle';
-import { P } from './LaptopStyle';
-import { dataS } from './LaptopStyle';
+import { img } from './TabletStyle';
+import { H1 } from './TabletStyle';
+import { botton } from './TabletStyle';
+import { P } from './TabletStyle';
+import { dataS } from './TabletStyle';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import ArrowRight from '@mui/icons-material/ArrowRightAlt';
@@ -17,12 +17,11 @@ const Laptop = ()=>{
     <Box  sx={lapLayout} >
        <Container  sx={container} >
            <Box sx={contantS}>
-               <Box sx={img}>
-
-               </Box>
                <Box sx={dataS}>
                      <Typography  sx={H1} variant="h1" component="h3" >
-                                   360 site view experience
+                                 walking<br />
+                                 throw the city<br />
+                                 confortably from your own device
                      </Typography>
 
                      <Typography  sx={P} variant="p" component="p" >
@@ -34,6 +33,9 @@ const Laptop = ()=>{
                         Try now <ArrowRight />
                      </Button>
  
+               </Box>
+               
+               <Box sx={img}>
                </Box>
             </Box>
       </Container>
