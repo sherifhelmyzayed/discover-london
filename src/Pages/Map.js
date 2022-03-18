@@ -10,15 +10,32 @@ import MediaCard from '../Components/card'
 
 const Map = () => {
   const [slected , setSelected ] = useState(null);
-  
+  let mapRef = React.createRef()
+  function log(){
+    let lat1= mapRef.current.getBounds().getNorthEast().lat();
+    let lng1= mapRef.current.getBounds().getNorthEast().lng();
+    let lat2= mapRef.current.getBounds().getSouthWest().lat();
+    let lng2= mapRef.current.getBounds().getNorthEast().lng();
+    
+     
+    console.log("lat : " + mapRef.current.getBounds().getNorthEast().lat())
+    console.log( "lng : " + mapRef.current.getBounds().getNorthEast().lng())
+    console.log( "lat : " + mapRef.current.getBounds().getSouthWest().lat())
+    console.log( "lng : " + mapRef.current.getBounds().getSouthWest().lng())
+    
+        
+  }
+   
   function gmap(){
-    return <GoogleMap defaultZoom={15} defaultCenter={{lat:30.044420 , lng:31.235712}}>
+    return <GoogleMap ref={mapRef}  defaultZoom={15} defaultCenter={{lat:30.044420 , lng:31.235712}} onIdle={log} >
       {cairo.map(park=>{
         return<Marker key={park.id} position={{lat:park.lat , lng: park.lng}}
          onClick={()=>{
+          
            setSelected(park);
          }}/>
       })}
+          
 
       
        {slected && (
@@ -46,11 +63,12 @@ const Map = () => {
           <MediaCard></MediaCard>
         </Grid>
         <Grid item xs={7}>
-        <div style={{width:"80vw" , height:"100vh" }}>
+        <div style={{width:"80vw" , height:"100vh" ,position:"fixed" }}>
     <WrapMap googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyAKMk2tlTruAetdKAEHtsFCl36CQTdSbmw`}
              loadingElement={<div style={{ height: `100%` }} />}
              containerElement={<div style={{ height: `100vh` }} />}
              mapElement={<div style={{ height: `100%` }} />}/>
+             
     </div>
         </Grid>
         
