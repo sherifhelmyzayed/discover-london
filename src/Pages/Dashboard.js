@@ -5,7 +5,6 @@ import { makeStyles } from '@mui/styles';
 
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-import Header from '../Components/Dashboard/DashboardElements';
 import PerformanceGraph from '../Components/Dashboard/PerformanceGraph';
 
 const Dashboard = () => {
@@ -13,20 +12,8 @@ const Dashboard = () => {
     // new style by make style
     const useStyles = makeStyles({
         text: {
-            color: 'red',
-            fontSize: 40,
-            backgroundColor: 'white',
-            marginLeft: 50,
-            cursor: 'pointer',
-            '&:hover': {
-                backgroundColor: 'black',
-                color: 'white'
-            },
+            // Custom CSS here
         },
-        header: {
-        },
-        navbar: {
-        }
     });
 
 
