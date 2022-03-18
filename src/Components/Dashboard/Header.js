@@ -16,7 +16,7 @@ import MenuItem from '@mui/material/MenuItem';
 
 
 const pages = ['home', 'performance', 'inbox', 'reservations', 'listings'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Profile','Logout'];
 
 const Header = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
@@ -41,17 +41,25 @@ const Header = () => {
     };
 
     const changeRoute = (event) => {
+        event.stopPropagation();
+        console.log(event.target)
         handleCloseNavMenu()
         navigate(`/dashboard/${event.target.getAttribute('val')}`)
     }
 
 
     return (
-        <AppBar position="static">
-            <Container maxWidth="xl">
-                <Toolbar disableGutters>
+        <AppBar position="static" color="light" sx={{
+            boxShadow: 'none',
+            borderBottom: 'solid 1px',
+            borderColor: '#ebebeb',
+        }}>
+            <Container maxWidth="xl" >
+                <Toolbar disableGutters sx={{
+                minHeight: '10px'
+            }}>
                     <Typography
-                        variant="h6"
+                        variant="subtitle2"
                         noWrap
                         component="div"
                         sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
@@ -90,7 +98,7 @@ const Header = () => {
                         >
                             {pages.map((page) => (
                                 <MenuItem key={page} val={page} onClick={changeRoute}>
-                                    <Typography textAlign="center" >{page}</Typography>
+                                    <Typography textAlign="center" variant="subtitle1">{page}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>
@@ -103,15 +111,19 @@ const Header = () => {
                     >
                         LOGO
                     </Typography>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
                         {pages.map((page) => (
                             <Button
                                 key={page}
+                                size="small"
                                 onClick={changeRoute}
                                 val={page}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
+                                marginTop={0} paddingTop={0}
+                                sx={{ my: 0, color: 'white', display: 'block' }}
                             >
-                                {page}
+                                <Typography variant="headerItem" component="h3" color="black" val={page}>
+                                    {page}
+                                </Typography>
                             </Button>
                         ))}
                     </Box>
@@ -119,7 +131,7 @@ const Header = () => {
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                                <Avatar sx={{width: 30, height: 30}} alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                             </IconButton>
                         </Tooltip>
                         <Menu

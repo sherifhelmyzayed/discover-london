@@ -1,7 +1,6 @@
 import './App.css';
 import { Routes, Route, BrowserRouter } from "react-router-dom"
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-import Dashboard from './Pages/Dashboard';
 import Home from './Pages/Home';
 import Map from './Pages/Map'
 import DashboardModule from './module/DashboardModule';
@@ -59,6 +58,13 @@ const mainTheme = createTheme({
       fontFamily: 'Montserrat',
       fontWeight: 900,
       fontSize: 13
+    },
+    headerItem: {
+      fontFamily: 'lato',
+      fontWeight: 600,
+      marginLeft: 30,
+      marginRight: 30,
+      fontSize: 12
     },
     clickable: {
       fontFamily: 'Montserrat',

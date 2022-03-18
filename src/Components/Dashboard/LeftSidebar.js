@@ -7,7 +7,7 @@ const LeftSidebar = () => {
     <Grid item xs={12} md={3} bgcolor={"light"} paddingX={3} paddingTop={3}
       justifyContent="start"
       alignItems="start"
-      height="100vh"
+      minHeight="100vh"
     
     >
       <Typography variant="h6" component="h5">
