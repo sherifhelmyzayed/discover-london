@@ -39,7 +39,8 @@ const mainTheme = createTheme({
       fontSize: 30,
     },
     h5: {
-      fontWeight: 500
+      fontWeight: 900,
+      fontSize: 22
     },
     p: {
       fontFamily: 'Lato',
