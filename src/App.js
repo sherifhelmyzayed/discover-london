@@ -4,6 +4,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import Dashboard from './Pages/Dashboard';
 import Home from './Pages/Home';
 import Map from './Pages/Map'
+import DashboardModule from './module/DashboardModule';
 
 
 const mainTheme = createTheme({
@@ -81,7 +82,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/map" element={<Map />} />
-            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="dashboard/*" element={<DashboardModule />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
