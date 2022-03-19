@@ -4,6 +4,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import Home from './Pages/Home';
 import Map from './Pages/Map'
 import DashboardModule from './module/DashboardModule';
+import FilterBar from './Pages/FilterBar';
 
 
 const mainTheme = createTheme({
