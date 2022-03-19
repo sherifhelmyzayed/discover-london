@@ -4,12 +4,12 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 
 const PerformanceGraph = (props) => {
-    const { charData } = props
+    const { charData, stat } = props
     return (
         <>
             {(charData) ?
                 <Paper>
-                    <StyledCharts data={charData} />
+                    <StyledCharts data={charData} stat={stat}/>
                 </Paper>
                 : <CircularProgress />
             }

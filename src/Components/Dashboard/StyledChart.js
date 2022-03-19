@@ -14,7 +14,7 @@ import { styled } from '@mui/material/styles';
 import { Animation, HoverState } from '@devexpress/dx-react-chart';
 // import { confidence as data } from '../../../demo-data/data-vizualization';
 import { summery as data } from '../../shared/Data';
-import { Tooltip } from '@mui/material';
+import { Tooltip, Typography } from '@mui/material';
 
 const PREFIX = 'Demo';
 
@@ -44,9 +44,6 @@ const ValueLabel = (props) => {
     );
 };
 
-const TitleText = props => (
-    <Title.Text {...props} sx={{ whiteSpace: 'pre' }} />
-);
 
 const StyledChart = styled(Chart)(() => ({
     [`&.${classes.chart}`]: {
@@ -79,10 +76,18 @@ const StyledCharts = (props) => {
                 color="grey"
             />
             <Legend position="bottom" rootComponent={Root} itemComponent={Item} labelComponent={Label} />
-            <Title
-                text={`Performance ${'\n'}(Last 10 months)`}
+            <Typography variant="subtitle2" component="p" marginBottom={2}>
+                {(props.stat === 0) 
+                ? "Last 7 days"
+                : (props.stat === 1)
+                ? "last 30 days"
+                : "Last Year"
+            }
+            </Typography>
+            {/* <Title
+                text={`Last 10 months`}
                 textComponent={TitleText}
-            />
+            /> */}
             <Animation />
         </StyledChart>)
 }

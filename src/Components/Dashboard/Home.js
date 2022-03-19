@@ -39,7 +39,7 @@ const Home = () => {
           ? dailySummary[0].week
           : '';
 
-          setStat(data)
+    setStat(data)
   }, [active]);
 
 
@@ -156,17 +156,14 @@ const Home = () => {
 
       <Box container justifyContent="space-between" alignItems="center" display='flex' direction="row" wrap="no-wrap"
       >
-        <Typography variant="h5" component="h2" display="inline">What is happening today</Typography>
+        <Typography variant="h5" component="h2" display="inline">Performance</Typography>
         <Box>
           <ButtonSmall text="Last 7 days" active={perActive === 0} clickHandler={perButtonHandler} id={0}></ButtonSmall>
           <ButtonSmall text="Last 30 Days" active={perActive === 1} clickHandler={perButtonHandler} id={1}></ButtonSmall>
           <ButtonSmall text="Last Year" active={perActive === 2} clickHandler={perButtonHandler} id={2}></ButtonSmall>
         </Box>
       </Box>
-      <Suspense fallback={<CircularProgress  />}>
-
-      <PerformanceGraph charData={perStat} />
-      </Suspense>
+        <PerformanceGraph charData={perStat} stat={perActive} />
     </Box>
   )
 }
