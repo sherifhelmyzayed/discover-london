@@ -1,9 +1,9 @@
 import './App.css';
 import { Routes, Route, BrowserRouter } from "react-router-dom"
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-import Dashboard from './Pages/Dashboard';
 import Home from './Pages/Home';
 import Map from './Pages/Map'
+import DashboardModule from './module/DashboardModule';
 
 
 const mainTheme = createTheme({
@@ -22,7 +22,7 @@ const mainTheme = createTheme({
     newColor: {
       main: "#fffff"
     },
-    white: '#ffffff',
+    ofwhite: '#ffffff',
     light: '#f7f7f7'
   },
 
@@ -39,7 +39,8 @@ const mainTheme = createTheme({
       fontSize: 30,
     },
     h5: {
-      fontWeight: 500
+      fontWeight: 900,
+      fontSize: 22
     },
     p: {
       fontFamily: 'Lato',
@@ -58,6 +59,13 @@ const mainTheme = createTheme({
       fontFamily: 'Montserrat',
       fontWeight: 900,
       fontSize: 13
+    },
+    headerItem: {
+      fontFamily: 'lato',
+      fontWeight: 600,
+      marginLeft: 30,
+      marginRight: 30,
+      fontSize: 12
     },
     clickable: {
       fontFamily: 'Montserrat',
@@ -81,7 +89,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/map" element={<Map />} />
-            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="dashboard/*" element={<DashboardModule />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

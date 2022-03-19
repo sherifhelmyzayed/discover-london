@@ -304,6 +304,190 @@ export const confidence = [
     },
 ];
 
+export const dailySummary = [
+    {
+        today:{
+            checkin: 0,
+            checkout: 0,
+            trips: 4,
+            pendingReviews: 3
+        },
+        tomorrow:{
+            checkin: 0,
+            checkout: 1,
+            trips: 3,
+            pendingReviews: 3
+        },
+        week:{
+            checkin: 2,
+            checkout: 3,
+            trips: 5,
+            pendingReviews: 3
+        },
+    }
+]
+
+export const longSummary = [
+    {
+        week: [
+            {
+                month: 'sat',
+                occupied: 30,
+                otherOccupied: 40
+            },
+            {
+                month: 'sun',
+                occupied: 40,
+                otherOccupied: 50
+            },
+            {
+                month: 'mon',
+                occupied: 40,
+                otherOccupied: 50
+            },
+            {
+                month: 'tue',
+                occupied: 60,
+                otherOccupied: 60
+            },
+            {
+                month: 'wed',
+                occupied: 50,
+                otherOccupied: 40
+            },
+            {
+                month: 'thu',
+                occupied: 80,
+                otherOccupied: 70
+            },
+            {
+                month: 'fri',
+                occupied: 70,
+                otherOccupied: 70
+            },
+            {
+                month: 'fri',
+                occupied: 70,
+                otherOccupied: 70
+            },
+            {
+                month: 'fri',
+                occupied: 70,
+                otherOccupied: 70
+            },
+            {
+                month: 'fri',
+                occupied: 70,
+                otherOccupied: 70
+            }
+        ],
+        month: [
+            {
+                month: '03/01',
+                occupied: 50,
+                otherOccupied: 70
+            },
+            {
+                month: '06/01',
+                occupied: 50,
+                otherOccupied: 50
+            },
+            {
+                month: '09/01',
+                occupied: 60,
+                otherOccupied: 30
+            },
+            {
+                month: '12/01',
+                occupied: 70,
+                otherOccupied: 60
+            },
+            {
+                month: '15/01',
+                occupied: 30,
+                otherOccupied: 40
+            },
+            {
+                month: '18/01',
+                occupied: 70,
+                otherOccupied: 60
+            },
+            {
+                month: '21/01',
+                occupied: 20,
+                otherOccupied: 50
+            },
+            {
+                month: '24/01',
+                occupied: 40,
+                otherOccupied: 30
+            },
+            {
+                month: '27/01',
+                occupied: 30,
+                otherOccupied: 20
+            },
+            {
+                month: '30/01',
+                occupied: 40,
+                otherOccupied: 70
+            },
+        ],
+        year: [
+            {
+                month: '01/20',
+                occupied: 50,
+                otherOccupied: 70
+            },
+            {
+                month: '02/20',
+                occupied: 50,
+                otherOccupied: 50
+            },
+            {
+                month: '03/20',
+                occupied: 60,
+                otherOccupied: 30
+            },
+            {
+                month: '04/20',
+                occupied: 70,
+                otherOccupied: 60
+            },
+            {
+                month: '05/20',
+                occupied: 30,
+                otherOccupied: 40
+            },
+            {
+                month: '06/20',
+                occupied: 70,
+                otherOccupied: 60
+            },
+            {
+                month: '07/20',
+                occupied: 20,
+                otherOccupied: 50
+            },
+            {
+                month: '08/20',
+                occupied: 40,
+                otherOccupied: 30
+            },
+            {
+                month: '09/20',
+                occupied: 30,
+                otherOccupied: 20
+            },
+            {
+                month: '10/20',
+                occupied: 40,
+                otherOccupied: 70
+            },
+        ]
+    }
+]
+
 export const summery = [
     {
         month: '01/20',

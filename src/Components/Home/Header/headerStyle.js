@@ -1,4 +1,5 @@
   import bg from '../../../assets/headerHome.jpg'
+
  export const headerLayout = {
            background : `url(${bg})`,
            height : '100vh',    
@@ -72,7 +73,6 @@ export const container = {
                 lg: 1100,
                 xl: 1436,
 },
-
 height :'100%'
 
 }
