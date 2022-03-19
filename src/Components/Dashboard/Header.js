@@ -16,11 +16,12 @@ import MenuItem from '@mui/material/MenuItem';
 
 
 const pages = ['home', 'performance', 'inbox', 'reservations', 'listings'];
-const settings = ['Profile','Logout'];
+const settings = ['Profile', 'Logout'];
 
 const Header = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
+    const [active, setActive] = useState(0);
 
     let navigate = useNavigate();
 
@@ -42,7 +43,8 @@ const Header = () => {
 
     const changeRoute = (event) => {
         event.stopPropagation();
-        console.log(event.target)
+        console.log(event.target.getAttribute('id'))
+        setActive(event.target.getAttribute('id'))
         handleCloseNavMenu()
         navigate(`/dashboard/${event.target.getAttribute('val')}`)
     }
@@ -56,8 +58,8 @@ const Header = () => {
         }}>
             <Container maxWidth="xl" >
                 <Toolbar disableGutters sx={{
-                minHeight: '10px'
-            }}>
+                    minHeight: '10px'
+                }}>
                     <Typography
                         variant="subtitle2"
                         noWrap
@@ -112,16 +114,25 @@ const Header = () => {
                         LOGO
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
-                        {pages.map((page) => (
+                        {pages.map((page, key) => (
                             <Button
                                 key={page}
                                 size="small"
                                 onClick={changeRoute}
+                                id={key}
                                 val={page}
                                 marginTop={0} paddingTop={0}
-                                sx={{ my: 0, color: 'white', display: 'block' }}
+                                sx={{
+                                    color: 'grey',
+                                    borderBottom: (key == active) ? '1px solid #808080' : 'none',
+                                    padding: 0,
+                                    margin: 0,
+                                    borderRadius: 0,
+                                    borderSpacing: 0,
+
+                                }}
                             >
-                                <Typography variant="headerItem" component="h3" color="black" val={page}>
+                                <Typography variant="headerItem" component="h3" color="black" id={key} val={page}>
                                     {page}
                                 </Typography>
                             </Button>
@@ -131,7 +142,7 @@ const Header = () => {
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar sx={{width: 30, height: 30}} alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                                <Avatar sx={{ width: 30, height: 30 }} alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                             </IconButton>
                         </Tooltip>
                         <Menu

@@ -31,7 +31,7 @@ const mainTheme = createTheme({
     fontFamily: 'Montserrat',
     fontWeightLight: 100,
     fontWeightRegular: 200,
-    fontWeightMedium: 200,
+    fontWeightMedium: 600,
     fontWeightBold: 800,
     fontSize: 14,
     lineHeight: '50',

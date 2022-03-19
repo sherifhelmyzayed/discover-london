@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Box, Card, Typography } from '@mui/material'
 import PerformanceGraph from './PerformanceGraph'
 import ButtonSmall from '../Buttons/ButtonSmall'
@@ -9,10 +9,6 @@ import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import StarIcon from '@mui/icons-material/Star';
 
 import { dailySummary, longSummary } from '../../shared/Data';
-
-import CircularProgress from '@mui/material/CircularProgress';
-
-
 
 
 const Home = () => {
