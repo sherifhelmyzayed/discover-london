@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Suspense } from 'react'
 import { Box, Card, Typography } from '@mui/material'
 import PerformanceGraph from './PerformanceGraph'
 import ButtonSmall from '../Buttons/ButtonSmall'
@@ -10,6 +10,9 @@ import StarIcon from '@mui/icons-material/Star';
 
 import { dailySummary, longSummary } from '../../shared/Data';
 
+import CircularProgress from '@mui/material/CircularProgress';
+
+
 
 
 const Home = () => {
@@ -19,7 +22,7 @@ const Home = () => {
 
   // performance buttons states
   const [perActive, setPerActive] = useState(2)
-  const [perStat, setPerStat] = useState({ month: 0, occupied: 0, otherOccupied: 0 })
+  const [perStat, setPerStat] = useState(null)
 
 
   // daily stat buttons handler
@@ -160,7 +163,10 @@ const Home = () => {
           <ButtonSmall text="Last Year" active={perActive === 2} clickHandler={perButtonHandler} id={2}></ButtonSmall>
         </Box>
       </Box>
+      <Suspense fallback={<CircularProgress  />}>
+
       <PerformanceGraph charData={perStat} />
+      </Suspense>
     </Box>
   )
 }
