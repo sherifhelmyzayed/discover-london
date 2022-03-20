@@ -8,11 +8,10 @@ import CheckFilter from './CheckFilter';
 
 
  const FilterContant = ()=>{
-    const textStyle ={ maxWidth: { xs :'100%', md : '60%' },
-                       margin : "10px 0" 
+    const textStyle ={ maxWidth: { xs :'100%', md : '60%' }, 
    }
-   const filterStyle = {  maxHeight : "65vh" , padding : "20px 10px"
-
+   const filterStyle = {  maxHeight : "60vh" , padding : "20px 10px" , 
+                           overflowY: 'scroll',   overflowX: 'hidden',
    }
    const amenitiesLess =[' Air conditioning ' , 'Kitche', 'Iron' , 'TV'  , 'Wifi' , 'Heating' , ]
    const amenitiesMore =[ { 
