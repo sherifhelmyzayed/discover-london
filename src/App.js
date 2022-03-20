@@ -6,6 +6,7 @@ import Home from './Pages/Home';
 import Map from './Pages/Map';
 import Property from './Pages/Property';
 import DashboardModule from './module/DashboardModule';
+import BecomeHost from './Pages/BecomeHost';
 
 export const ThemeContext = createContext();
 
@@ -118,7 +119,8 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/map" element={<Map />} />
               <Route path="dashboard/*" element={<DashboardModule />} />
-                        <Route path="/property" element={<Property />} />
+              <Route path="/property" element={<Property />} />
+              <Route path="/host" element={<BecomeHost />} />
             </Routes>
           </BrowserRouter>
         </ThemeContext.Provider>
