@@ -306,19 +306,19 @@ export const confidence = [
 
 export const dailySummary = [
     {
-        today:{
+        today: {
             checkin: 0,
             checkout: 0,
             trips: 4,
             pendingReviews: 3
         },
-        tomorrow:{
+        tomorrow: {
             checkin: 0,
             checkout: 1,
             trips: 3,
             pendingReviews: 3
         },
-        week:{
+        week: {
             checkin: 2,
             checkout: 3,
             trips: 5,
@@ -540,6 +540,100 @@ export const summery = [
         otherOccupied: 70
     },
 ];
+
+
+export const responderOnline = ["essam", "hossam"]
+
+export const responders = [
+    "essam", "ahmed", "randa", "hossam", "Ahmed Nabil", "Maged"
+]
+
+export const messages = [
+    {
+        from: "sherif",
+        to: "essam",
+        text: "Hey Essam, What's up ",
+        date: '9:30 am',
+        read: true
+    },
+    {
+        from: "essam",
+        to: "sherif",
+        text: "Hey, Iam good! What about you? ",
+        date: '9:31 am',
+        read: true
+    },
+    {
+        from: "sherif",
+        to: "essam",
+        text: "Cool. I am good, Let's catch up",
+        date: '9:31',
+        read: true
+    },
+    {
+        from: "sherif",
+        to: "ahmed",
+        text: "ya fashel",
+        date: '9:30 am',
+        read: true
+    },
+    {
+        from: "ahmed",
+        to: "sherif",
+        text: "ana asef",
+        date: '9:31 am',
+        read: true
+    },
+    {
+        from: "sherif",
+        to: "ahmed",
+        text: "ya fashel",
+        date: '10:31',
+        read: true
+    },
+    {
+        from: "sherif",
+        to: "randa",
+        text: "...",
+        date: '9:30 am',
+        read: true
+    },
+    {
+        from: "randa",
+        to: "sherif",
+        text: "....",
+        date: '9:31 am',
+        read: true
+    },
+    {
+        from: "sherif",
+        to: "randa",
+        text: "..",
+        date: '9:31',
+        read: true
+    },
+    {
+        from: "sherif",
+        to: "randa",
+        text: "canceled",
+        date: '9:31',
+        read: true
+    },
+    {
+        from: "randa",
+        to: "sherif",
+        text: "canceled",
+        date: '9:31',
+        read: true
+    },
+    {
+        from: "randa",
+        to: "sherif",
+        text: "canceled",
+        date: '9:31',
+        read: true
+    },
+]
 
 export const energyConsumption = [
     {

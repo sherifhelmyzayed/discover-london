@@ -1,8 +1,8 @@
-import bg from '../../../assets/bgTab.jpg'
+// import bg from '../../../assets/bgTab.jpg'
 import lap from '../../../assets/tablet.png'
 
 export const lapLayout = {
-    background : `url(${bg})`,
+    // background : `url(${bg})`,
     height : '100vh',    
     backgroundPosition: 'center',
     backgroundSize :'cover'    

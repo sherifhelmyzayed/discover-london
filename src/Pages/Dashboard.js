@@ -27,7 +27,7 @@ const Dashboard = () => {
 
     return (
         <>
-        
+
             <Grid
                 container
                 direction="row"
@@ -219,7 +219,7 @@ const Dashboard = () => {
                 </Grid>
 
                 <Grid item md={9}>
-                    <PerformanceGraph/>
+                    <PerformanceGraph />
                 </Grid>
             </Grid>
         </>
