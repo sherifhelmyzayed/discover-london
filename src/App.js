@@ -2,13 +2,14 @@ import './App.css';
 import { Routes, Route, BrowserRouter } from "react-router-dom"
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import Home from './Pages/Home';
-import Map from './Pages/Map'
+import Map from './Pages/Map';
+import Property from './Pages/Property';
 import DashboardModule from './module/DashboardModule';
 
 
 const mainTheme = createTheme({
   palette: {
-    // essam choose of color set is presented here:
+    // essam choice of color set is presented here:
     primary: {
       main: '#0c2442',
       light: '#4f7492'
@@ -45,6 +46,12 @@ const mainTheme = createTheme({
     p: {
       fontFamily: 'Lato',
     },
+    h2: {
+
+    },
+    essamText: {
+      fontFamily: 'syne'
+    },
     subtitle1: {
       fontFamily: 'lato',
       fontWeight: 500,
@@ -74,7 +81,7 @@ const mainTheme = createTheme({
       marginTop: 10,
       '&:hover': {
         cursor: 'pointer'
-    },
+      },
     }
 
     // body1 body subtitle1 subtitle2 caption button overline
@@ -84,15 +91,16 @@ const mainTheme = createTheme({
 function App() {
   return (
 
-      <ThemeProvider theme={mainTheme}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/map" element={<Map />} />
-            <Route path="dashboard/*" element={<DashboardModule />} />
-          </Routes>
-        </BrowserRouter>
-      </ThemeProvider>
+    <ThemeProvider theme={mainTheme}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/map" element={<Map />} />
+          <Route path="dashboard/*" element={<DashboardModule />} />
+          <Route path="/property" element={<Property />} />
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
 
   )
 }
