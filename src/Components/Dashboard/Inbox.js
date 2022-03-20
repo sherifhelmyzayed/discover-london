@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import { Grid, Paper, Divider, TextField, Typography, List, ListItem, ListItemIcon, ListItemText, Avatar, Fab } from '@mui/material';
+import { useState, useEffect} from 'react'
+import { Grid, Paper, Divider, TextField, Typography, List, ListItem, ListItemIcon, Avatar, Fab } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import SendIcon from '@mui/icons-material/Send';
 import { styled } from '@mui/material/styles';
@@ -40,9 +40,9 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
     },
 }));
 
-const Active = styled('div')(({ theme }) => ({
-    backgroundColor: theme.palette.grey1,
-}));
+// const Active = styled('div')(({ theme }) => ({
+//     backgroundColor: theme.palette.grey1,
+// }));
 
 
 const useStyles = makeStyles(() => ({
@@ -81,6 +81,7 @@ const useStyles = makeStyles(() => ({
 
 
 const Inbox = (props) => {
+    const [input, setInput] = useState('')
     const [chat, setChat] = useState(responders[0])
     const [message, setMessage] = useState(messages.filter((el) => ((el.from === chat && el.to === 'sherif') || (el.from === 'sherif' && el.to === chat))))
     const { theme } = props
@@ -109,6 +110,27 @@ const Inbox = (props) => {
         let arr = ref.filter((el) => ((el.from === chat && el.to === 'sherif') || (el.from === 'sherif' && el.to === chat)))
         setMessage(arr)
         e.target.value = ''
+    }
+
+    const handleSubmit = ()=>{
+        let ref = messages
+        const date = new Date()
+        const obj = {
+            from: "sherif",
+            to: chat,
+            text: input,
+            date: `${date.getHours()} ${date.getMinutes()}`,
+            read: false
+        };
+        ref.push(obj)
+        let arr = ref.filter((el) => ((el.from === chat && el.to === 'sherif') || (el.from === 'sherif' && el.to === chat)))
+        setMessage(arr)
+        setInput()
+
+    }
+
+    const changeHanlder= (e)=>{
+        setInput(e.target.value)
     }
 
     const changeChat = (e) => {
@@ -187,10 +209,13 @@ const Inbox = (props) => {
                                     if (ev.key === 'Enter') {
                                         submit(ev)
                                     }
-                                }} size="small" id="outlined-basic-email" label="Type Something" fullWidth />
+                                }} size="small" id="outlined-basic-email" 
+                                label="Type Something" 
+                                onChange={changeHanlder}
+                                fullWidth/>
                             </Grid>
                             <Grid xs={1} align="right">
-                                <Fab color="primary.light" aria-label="add" size="small" width={1}><SendIcon /></Fab>
+                                <Fab color="primary.light" aria-label="add" size="small" width={1} onClick={handleSubmit}><SendIcon /></Fab>
                             </Grid>
                         </Grid>
                     </Grid>
