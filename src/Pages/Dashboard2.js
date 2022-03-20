@@ -66,6 +66,7 @@ const Dashboard = () => {
                     <Box>
                         {/* third methof for styling */}
                         <Typography className={classes.text}>button 2</Typography>
+                        <div className={classes.text}></div>
                     </Box>
                     <Box>
                         <Typography>button 3</Typography>
