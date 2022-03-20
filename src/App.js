@@ -1,9 +1,12 @@
 import './App.css';
+import { createContext, Suspense } from 'react';
 import { Routes, Route, BrowserRouter } from "react-router-dom"
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import Home from './Pages/Home';
 import Map from './Pages/Map'
 import DashboardModule from './module/DashboardModule';
+
+export const ThemeContext = createContext();
 
 
 const mainTheme = createTheme({
@@ -23,7 +26,8 @@ const mainTheme = createTheme({
       main: "#fffff"
     },
     ofwhite: '#ffffff',
-    light: '#f7f7f7'
+    light: '#f7f7f7',
+    grey1: '#efefef'
   },
 
   // Typography should be edit according to layout
@@ -55,6 +59,21 @@ const mainTheme = createTheme({
       fontWeight: 700,
       fontSize: 13
     },
+    subtitle3: {
+      fontFamily: 'lato',
+      fontWeight: 700,
+      fontSize: 17
+    },
+    subtitle4: {
+      fontFamily: 'Montserrat',
+      fontWeight: 500,
+      fontSize: 16,
+    },
+    subtitle5: {
+      fontFamily: 'lato',
+      fontWeight: 500,
+      fontSize: 12
+    },
     OVERLINE: {
       fontFamily: 'Montserrat',
       fontWeight: 900,
@@ -74,7 +93,7 @@ const mainTheme = createTheme({
       marginTop: 10,
       '&:hover': {
         cursor: 'pointer'
-    },
+      },
     }
 
     // body1 body subtitle1 subtitle2 caption button overline
@@ -83,17 +102,19 @@ const mainTheme = createTheme({
 })
 function App() {
   return (
-
+    <Suspense fallback={<h1>LOOOOOOOOOOAAADINGGGG</h1>}>
       <ThemeProvider theme={mainTheme}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/map" element={<Map />} />
-            <Route path="dashboard/*" element={<DashboardModule />} />
-          </Routes>
-        </BrowserRouter>
+        <ThemeContext.Provider value={{ mainTheme }}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/map" element={<Map />} />
+              <Route path="dashboard/*" element={<DashboardModule />} />
+            </Routes>
+          </BrowserRouter>
+        </ThemeContext.Provider>
       </ThemeProvider>
-
+    </Suspense>
   )
 }
 
