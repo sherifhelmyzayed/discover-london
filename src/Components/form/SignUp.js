@@ -42,6 +42,15 @@ const head = {
     marginBottom: '20px'
     
 }
+const twoText = {
+  width: '49%',
+  marginRight: '3px',
+  marginTop: "2.5%"
+}
+const text = {
+  marginTop: "2.5%",
+  marginBottom : "2.5%"
+}
 
 
     
@@ -56,7 +65,7 @@ const head = {
            
            </Paper>
            
-           <h2 style={{marginTop:'0px',marginBottom:'5%'}}>Welcome to Airbnb</h2>
+           <h2 style={{marginTop:'0px',marginBottom:'1%'}}>Welcome to Airbnb</h2>
            <Grid container direction="column"
                   justify="center"
                   columnSpacing={{ xs: 1, sm: 2, md: 3 }}
@@ -68,7 +77,7 @@ const head = {
               id="outlined-required"
               label="first name"
               defaultValue=""
-              style={{marginRight:'30px'}}
+              style={twoText}
             
             />
             <TextField
@@ -76,10 +85,10 @@ const head = {
               id="outlined-required"
               label="Last name"
               defaultValue=""
+              style={twoText}
               
             />
-            <br/>
-            <br/>
+           
       </Grid>
       <Grid item md={2} >
       <TextField
@@ -88,7 +97,7 @@ const head = {
               type="text"
               autoComplete="current-password"
               fullWidth 
-              
+              style={text}
               
             />
       </Grid>
@@ -99,6 +108,7 @@ const head = {
               type="text"
               autoComplete="current-password"
               fullWidth 
+              style={text}
               
               
             />
@@ -109,6 +119,7 @@ const head = {
               label="city"
               type="text"
               autoComplete="current-password"
+              style={twoText}
               
               
               
@@ -118,6 +129,7 @@ const head = {
               label="postal code"
               type="text"
               autoComplete="current-password"
+              style={twoText}
               
               
               
@@ -131,6 +143,7 @@ const head = {
               type="password"
               autoComplete="current-password"
               fullWidth 
+              style={text}
               
               
             />
@@ -139,7 +152,7 @@ const head = {
     
     <Button style={{marginTop:'8%',marginBottom:'5%'}} variant="contained" fullWidth>Contained</Button>
     
-    <Divider style={{fontSize:'10px', marginBottom:'5%'}}>OR</Divider>
+    <Divider style={{fontSize:'10px', marginBottom:'2%'}}>OR</Divider>
     
     <Button style={{marginBottom:'10px'}} variant="outlined" fullWidth  >
     <Grid  container  justify="center" columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
@@ -151,7 +164,6 @@ const head = {
       </Grid>
      </Grid>
      </Button>
-     
      
             </div>
             </>,
