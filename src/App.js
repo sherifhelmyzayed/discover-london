@@ -3,7 +3,8 @@ import { createContext, Suspense } from 'react';
 import { Routes, Route, BrowserRouter } from "react-router-dom"
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import Home from './Pages/Home';
-import Map from './Pages/Map'
+import Map from './Pages/Map';
+import Property from './Pages/Property';
 import DashboardModule from './module/DashboardModule';
 
 export const ThemeContext = createContext();
@@ -11,7 +12,7 @@ export const ThemeContext = createContext();
 
 const mainTheme = createTheme({
   palette: {
-    // essam choose of color set is presented here:
+    // essam choice of color set is presented here:
     primary: {
       main: '#0c2442',
       light: '#4f7492'
@@ -35,9 +36,9 @@ const mainTheme = createTheme({
     fontFamily: 'Montserrat',
     fontWeightLight: 100,
     fontWeightRegular: 200,
-    fontWeightMedium: 600,
+    fontWeightMedium: 400,
     fontWeightBold: 800,
-    fontSize: 14,
+    fontSize: 12,
     lineHeight: '50',
     h1: {
       fontSize: 30,
@@ -48,6 +49,12 @@ const mainTheme = createTheme({
     },
     p: {
       fontFamily: 'Lato',
+    },
+    h2: {
+
+    },
+    essamText: {
+      fontFamily: 'syne'
     },
     subtitle1: {
       fontFamily: 'lato',
@@ -89,7 +96,7 @@ const mainTheme = createTheme({
     clickable: {
       fontFamily: 'Montserrat',
       fontWeight: 900,
-      fontSize: 13,
+      fontSize: 11,
       marginTop: 10,
       '&:hover': {
         cursor: 'pointer'
@@ -102,6 +109,7 @@ const mainTheme = createTheme({
 })
 function App() {
   return (
+
     <Suspense fallback={<h1>LOOOOOOOOOOAAADINGGGG</h1>}>
       <ThemeProvider theme={mainTheme}>
         <ThemeContext.Provider value={{ mainTheme }}>
@@ -110,6 +118,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/map" element={<Map />} />
               <Route path="dashboard/*" element={<DashboardModule />} />
+              <Route path="/property" element={<Property />} />
             </Routes>
           </BrowserRouter>
         </ThemeContext.Provider>

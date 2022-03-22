@@ -1,10 +1,11 @@
 import * as React from 'react';
 import Menu from '@mui/material/Menu';
 import Fade from '@mui/material/Fade';
-import PriceArea from '../FilterContent/PriceArea';
+import Box from '@mui/material/Box';
+import SectionStrucure from '../groups/SectionStructure';
 import Togglebutton from './Togglebutton';
 
-export default function PriceLaptop() {
+export default function LaptopBotton(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -15,14 +16,14 @@ export default function PriceLaptop() {
   };
 
   const menuStyle = { width : '450px' , height : '500px',
-                     padding : '30px'
+                     padding : '30px' , 
 }
 
   return (
-    <div>
+    <Box>
 
       <div onClick={handleClick}>
-          < Togglebutton  name="Price"/>
+          < Togglebutton  name={props.name}/>
        </div>
       <Menu sx = {menuStyle}
         id="fade-menu"
@@ -34,8 +35,9 @@ export default function PriceLaptop() {
         onClose={handleClose}
         TransitionComponent={Fade}
       >
-        <PriceArea />
+         <SectionStrucure  name={props.name} />
+       
       </Menu>
-    </div>
+    </Box>
   );
 }

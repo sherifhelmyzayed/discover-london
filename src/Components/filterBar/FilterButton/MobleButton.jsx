@@ -4,9 +4,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { grey } from '@mui/material/colors';
 import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import PriceArea from "../FilterContent/PriceArea"
 import Togglebutton from './Togglebutton';
-import FilterContant from '../FilterContent/FilterContent';
+import SectionStrucure from '../groups/SectionStructure';
 const drawerBleeding = 0;
 
 const Root = styled('div')(({ theme }) => ({
@@ -22,17 +21,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
 
 
 function MobleButton(props) {
-  let componant = null
-  if (props.name === "price"){
-      componant =  <PriceArea />
-  }
-  else if (props.name === 'typePlace'){
-       componant = 'tyoe'
-  }
-  else if (props.name ==='filter' ){
-      componant = <FilterContant />
-  }
-  else {componant = null }
+ 
   const { window } = props;
   const [open, setOpen] = React.useState(false);
 
@@ -72,7 +61,7 @@ function MobleButton(props) {
           }}
         >
           
-           {componant}
+          <SectionStrucure  name={props.name} />
         </StyledBox>
       </SwipeableDrawer>
     </Root>
