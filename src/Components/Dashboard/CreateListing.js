@@ -12,7 +12,10 @@ import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 // import Slide from '@mui/material/Slide';
 import Fade from '@mui/material/Fade';
-import { Box, Grid, Stepper, Step, StepLabel, MobileStepper } from '@mui/material'
+import { Box, Grid, Stepper, Step, StepLabel, MobileStepper, Slider } from '@mui/material'
+import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+
 
 // transitional slide
 // const Transition = forwardRef(function Transition(props, ref) {
@@ -54,17 +57,29 @@ const CreateListing = (props) => {
           </Toolbar>
         </AppBar>
         <Grid container>
-          <Box sx={{ width: '100%', height: '100%' }}>
-            <MobileStepper variant="progress" activeStep={1} >
-             
-                <Step >
-                  <StepLabel>test</StepLabel>
-                </Step>
-                <Step >
-                  <StepLabel>test</StepLabel>
-                </Step>
-       
-            </MobileStepper>
+          <Box sx={{ width: '100%'}}>
+            <MobileStepper
+              variant="progress"
+              steps={6}
+              position="static"
+              activeStep={2}
+              sx={{ maxWidth: '100%', justifyContent:'center' }}
+              nextButton={
+                <Button size="small" onClick={2} disabled={2 === 5}>
+                  Next
+                  <KeyboardArrowRight />
+                </Button>
+              }
+              backButton={
+                <Button size="small" onClick={2} disabled={2 === 0}>
+                  <KeyboardArrowLeft />
+                  Back
+                </Button>
+              }
+            />
+          </Box>
+          <Box sx={{width:'100%', display: 'flex', justifyContent: 'center', alignItems: 'center' , marginTop: 'auto', marginBottom: 'auto'}}>
+              test
           </Box>
         </Grid>
 
