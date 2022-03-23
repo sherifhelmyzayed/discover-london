@@ -6,15 +6,24 @@ import ProfileIcon from './ProfileIcon';
 import HostRegister from './HostRegister';
 
 const NavBar = () => {
+    const [navBar, setNavbar] = React.useState(false)
+    const changeNavBackground = () => {
+        if (window.scrollY >= 200) {
+            setNavbar(true)
+        }else{
+            setNavbar(false)
+        }
+    }
+
+    window.addEventListener('scroll', changeNavBackground)
     return (
         <>
-            <Box sx={{
+            <Box className={navBar?'navbar active':'navbar'}sx={{
                 height: 60,
                 display: 'flex',
                 justifyContent: 'space-between',
                 width: '100%',
                 position: 'fixed',
-                marginTop: 2,
                 top: 0
             }}>
 
@@ -39,7 +48,7 @@ const NavBar = () => {
                     <HostRegister />
                     <ProfileIcon />
                     <BasicMenu />
-                   
+
                 </Box>
 
             </Box>

@@ -2,9 +2,7 @@ import { selectUnstyledClasses } from '@mui/material/node_modules/@mui/base';
 import React,{useState} from 'react'
 import {GoogleMap , withScriptjs ,withGoogleMap , Marker, InfoWindow  } from 'react-google-maps'
 import  cairo from '../data/test.js'
-import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import MediaCard from '../Components/card'
 
