@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
+import Button from '@mui/material/Button';
 import NumberFilter from  './NumberFilter';
 import SwichFilter from './SwichFilter'
 import { useState } from 'react';
@@ -8,11 +9,10 @@ import CheckFilter from './CheckFilter';
 
 
  const FilterContant = ()=>{
-    const textStyle ={ maxWidth: { xs :'100%', md : '60%' },
-                       margin : "10px 0" 
+    const textStyle ={ maxWidth: { xs :'100%', md : '60%' }, 
    }
-   const filterStyle = {  maxHeight : "65vh" , padding : "20px 10px"
-
+   const filterStyle = {  maxHeight : "60vh" , padding : "20px 10px" , 
+                           overflowY: 'scroll',   overflowX: 'hidden',
    }
    const amenitiesLess =[' Air conditioning ' , 'Kitche', 'Iron' , 'TV'  , 'Wifi' , 'Heating' , ]
    const amenitiesMore =[ { 
@@ -30,8 +30,18 @@ import CheckFilter from './CheckFilter';
    item : ['Carbon monoxide alarm' ,  'Smoke alarm']
    }]
 
-   const [isShow , setIsShow] = useState(false)
-   
+ const [isShow , setIsShow] = useState(false)
+ const changeDataHandel = ()=>{
+    setIsShow (!isShow)
+ }
+
+ const title = <>
+                 <Typography sx={textStyle}   variant="h5" component="p">
+                  Price renge
+                  </Typography>
+                  <Divider  />
+               </> 
+
   const showMore = amenitiesMore.map((el)=>{
 
      return  (   <Box>
@@ -78,16 +88,12 @@ const ShowLess =   <Box>
            <SwichFilter />
            <Divider  />
        </Box> 
-       <Box >
-           <Typography sx={textStyle}   variant="h5" component="p">
-              Price renge
-           </Typography>
-           <Divider  />
-
-           { isShow ? showMore: ShowLess }
-          
-           
+       <Box > 
+          { !isShow ?  title : null }   
+          { isShow ? showMore: ShowLess }       
        </Box>   
+
+       <Button onClick = { changeDataHandel }  size="small">{!isShow ? "Show more": "Show less" }</Button>
        
           </section>
 }

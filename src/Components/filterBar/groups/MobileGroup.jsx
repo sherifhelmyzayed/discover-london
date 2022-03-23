@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 
 const MobileGroup =()=>{
  
-    const sections = ['price'  , 'typePlace' , 'filter'  ]
+    const sections = ['Price'  , 'typePlace' , 'filter'  ]
 
 
   return <Box sx={{display : "flex" , justifyContent :"space-between", width : '100% ',

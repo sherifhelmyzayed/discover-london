@@ -7,7 +7,7 @@ import Map from './Pages/Map';
 import Property from './Pages/Property';
 import DashboardModule from './module/DashboardModule';
 import MapEss from './Pages/MapEss';
-  
+
 
 
 export const ThemeContext = createContext();
@@ -39,9 +39,9 @@ const mainTheme = createTheme({
     fontFamily: 'Montserrat',
     fontWeightLight: 100,
     fontWeightRegular: 200,
-    fontWeightMedium: 600,
+    fontWeightMedium: 400,
     fontWeightBold: 800,
-    fontSize: 14,
+    fontSize: 12,
     lineHeight: '50',
     h1: {
       fontSize: 30,
@@ -99,7 +99,7 @@ const mainTheme = createTheme({
     clickable: {
       fontFamily: 'Montserrat',
       fontWeight: 900,
-      fontSize: 13,
+      fontSize: 11,
       marginTop: 10,
       '&:hover': {
         cursor: 'pointer'
