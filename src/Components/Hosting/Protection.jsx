@@ -3,32 +3,28 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import bg from '../../assets/sofa.png'
 
 
 const botton = {
-    width : {
-        xs :'50%',
-        sm: "35%",
-        md : "40%",
-        lg : '45%',
-        xl : "35%",
-       },
-
-    color : 'white',
-    border : '3px  white solid',
+    border : '2px   solid',
     borderRadius: "10px",
-
+    fontWeight : 600,
+    textTransform: 'capitalize',
     
 }
 
 const contentStyle = {height :  "80vh",
                      width : "90%",
                     borderRadius : '20px',
-                    backgroundColor : "green",
-                    overflow : "hiden"
+                    backgroundColor : "#F7F7F7",
+                    overflow : "hiden",
+                    
+
 }
 
 const dataStyle = {  
+    height : { xs: '50%' , md : '100%'},
     display : "flex", 
     flexDirection: 'column',
     justifyContent: 'space-evenly',
@@ -41,20 +37,28 @@ const LayoutStyle = { flexGrow: 1   ,
                       height :{xs : "100vh"  }, 
                        alignItems: 'center',
                      justifyContent: 'center',
-                     backgroundColor : "red",
                      display : "flex",  } 
                       
 
-const textStyle = {fontSize :{sx : '1rem' , md : "1.2rem" , xl:"1.5rem"  }  ,
+const textStyle = {fontSize :{sx : '1.2rem' , md : "1.5rem" , xl:"2rem"  }  ,
                     width :"100%",
-                    color : "white",
                     textAlign : {xs : "center", md :'left', }}
+
+const imgAreaStyle = { 
+                       backgroundImage : `url(${bg})`,
+                       backgroundSize :  { xs: 'contain' , md : 'cover' , lg : 'contain'},
+                       backgroundRepeat:' no-repeat',
+                       backgroundPosition : "bottom ", 
+                       height : { xs: '50%' , md : '100%'}
+
+                       
+}
  
 const Protection = ()=>{
    return ( <Box sx={LayoutStyle}>
                 <Grid container  sx ={contentStyle} >
                     <Grid item xs={12} md={6}   sx={dataStyle}  >
-                        <Typography sx={{fontSize :{sx : '1.3rem' , md : "1.8rem" , xl:"3rem"  }  , color : "white",fontWeight :900 ,
+                        <Typography sx={{fontSize :{xs : '4rem' , md : "5rem" , xl:"7rem"  }  , fontWeight :900 ,
                          textAlign : {xs : "center", md :'left', }}}
                                 variant="h1" component="h4" gutterBottom>
                                     aircover  
@@ -66,8 +70,8 @@ const Protection = ()=>{
                             <Button sx={botton} color="white" variant="oulLine">Explore aircover</Button>
                     </Grid>
 
-                    <Grid item xs={12} md={6} >
-                        kkkk
+                    <Grid item xs={12} md={6} sx={imgAreaStyle} >
+                        
                     </Grid>
                 </Grid>
             </Box>

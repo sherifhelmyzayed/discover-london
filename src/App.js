@@ -8,6 +8,7 @@ import Property from './Pages/Property';
 import DashboardModule from './module/DashboardModule';
 import MapEss from './Pages/MapEss';
 import BecomeHost from './Pages/BecomeHost';
+import SignUpForm from './Pages/SignUpForm';
 
 
 
@@ -124,7 +125,8 @@ function App() {
               <Route path="dashboard/*" element={<DashboardModule />} /> 
               <Route path="/property" element={<Property />} />
               <Route path="/mapess" element={<MapEss />} />
-              <Route path="hosting" element={<BecomeHost />} /> 
+              <Route path="/hosting" element={<BecomeHost />} /> 
+              <Route path="/Sign-up" element={<SignUpForm />} /> 
             </Routes>
           </BrowserRouter>
         </ThemeContext.Provider>
