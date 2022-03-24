@@ -1,11 +1,8 @@
-import React, { createContext, useMemo, useEffect, useContext, Suspense } from 'react'
+import React, { createContext, useMemo, useEffect, useContext, Suspense, useState } from 'react'
 import axios from "axios";
 import { Routes, Route } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
 
-
-// main Dashboard component
-import Dashboard from '../Pages/Dashboard';
 
 // Dashboard component routes are here
 import Reservations from '../Components/Dashboard/Reservations';
@@ -20,6 +17,7 @@ import { ThemeContext } from '../App';
 
 
 import { Grid } from '@mui/material';
+import CreateListing from '../Components/Dashboard/CreateListing';
 
 
 export const DashboardContext = createContext();
@@ -27,12 +25,13 @@ export const DashboardContext = createContext();
 
 const DashboardModule = () => {
 
+    const [stepperOpen, setStepperOpen] = useState(false)
 
+    const setStepperOpenHandler = (ev)=>{
+        setStepperOpen(ev)
+    }
 
-
-    console.log(ThemeContext)
     const { mainTheme } = useContext(ThemeContext);
-    console.log(mainTheme)
 
     // add hosting state here
     useEffect(() => {
@@ -54,7 +53,8 @@ const DashboardModule = () => {
     return (
         <Suspense fallback={<h1>LOOOOOOOOOOAAADINGGGG</h1>}>
             <DashboardContext.Provider value={contextValue}>
-                <Header />
+                <Header clickHandler={setStepperOpenHandler}/>
+                <CreateListing stateDialog={stepperOpen} clickHandler={setStepperOpenHandler}/>
                 <Grid
                     container
                     direction="row"

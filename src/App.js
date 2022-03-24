@@ -6,7 +6,10 @@ import Home from './Pages/Home';
 import Map from './Pages/Map';
 import Property from './Pages/Property';
 import DashboardModule from './module/DashboardModule';
+import MapEss from './Pages/MapEss';
 import BecomeHost from './Pages/BecomeHost';
+
+
 
 export const ThemeContext = createContext();
 
@@ -118,8 +121,10 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/map" element={<Map />} />
-              <Route path="dashboard/*" element={<DashboardModule />} />
+              <Route path="dashboard/*" element={<DashboardModule />} /> 
               <Route path="/property" element={<Property />} />
+              <Route path="/mapess" element={<MapEss />} />
+              <Route path="hosting" element={<BecomeHost />} /> 
             </Routes>
           </BrowserRouter>
         </ThemeContext.Provider>
