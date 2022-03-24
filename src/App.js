@@ -7,6 +7,8 @@ import Property from './Pages/Property';
 import DashboardModule from './module/DashboardModule';
 import MapEss from './Pages/MapEss';
 import MapBox from './Components/MapPage/MapBox/MapBox';
+import BecomeHost from './Pages/BecomeHost';
+
 
 
 export const ThemeContext = createContext();
@@ -104,6 +106,7 @@ const mainTheme = createTheme({
       },
     }
 
+
     // body1 body subtitle1 subtitle2 caption button overline
   }
 
@@ -117,10 +120,12 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="dashboard/*" element={<DashboardModule />} />
+              <Route path="dashboard/*" element={<DashboardModule />} /> 
               <Route path="/property" element={<Property />} />
               <Route path="/mapess" element={<MapEss />} />
-              <Route path="/mapbox" element={<MapBox />} />
+              <Route path="hosting" element={<BecomeHost />} /> 
+              <Route path="hosting" element={<BecomeHost />} /> 
+              <Route path="mapbox" element={<MapBox />}/>
             </Routes>
           </BrowserRouter>
         </ThemeContext.Provider>
