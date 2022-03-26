@@ -45,7 +45,7 @@ return (
                     },
                     display : "flex",
                     flexDirection: 'column',
-                    justifyContent : "space-around",
+                    justifyContent : "space-evenly",
                     alignItems : "center"
     
     }} >
