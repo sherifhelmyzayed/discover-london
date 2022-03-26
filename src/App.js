@@ -127,6 +127,7 @@ function App() {
               <Route path="hosting" element={<BecomeHost />} /> 
               <Route path="hosting" element={<BecomeHost />} /> 
               <Route path="mapbox" element={<MapBox />}/>
+              <Route path="/sign-up" element={<SignUpForm />}/>
             </Routes>
           </BrowserRouter>
         </ThemeContext.Provider>

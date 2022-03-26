@@ -6,37 +6,25 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import * as React from 'react';
 import IconButton from '@mui/material/IconButton';
+import FormHelperText from '@mui/material/FormHelperText';
 
 
-
-export default function PassInput() {
-      const [values, setValues] = React.useState({
-        password: '',
-    
-      });
-    
-      const handleChange = (prop) => (event) => {
-        setValues({ ...values, [prop]: event.target.value });
-      };
+export default function PassInput(props) {
+      const [showPassword, setShowPassword] = React.useState(false);
+  
     
       const handleClickShowPassword = () => {
-        setValues({
-          ...values,
-          showPassword: !values.showPassword,
-        });
+        setShowPassword(!showPassword);
       };
     
       const handleMouseDownPassword = (event) => {
         event.preventDefault();
       };
 
-      return ( <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
-      <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+      return ( <FormControl  variant="outlined" fullWidth  size="small">
+      <InputLabel htmlFor="outlined-adornment-password">{props.feild}</InputLabel>
       <OutlinedInput
-        id="outlined-adornment-password"
-        type={values.showPassword ? 'text' : 'password'}
-        value={values.password}
-        onChange={handleChange('password')}
+        type={showPassword ? 'text' : 'password'}
         endAdornment={
           <InputAdornment position="end">
             <IconButton
@@ -45,12 +33,19 @@ export default function PassInput() {
               onMouseDown={handleMouseDownPassword}
               edge="end"
             >
-              {values.showPassword ? <VisibilityOff /> : <Visibility />}
+              {showPassword ? <VisibilityOff /> : <Visibility />}
             </IconButton>
           </InputAdornment>
         }
-        label="Password"
+         
+        error={props.vaild}
+        label={props.feild } 
+        name={props.name} 
+        onChange={props.change}
+        value={props.val}
+       
       />
+      <FormHelperText error >{props.text }</FormHelperText>
       </FormControl>
 
       )}
