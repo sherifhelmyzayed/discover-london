@@ -1,0 +1,27 @@
+.map-container {
+    height: 100vh;
+    width: 100vw;
+}
+
+#fit {
+    display: block;
+    margin: 0px auto;
+    width: 10%;
+    height: 40px;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    font-size: 12px;
+    text-align: center;
+    color: #fff;
+    background: #086792;
+}
+
+
+.navigation-control {
+  position: absolute;
+  right: 0;
+  margin-right: 10px;
+  margin-top: 10px;
+}

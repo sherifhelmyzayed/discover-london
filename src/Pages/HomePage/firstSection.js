@@ -1,10 +1,9 @@
 import React from 'react'
 import Avatar from '@mui/material/Avatar';
 import ArrowDownIcon from '@mui/icons-material/ArrowDownwardOutlined';
-import bg from '../../assets/headerHome.jpg'
+// import bg from '../../assets/headerHome.jpg'
 import NavBar from '../../Components/NavigationBar/NavBar';
 import { Box, Typography } from '@mui/material';
-
 
 
 
@@ -12,7 +11,7 @@ const FirstSection = () => {
     return (
         <>
             <Box sx={{
-                background: `url(${bg})`,
+                background: 'linear-gradient(to top, rgb(10, 27, 47), rgb(0, 0, 0))',
                 height: '100vh',
                 backgroundPosition: 'center',
                 backgroundSize: 'cover',

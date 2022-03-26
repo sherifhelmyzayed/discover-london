@@ -1,19 +1,13 @@
-import { Login } from '@mui/icons-material'
-import React from 'react'
-import Header from '../Components/Home/Header/Header'
-import Laptop from '../Components/Home/Laptop/Laptop'
-import Tablet from '../Components/Home/Tablet/Tablet'
-import  Modal  from '../Components/form/Modal'
-import FAQ from '../Components/FAQ'
+import SecondSection from './HomePage/SecondSection'
+import FirstSectionUpdated from './HomePage/FirstSectionUpdated'
+import ThirdSection from './HomePage/ThirdSection'
 
 const Home = () => {
   return (
-    <> 
-        <FAQ/>
-        <Modal/>
-        <Header />
-        <Laptop />
-        <Tablet />
+    <>
+      <FirstSectionUpdated />
+      <SecondSection />
+      <ThirdSection />
     </>
   )
 }

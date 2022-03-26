@@ -3,9 +3,14 @@ import { createContext, Suspense } from 'react';
 import { Routes, Route, BrowserRouter } from "react-router-dom"
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import Home from './Pages/Home';
-import Map from './Pages/Map';
 import Property from './Pages/Property';
 import DashboardModule from './module/DashboardModule';
+import MapEss from './Pages/MapEss';
+import MapBox from './Components/MapPage/MapBox/MapBox';
+import BecomeHost from './Pages/BecomeHost';
+import SignUpForm from './Pages/SignUpForm';
+
+
 
 export const ThemeContext = createContext();
 
@@ -34,7 +39,6 @@ const mainTheme = createTheme({
   // Typography should be edit according to layout
   typography: {
     fontFamily: 'Montserrat',
-    fontWeightLight: 100,
     fontWeightRegular: 200,
     fontWeightMedium: 400,
     fontWeightBold: 800,
@@ -103,6 +107,7 @@ const mainTheme = createTheme({
       },
     }
 
+
     // body1 body subtitle1 subtitle2 caption button overline
   }
 
@@ -116,9 +121,13 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/map" element={<Map />} />
-              <Route path="dashboard/*" element={<DashboardModule />} />
+              <Route path="dashboard/*" element={<DashboardModule />} /> 
               <Route path="/property" element={<Property />} />
+              <Route path="/mapess" element={<MapEss />} />
+              <Route path="hosting" element={<BecomeHost />} /> 
+              <Route path="hosting" element={<BecomeHost />} /> 
+              <Route path="mapbox" element={<MapBox />}/>
+              <Route path="/sign-up" element={<SignUpForm />}/>
             </Routes>
           </BrowserRouter>
         </ThemeContext.Provider>

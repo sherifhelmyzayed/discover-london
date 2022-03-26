@@ -18,7 +18,8 @@ import MenuItem from '@mui/material/MenuItem';
 const pages = ['home', 'performance', 'inbox', 'reservations', 'listings'];
 const settings = ['Profile', 'Logout'];
 
-const Header = () => {
+const Header = (props) => {
+    const { clickHandler } = props
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
     const [active, setActive] = useState(0);
@@ -43,12 +44,10 @@ const Header = () => {
 
     const changeRoute = (event) => {
         event.stopPropagation();
-        console.log(event.target.getAttribute('id'))
         setActive(event.target.getAttribute('id'))
         handleCloseNavMenu()
         navigate(`/dashboard/${event.target.getAttribute('val')}`)
-    }
-
+    };
 
     return (
         <AppBar position="static" color="light" sx={{
@@ -140,6 +139,9 @@ const Header = () => {
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
+                        <Button onClick={()=>{clickHandler(true)}} size="small" variant="contained" color="primary" sx={{
+                            marginRight: 2
+                        }}>Add new listing</Button>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar sx={{ width: 30, height: 30 }} alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
