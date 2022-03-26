@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import Stack from '@mui/material/Stack';
-
+import axios from 'axios'
 
 export default function SignUpForm() {
 
@@ -23,13 +23,10 @@ const nameVaild = yup.string()
 const passVaild =  yup.string()
     .required('Required')
     .min(8, 'Too Short!')
-    .matches( /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]+$/,
-    "Must Contain 8 Characters, Uppercase, Lowercase, Number and one special case Character"
- );
+ ;
 
- const passdConfirVaild =  yup.string()
-              .label('Password Confirm')
-              .required()
+const passdConfirVaild =  yup.string()
+              .required('Required')
               .oneOf([yup.ref('password')], 'Passwords does not match');
 
 const SignupSchema = yup.object().shape({
@@ -46,15 +43,15 @@ const SignupSchema = yup.object().shape({
               .required('Required'), 
 
    about :  yup.string()
-            .matches(/^[a-zA-Z]+$/ , 'it must be Characters')
-            .min(20, 'must be more than 20 letter!')
             .required('Required')
+            .min(20, 'must be more than 20 letter!')
 });
 
 const formik = useFormik({
         initialValues : {
             firstName : "",
             lastName : "",
+            address : "",
             email : "",
             city : "",
             postalCode : "",
@@ -63,7 +60,16 @@ const formik = useFormik({
             about : "",
             photo : null,
         },
-        validationSchema : SignupSchema
+        validationSchema : SignupSchema,
+        onSubmit: values => {
+            axios.post('http://localhost:3000/user',values)
+              .then(function (response) {
+                console.log(response);
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+        },
  })
 
  
@@ -78,11 +84,11 @@ const Input = styled('input')({
 
   return (
       
-    <Box sx={{ flexGrow: 1  , padding : "50px"}}>  
-      <form >
+<Box sx={{ flexGrow: 1  , padding : "50px"}}>  
+   <form onSubmit={formik.handleSubmit} >
 
       <Grid container spacing={2}>
-      <Grid item xs={6} >
+      <Grid item xs={12} >
             <label htmlFor="contained-button-file">
                 <Input accept="image/*"
                  id="contained-button-file" 
@@ -95,11 +101,10 @@ const Input = styled('input')({
             </label>
 
 
-        </Grid>
-
-        
+      </Grid>
+   
         <Grid item xs={6} >
-             <InputText   text={formik.touched.firstName ? formik.errors.firstName : null}
+             <InputText text={formik.touched.firstName ? formik.errors.firstName : null}
                         vaild={formik.touched.firstName && formik.errors.firstName}
                         feild = "Frist name" 
                         name="firstName" 
@@ -112,9 +117,9 @@ const Input = styled('input')({
         </Grid>
 
         <Grid item xs={6}>
-                <InputText   text={formik.touched.lastName ? formik.errors.lastName : null}
+                <InputText  text={formik.touched.lastName ? formik.errors.lastName : null}
                         blur = {formik.handleBlur }
-                        vaild={formik.touched.LastName && formik.errors.LasttName}
+                        vaild={formik.touched.lastName && formik.errors.lastName}
                         feild = "Last name" 
                         name="lastName" 
                         change={formik.handleChange}
@@ -125,7 +130,7 @@ const Input = styled('input')({
         </Grid>
 
         <Grid item xs={12} >     
-                <Input  text={formik.touched.email ? formik.errors.email : null}
+                <InputText  text={formik.touched.email ? formik.errors.email : null}
                         blur = {formik.handleBlur }
                         vaild={formik.touched.email && formik.errors.email}
                         feild = "E-mail" 
@@ -149,6 +154,7 @@ const Input = styled('input')({
                      /> 
 
         </Grid>
+
         <Grid item xs={6} >
                 <InputText  text={formik.touched.postalCode ? formik.errors.postalCode : null}
                                 blur = {formik.handleBlur }
@@ -160,9 +166,10 @@ const Input = styled('input')({
                                 type ='number'
                     /> 
         </Grid> 
+
         <Grid item xs={12} >
             <InputText   text={formik.touched.address ? formik.errors.address : null}
-                        blur = {formik.handleBlur }
+                         blur = {formik.handleBlur }
                       vaild={formik.touched.address && formik.errors.address}                     
                          feild = "Address" 
                         name="address" 
@@ -171,15 +178,17 @@ const Input = styled('input')({
                         mult = {true}
             /> 
         </Grid>
+
         <Grid item xs={6}>
           <PassInput   text={formik.touched.password ? formik.errors.password : null}
                         blur = {formik.handleBlur }
-                       vaild={formik.touched.password && formik.errors.passwor}                                             
+                       vaild={formik.touched.password && formik.errors.password}                                             
                          feild = "password" 
                         name="password" 
                         change={formik.handleChange}
                         val={formik.values.password}   />
          </Grid>
+
         <Grid item xs={6} >
                 <PassInput  
                               text={formik.touched.passwordConfirmation ? formik.errors.passwordConfirmation : null}
@@ -190,6 +199,7 @@ const Input = styled('input')({
                                 change={formik.handleChange}
                                 val={formik.values.passwordConfirmation}   />
         </Grid>
+
         <Grid item xs={12} >
                  <InputText  text={formik.touched.about ? formik.errors.about : null}
                     blur = {formik.handleBlur }
@@ -201,7 +211,7 @@ const Input = styled('input')({
                     mult = {true}
                     /> 
         </Grid>
-      </Grid>
+        </Grid>
         
         <Button type="submit" > submit </Button>
       </ form >

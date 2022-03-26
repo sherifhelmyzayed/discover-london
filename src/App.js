@@ -9,6 +9,7 @@ import MapEss from './Pages/MapEss';
 import MapBox from './Components/MapPage/MapBox/MapBox';
 import BecomeHost from './Pages/BecomeHost';
 import SignUpForm from './Pages/SignUpForm';
+import CreetAccount from './Pages/CreetAccount';
 
 
 
@@ -127,6 +128,7 @@ function App() {
               <Route path="hosting" element={<BecomeHost />} /> 
               <Route path="hosting" element={<BecomeHost />} /> 
               <Route path="mapbox" element={<MapBox />}/>
+              <Route path="/creat-account" element={<CreetAccount />}/>
               <Route path="/sign-up" element={<SignUpForm />}/>
             </Routes>
           </BrowserRouter>

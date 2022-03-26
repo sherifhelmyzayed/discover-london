@@ -42,6 +42,7 @@ export default function PassInput(props) {
         label={props.feild } 
         name={props.name} 
         onChange={props.change}
+        onBlur = {props.blur}
         value={props.val}
        
       />
