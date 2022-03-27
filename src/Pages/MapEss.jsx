@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { CssBaseline, Grid } from '@mui/material';
 import List from '../Components/MapPage/List/List';
 import MapHeader from '../Components/MapPage/MapHeader/MapHeader';
-import PropertyDetails from '../Components/MapPage/PropertyDetails/PropertyDetails';
-import MapSection from '../Components/MapPage/MapSection/MapSection';
-
+// import PropertyDetails from '../Components/MapPage/PropertyDetails/PropertyDetails';
+import MapV2 from '../Components/MapPage/MapEss/MapV2';
+import { getPlacesData } from '../api'
 
 const MapEss = () => {
+
   return (
     <>
       <CssBaseline />
@@ -16,7 +17,7 @@ const MapEss = () => {
           <List />
         </Grid>
         <Grid item xs={12} md={8}>
-          <MapSection />
+         
         </Grid>
       </Grid>
     </>
