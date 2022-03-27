@@ -1,14 +1,14 @@
 import React from 'react'
-import { styled } from '@mui/material/styles';
+
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
+
 import Grid from '@mui/material/Grid';
 import { Button } from '@mui/material';
 import host from '../assets/host.mp4'
 import Capture from '../assets/Capture.PNG'
 import second from '../assets/second.PNG'
 import Card from '../Components/host/CardHost'
-import { width } from '@mui/material/node_modules/@mui/system';
+
 import Carousel from 'react-elastic-carousel'
 import '../Components/host/carousal.css'
 

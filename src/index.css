@@ -5,11 +5,22 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;      
+    monospace; 
+   
+      
 }
 
+.removeStyle {
+  background-color: rgba(255, 255, 0, 0) ; 
+  border : none ; 
+  padding: 0;
+  font-size: 1.1rem;
+  
+
+}
 
