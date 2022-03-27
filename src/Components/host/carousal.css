@@ -1,0 +1,17 @@
+.rec.rec-arrow-left {
+    position: relative;
+    top: 58%;
+    left: 54%;
+    font-size: 25px;
+    border-color: none;
+    z-index: 1;
+}
+.rec.rec-arrow-right {
+    position: relative;
+    top: 58%;
+    right: 38%;
+    z-index: 1;
+}
+.rec-dot{
+    visibility: hidden;
+}
