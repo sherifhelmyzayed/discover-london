@@ -11,7 +11,16 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace; 
+   
       
 }
 
+.removeStyle {
+  background-color: rgba(255, 255, 0, 0) ; 
+  border : none ; 
+  padding: 0;
+  font-size: 1.1rem;
+  
+
+}
 

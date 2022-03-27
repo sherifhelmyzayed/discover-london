@@ -51,7 +51,7 @@ const LayoutStyle = { flexGrow: 1   ,
 const SuperHost = ()=>{
    return ( <Box sx={LayoutStyle}>
                 <Grid container sx= {{ width : "90%", }} >
-                    <Grid item xs={12} sx={{ backgroundImage :`url(${bc})`,}} >
+                    <Grid item xs={12} sx={{ backgroundImage :`url(${bc})`,  borderRadius : "20px"}} >
                         <Box sx ={contentStyle} >
 
                        <Typography sx={{fontSize :{sx : '1.1rem' , md : "1.5rem" , xl:"2.7rem"  }  , color : "white",fontWeight :900 , textAlign : 'center'}}

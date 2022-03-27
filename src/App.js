@@ -9,6 +9,11 @@ import MapEss from './Pages/MapEss';
 import MapBox from './Components/MapPage/MapBox/MapBox';
 import BecomeHost from './Pages/BecomeHost';
 import Mainpage from './Components/MapPage/MapBox/mainpage'
+import SignUpForm from './Pages/SignUpForm';
+import CreetAccount from './Pages/CreetAccount';
+import Hosting from './Pages/Hosting';
+
+
 
 export const ThemeContext = createContext();
 
@@ -125,6 +130,11 @@ function App() {
               <Route path="hosting" element={<BecomeHost />} /> 
               <Route path="hosting" element={<BecomeHost />} /> 
               <Route path="mapbox" element={<Mainpage />}/>
+              <Route path="hosting" element={<Hosting />} /> 
+              {/* <Route path="hosting" element={<BecomeHost />} />  */}
+              <Route path="mapbox" element={<MapBox />}/>
+              <Route path="/creat-account" element={<CreetAccount />}/>
+              <Route path="/sign-up" element={<SignUpForm />}/>
             </Routes>
           </BrowserRouter>
         </ThemeContext.Provider>
