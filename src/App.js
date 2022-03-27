@@ -8,8 +8,7 @@ import DashboardModule from './module/DashboardModule';
 import MapEss from './Pages/MapEss';
 import MapBox from './Components/MapPage/MapBox/MapBox';
 import BecomeHost from './Pages/BecomeHost';
-
-
+import Mainpage from './Components/MapPage/MapBox/mainpage'
 
 export const ThemeContext = createContext();
 
@@ -121,11 +120,11 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="dashboard/*" element={<DashboardModule />} /> 
-              <Route path="/property" element={<Property />} />
+              <Route path="property" element={<Property />} />
               <Route path="/mapess" element={<MapEss />} />
               <Route path="hosting" element={<BecomeHost />} /> 
               <Route path="hosting" element={<BecomeHost />} /> 
-              <Route path="mapbox" element={<MapBox />}/>
+              <Route path="mapbox" element={<Mainpage />}/>
             </Routes>
           </BrowserRouter>
         </ThemeContext.Provider>
