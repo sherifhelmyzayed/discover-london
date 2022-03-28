@@ -1,27 +1,61 @@
-import { useState } from 'react'
-import { Box, Typography, Button } from '@mui/material'
-import Slider from '@mui/material/Slider';
+import {useState} from 'react'
+import {Menu, Fade, Box, Typography, Button, ToggleButton, Slider} from '@mui/material';
 
-const SectionStrucure = () => {
-    const [value1, setValue1] = useState([20, 600]);
-    const minDistance = 50;
-    function valuetext(value) {
-        return `${value}°C`;
-    }
 
-    const handleChange1 = (event, newValue, activeThumb) => {
-        if (!Array.isArray(newValue)) {
-            return;
-        }
+export default function PriceFilter() {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
-        if (activeThumb === 0) {
-            setValue1([Math.min(newValue[0], value1[1] - minDistance), value1[1]]);
-        } else {
-            setValue1([value1[0], Math.max(newValue[1], value1[0] + minDistance)]);
-        }
-    };
+  const menuStyle = {
+    width: '450px',
+    height: '500px',
+    padding: '30px',
+  }
 
-    return (
+  const [value1, setValue1] = useState([20, 600]);
+  const minDistance = 50;
+  function valuetext(value) {
+      return `${value}°C`;
+  }
+
+  const handleChange1 = (event, newValue, activeThumb) => {
+      if (!Array.isArray(newValue)) {
+          return;
+      }
+
+      if (activeThumb === 0) {
+          setValue1([Math.min(newValue[0], value1[1] - minDistance), value1[1]]);
+      } else {
+          setValue1([value1[0], Math.max(newValue[1], value1[0] + minDistance)]);
+      }
+  };
+
+  return (
+    <Box>
+      <ToggleButton onClick={handleClick} value="cancellation" aria-label="left aligned" sx={{
+        border: '1px #C8C8C8 solid',
+        borderRadius: 5,
+        height: 35
+      }}>
+        Price
+      </ToggleButton>
+      <Menu sx={menuStyle}
+        id="fade-menu"
+        MenuListProps={{
+          'aria-labelledby': 'fade-button',
+        }}
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        TransitionComponent={Fade}
+      >
+        
         <Box maxHeight={"70%"} padding="20px 20px 0 20px" >
             <Typography padding="  15px 0 10px" variant="h5" component="div">
                 Price Range
@@ -59,6 +93,8 @@ const SectionStrucure = () => {
                 </Button>
             </Box>
         </Box>
-    )
+
+      </Menu>
+    </Box>
+  );
 }
-export default SectionStrucure

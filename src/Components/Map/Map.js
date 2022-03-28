@@ -23,10 +23,8 @@ const MapBox = (props) => {
         setBoundaries,
         trigger,
         setTrigger,
-        URL,
         hovered,
         initialView,
-        cameraZoom,
         setCameraZoom
     } = props
 
@@ -41,11 +39,9 @@ const MapBox = (props) => {
         if (inputEl.current) {
             setBoundaries({ ...boundaries, 'southWest': inputEl.current.getBounds()._sw, 'northEast': inputEl.current.getBounds()._ne })
             // const zoom = 161759-(123814 * Math.pow(Math.E, (0.0182408*inputEl.current.getZoom()))
-            console.log(inputEl.current.getCenter().lat)
             setCameraZoom({
                 point:[inputEl.current.getCenter().lat, inputEl.current.getCenter().lng],
             })
-            console.log(cameraZoom)
 
         };
     }, [trigger])
@@ -55,6 +51,11 @@ const MapBox = (props) => {
         <>
             {initialView ? (
                 <Map
+                    // initialViewState={{
+                    //     latitude: initialView[0],
+                    //     longitude: initialView[1],
+                    //     zoom: 10
+                    // }}
                     bounds={
                         [{ lat: 51.50118837862644, lng: -0.09768202553641459 }, { lat: 51.23203941746053, lng: -0.2299947300747931 }]
                     }

@@ -54,7 +54,6 @@ const Discover = () => {
         const log1 = (boundaries) ? boundaries.northEast.lng : -0.01115745233397547
         const log2 = (boundaries) ? boundaries.southWest.lng : -0.32688691447197016
         
-        console.log(boundaries.northEast)
 
         let importedData = listings
             .filter(item => item.fields.geolocation[0] > lat2 && item.fields.geolocation[0] < lat1 && item.fields.geolocation[1] > log2 && item.fields.geolocation[1] < log1)
@@ -62,11 +61,8 @@ const Discover = () => {
             .sort((a, b) => (b.fields.number_of_reviews - a.fields.number_of_reviews))
             .slice(0, 20)
 
-        console.log(importedData)
-        console.log(newImportedData)
         setData(newImportedData)
         setinitialView(true)
-        console.log(data)
 
 
 

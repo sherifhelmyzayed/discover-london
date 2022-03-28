@@ -63,16 +63,16 @@ const IOSSwitch = styled((props) => (
 
 export default function NumberFilter() {
   return (
-    <Box>
+    <Box marginY={2}>
       <Grid container spacing={3}  
             direction="row"
             justifyContent="space-around"
             alignItems="center">
         <Grid item xs={10} >
-           <Typography  sx={{margin : '10px'  }} variant="headerItem" component="h5" gutterBottom>
+           <Typography  sx={{margin : '10px'  }} variant="subtitle1" component="h5" gutterBottom>
               instant Book
             </Typography>
-            <Typography  sx={{margin : '10px' }} variant="subtitle1" component="p" gutterBottom>
+            <Typography  sx={{margin : '10px' }} variant="headerItem" component="p" gutterBottom>
               Listings you can book without waiting for Host approval
             </Typography>
         </Grid>
