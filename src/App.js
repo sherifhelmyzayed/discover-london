@@ -10,6 +10,7 @@ import MapBox from './Components/MapPage/MapBox/MapBox';
 import BecomeHost from './Pages/BecomeHost';
 import SignUpForm from './Pages/SignUpForm';
 import CreetAccount from './Pages/CreetAccount';
+import UserProfile from './Pages/UserProfile.jsx';
 
 
 
@@ -125,11 +126,11 @@ function App() {
               <Route path="dashboard/*" element={<DashboardModule />} /> 
               <Route path="/property" element={<Property />} />
               <Route path="/mapess" element={<MapEss />} />
-              <Route path="hosting" element={<BecomeHost />} /> 
-              <Route path="hosting" element={<BecomeHost />} /> 
+              <Route path="/hosting" element={<BecomeHost />} /> 
               <Route path="mapbox" element={<MapBox />}/>
               <Route path="/creat-account" element={<CreetAccount />}/>
               <Route path="/sign-up" element={<SignUpForm />}/>
+              <Route path="/profile" element={<UserProfile />}/>
             </Routes>
           </BrowserRouter>
         </ThemeContext.Provider>
