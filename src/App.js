@@ -11,11 +11,8 @@ import Mainpage from './Components/MapPage/MapBox/mainpage'
 import SignUpForm from './Pages/SignUpForm';
 import CreetAccount from './Pages/CreetAccount';
 import Hosting from './Pages/Hosting';
-<<<<<<< HEAD
 import Discover from './Pages/Discover';
-=======
 import UserProfile from './Components/UserProfile/UserProfile';
->>>>>>> 450a7389b3920de5ab3615480cd6bb1c29444d67
 
 
 
