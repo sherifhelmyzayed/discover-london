@@ -13,3 +13,9 @@
   transition: 0.4s ease-in-out;
   z-index: 2;
 }
+
+
+.mapboxgl-popup-content {
+  padding: 0 !important;
+  max-width: 200px;
+}

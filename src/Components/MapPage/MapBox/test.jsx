@@ -3,7 +3,6 @@ import Map, { Marker, NavigationControl, GeolocateControl } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import axios from "axios";
 
-// import GetData from './GetData';
 
 const MAPBOX_TOKEN = 'pk.eyJ1Ijoic2hlcmlmaGVsbXkiLCJhIjoiY2wxNGExY3pmMDBoMjNqcm1jZWs0ZGl5MSJ9.vAYVEPYBzu3e69V3fM-cIw';
 
@@ -45,7 +44,6 @@ export default function MapBox() {
 
     return (
         <>
-            {/* <GetData /> */}
             <Map
                 initialViewState={{
                     latitude: 37.8,
