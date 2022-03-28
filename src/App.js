@@ -6,12 +6,12 @@ import Home from './Pages/Home';
 import Property from './Pages/Property';
 import DashboardModule from './module/DashboardModule';
 import MapEss from './Pages/MapEss';
-import MapBox from './Components/MapPage/MapBox/MapBox';
 import BecomeHost from './Pages/BecomeHost';
 import Mainpage from './Components/MapPage/MapBox/mainpage'
 import SignUpForm from './Pages/SignUpForm';
 import CreetAccount from './Pages/CreetAccount';
 import Hosting from './Pages/Hosting';
+import Discover from './Pages/Discover';
 
 
 
@@ -36,7 +36,8 @@ const mainTheme = createTheme({
     },
     ofwhite: '#ffffff',
     light: '#f7f7f7',
-    grey1: '#efefef'
+    grey1: '#efefef',
+    red: "#FF0000",
   },
 
   // Typography should be edit according to layout
@@ -132,7 +133,8 @@ function App() {
               <Route path="mapbox" element={<Mainpage />}/>
               <Route path="hosting" element={<Hosting />} /> 
               {/* <Route path="hosting" element={<BecomeHost />} />  */}
-              <Route path="mapbox" element={<MapBox />}/>
+              {/* <Route path="mapbox" element={<MapBox />}/> */}
+              <Route path="/discover" element={<Discover />}/>
               <Route path="/creat-account" element={<CreetAccount />}/>
               <Route path="/sign-up" element={<SignUpForm />}/>
             </Routes>

@@ -25,11 +25,9 @@ export default function MapBox() {
     // // }, [trigger])
 
     const [markers, setMarkers] = useState([])
-
-
     useEffect(() => {
         axios.get(URL).then(response => {
-       
+
             setMarkers([
                 ...markers, response.data.records.map((record) => record.geometry.coordinates)
             ])
@@ -37,9 +35,6 @@ export default function MapBox() {
             console.log(error)
         })
     }, [])
-
-
-
 
     return (
         <>
@@ -66,12 +61,6 @@ export default function MapBox() {
                     ) : '')
                 }
             </Map>
-
-
-
-
-
-
         </>
     );
 }
