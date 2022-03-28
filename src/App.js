@@ -12,6 +12,7 @@ import SignUpForm from './Pages/SignUpForm';
 import CreetAccount from './Pages/CreetAccount';
 import Hosting from './Pages/Hosting';
 import Discover from './Pages/Discover';
+import Calculations from './Pages/calculations';
 import UserProfile from './Components/UserProfile/UserProfile';
 
 
@@ -139,6 +140,7 @@ function App() {
               <Route path="/creat-account" element={<CreetAccount />}/>
               <Route path="/sign-up" element={<SignUpForm />}/>
               <Route path="/user-profile" element={<UserProfile />}/>
+              <Route path="/calculations" element={<Calculations/>}/>
             </Routes>
           </BrowserRouter>
         </ThemeContext.Provider>
