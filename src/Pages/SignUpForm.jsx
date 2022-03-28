@@ -11,6 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import Stack from '@mui/material/Stack';
 import axios from 'axios'
+import { Paper } from '@mui/material';
 
 export default function SignUpForm() {
 
@@ -84,24 +85,10 @@ const Input = styled('input')({
 
   return (
       
-<Box sx={{ flexGrow: 1  , padding : "50px"}}>  
+<Box sx={{ flexGrow: 1  , padding : "50px" , width:'40vw',height:'80vh' , margin:'0 auto',marginTop:'5%'}}>  
+<Paper style={{padding:'15px'}}>
    <form onSubmit={formik.handleSubmit} >
-
-      <Grid container spacing={2}>
-      <Grid item xs={12} >
-            <label htmlFor="contained-button-file">
-                <Input accept="image/*"
-                 id="contained-button-file" 
-                 multiple
-                 type="file"  
-                 onChange={ImageHandele} />
-                <Button variant="contained" component="span">
-                    Upload  photo
-                </Button>
-            </label>
-
-
-      </Grid>
+      <Grid container spacing={5}>
    
         <Grid item xs={6} >
              <InputText text={formik.touched.firstName ? formik.errors.firstName : null}
@@ -211,10 +198,26 @@ const Input = styled('input')({
                     mult = {true}
                     /> 
         </Grid>
+        <Grid item xs={12} >
+            <label htmlFor="contained-button-file">
+                <Input accept="image/*"
+                 id="contained-button-file" 
+                 multiple
+                 type="file"  
+                 onChange={ImageHandele} />
+                <Button variant="contained" component="span">
+                    Upload  photo
+                </Button>
+            </label>
+
+
+      </Grid>
         </Grid>
         
         <Button type="submit" > submit </Button>
+
       </ form >
+      </Paper>
     </Box>
         
   );
