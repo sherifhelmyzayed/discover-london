@@ -22,9 +22,10 @@ const formik = useFormik({
             city : "",
             postalCode : "",
             password :"",
+            userName :"",
             passwordConfirmation : "", 
             about : "",
-            photo : null,
+            photo : {},
         },
         validationSchema : validationSchema,
         onSubmit: values => {
@@ -48,7 +49,7 @@ const Input = styled('input')({
 
   const ImageHandele = (event)=>{
       formik.values.photo = event.target.files[0];
-      console.log(formik.values)
+      console.log(formik.values.photo.name)
   }
 
   return (
@@ -72,7 +73,7 @@ const Input = styled('input')({
                         lg : "50%",
                     }}}
                      >
-      <Grid item xs={12} >
+      <Grid item xs={3} >
             <label htmlFor="contained-button-file">
                 <Input accept="image/*"
                  id="contained-button-file" 
@@ -83,10 +84,24 @@ const Input = styled('input')({
                     Upload  photo
                 </Button>
             </label>
-
+            <span style ={{margin : "5px 10px" , fontSize : ".8rem"}}>
+              {formik.values.photo.name }hh </span>
 
       </Grid>
    
+      <Grid item xs={9} >
+             <InputText text={formik.touched.userName ? formik.errors.userName : null}
+                        vaild={formik.touched.userName && formik.errors.firstName}
+                        feild = 'User Name'
+                        name="userName" 
+                        change={formik.handleChange}
+                        blur = {formik.handleBlur }
+                        val={formik.values.userName}
+                        type ='text'
+            /> 
+          
+
+        </Grid>
         <Grid item xs={6} >
              <InputText text={formik.touched.firstName ? formik.errors.firstName : null}
                         vaild={formik.touched.firstName && formik.errors.firstName}
@@ -97,6 +112,7 @@ const Input = styled('input')({
                         val={formik.values.firstName}
                         type ='text'
             /> 
+          
 
         </Grid>
 
