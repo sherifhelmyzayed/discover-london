@@ -6,7 +6,9 @@ const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function MoreFiltersButton() {
+export default function MoreFiltersButton(props) {
+  const {moreFilters, setMoreFilters} = props
+
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -33,7 +35,7 @@ export default function MoreFiltersButton() {
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
       >
-        <MoreFilterContent />
+        <MoreFilterContent moreFilters={moreFilters} setMoreFilters={setMoreFilters} />
       </Dialog>
     </>
   );

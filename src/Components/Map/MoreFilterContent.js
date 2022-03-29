@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Box, Typography, Divider, Grid, Checkbox, IconButton, FormControlLabel, FormGroup, Button } from '@mui/material';
 import SwichFilter from '../filterBar/FilterContent/SwichFilter'
 import AddIcon from '@mui/icons-material/Add';
@@ -6,7 +5,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 
 
 
-const MoreFilterContent = () => {
+const MoreFilterContent = (props) => {
    const filterStyle = {
       maxHeight: "60vh", padding: "20px 10px",
       overflowY: 'scroll', overflowX: 'hidden',
@@ -19,36 +18,19 @@ const MoreFilterContent = () => {
       item: ['House', 'Apartment', 'Loft', 'Villa']
    }]
 
-   const [filter, setFilters] = useState({
-      beds: 1,
-      bedrooms: 1,
-      bathrooms: 1,
-      property: {
-         House: true,
-         Apartment: false,
-         Loft: false,
-         Villa: false
-      },
-      language: {
-         English: true,
-         French: false,
-         German: false,
-         Italian: false
-      }
-   })
-
+   const {moreFilters, setMoreFilters} = props
 
    const handleCheckBox = (e, item) => {
-      setFilters((current) => ({ ...current, [item]: { ...filter[item], [e]: !filter[item][e] } }))
+      setMoreFilters((current) => ({ ...current, [item]: { ...moreFilters[item], [e]: !moreFilters[item][e] } }))
    }
 
 
    const decrement = (e) => {
-      setFilters((current) => ({ ...current, [e]: filter[e] - 1 }))
+      setMoreFilters((current) => ({ ...current, [e]: moreFilters[e] - 1 }))
    }
 
    const increment = (e) => {
-      setFilters((current) => ({ ...current, [e]: (filter[e] < 5) ? filter[e] + 1 : 5 }))
+      setMoreFilters((current) => ({ ...current, [e]: (moreFilters[e] < 5) ? moreFilters[e] + 1 : 5 }))
    }
 
    return (
@@ -69,13 +51,13 @@ const MoreFilterContent = () => {
                      </Typography>
                   </Grid>
                   <Grid item display="flex" alignItems="center" justifyContent="end" xs={6}>
-                     {filter.beds !== 0 ? (
+                     {moreFilters.beds !== 0 ? (
                         <IconButton sx={{ border: '1px solid', width: '20px', height: '20px' }} size="small" variant="outlined" onClick={() => { decrement('beds') }}>
                            <RemoveIcon sx={{ width: '15px' }} />
                         </IconButton>
                      ) : ''}
                      <Typography sx={{ margin: '0 8px 0 8px !important', padding: 0 }} variant="subtitle3" component="h5" gutterBottom>
-                        {filter.beds}
+                        {moreFilters.beds}
                      </Typography>
                      <IconButton sx={{ border: '1px solid', width: '20px', height: '20px' }} size="small" variant="outlined" onClick={() => { increment('beds') }}>
                         <AddIcon sx={{ width: '15px' }} />
@@ -95,13 +77,13 @@ const MoreFilterContent = () => {
                      </Typography>
                   </Grid>
                   <Grid item display="flex" alignItems="center" justifyContent="end" xs={6}>
-                     {filter.bedrooms !== 0 ? (
+                     {moreFilters.bedrooms !== 0 ? (
                         <IconButton sx={{ border: '1px solid', width: '20px', height: '20px' }} size="small" variant="outlined" onClick={() => { decrement('bedrooms') }}>
                            <RemoveIcon sx={{ width: '15px' }} />
                         </IconButton>
                      ) : ''}
                      <Typography sx={{ margin: '0 8px 0 8px !important', padding: 0 }} variant="subtitle3" component="h5" gutterBottom>
-                        {filter.bedrooms}
+                        {moreFilters.bedrooms}
                      </Typography>
                      <IconButton sx={{ border: '1px solid', width: '20px', height: '20px' }} size="small" variant="outlined" onClick={() => { increment('bedrooms') }}>
                         <AddIcon sx={{ width: '15px' }} />
@@ -121,13 +103,13 @@ const MoreFilterContent = () => {
                      </Typography>
                   </Grid>
                   <Grid item display="flex" alignItems="center" justifyContent="end" xs={6}>
-                     {filter.bathrooms !== 0 ? (
+                     {moreFilters.bathrooms !== 0 ? (
                         <IconButton sx={{ border: '1px solid', width: '20px', height: '20px' }} size="small" variant="outlined" onClick={() => { decrement('bathrooms') }}>
                            <RemoveIcon sx={{ width: '15px' }} />
                         </IconButton>
                      ) : ''}
                      <Typography sx={{ margin: '0 8px 0 8px !important', padding: 0 }} variant="subtitle3" component="h5" gutterBottom>
-                        {filter.bathrooms}
+                        {moreFilters.bathrooms}
                      </Typography>
                      <IconButton sx={{ border: '1px solid', width: '20px', height: '20px' }} size="small" variant="outlined" onClick={() => { increment('bathrooms') }}>
                         <AddIcon sx={{ width: '15px' }} />
@@ -156,7 +138,7 @@ const MoreFilterContent = () => {
                            return (
                               <Grid item xs={12} md={6}>
                                  <FormGroup>
-                                    <FormControlLabel control={<Checkbox onClick={() => { handleCheckBox(item, 'property') }} checked={filter.property[item]} />} label={item} />
+                                    <FormControlLabel control={<Checkbox onClick={() => { handleCheckBox(item, 'property') }} checked={moreFilters.property[item]} />} label={item} />
                                  </FormGroup>
                               </Grid>
                            )
@@ -179,7 +161,7 @@ const MoreFilterContent = () => {
                            return (
                               <Grid item xs={12} md={6}>
                                  <FormGroup>
-                                    <FormControlLabel control={<Checkbox onClick={() => { handleCheckBox(el, 'language') }} checked={filter.language[el]} />} label={el} />
+                                    <FormControlLabel control={<Checkbox onClick={() => { handleCheckBox(el, 'language') }} checked={moreFilters.language[el]} />} label={el} />
                                  </FormGroup>
                               </Grid>
                            )
