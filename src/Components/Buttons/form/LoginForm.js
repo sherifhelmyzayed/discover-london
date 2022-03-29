@@ -24,7 +24,7 @@ const Modal_styles = {
     backgroundColor:'#fff',
     width : '29vw',
     padding : '20px',
-    height : '70vh',
+    height : 'auto',
     borderRadius: '2%',
     zIndex : 1000
 }
@@ -45,13 +45,16 @@ const head = {
     marginBottom: '20px'
     
 }
-
+let tok = localStorage.getItem('token')
 
     
     export default function LoginForm({open,onClose}) {
 const [username , setUsername] = useState('');
 const [password , setPassword] = useState('');
+const [auth , setAuth] = useState(false);
+
 let history = useNavigate ();
+
 const login = ()=>{
     
   axios.post("http://localhost:4000/user/login",{
@@ -60,24 +63,36 @@ const login = ()=>{
   }).then((response)=>{
     console.log(response.data.token)
     if(response.data.token != undefined){
-      history('/user-profile')
+      history('/discover')
       localStorage.setItem('token', response.data.token)
       
     }
 
-  });
-};
+  })};
+  axios.get("http://localhost:4000/user", { headers: { Authorization: tok } })
+  .then(response => {
+ // If request is good...
+ 
+ localStorage.setItem('id', response.data._id)
+ if(response.data.role == 'host'){
+   setAuth(true)
+   localStorage.setItem('auth', true)
+ }
+});
+
         if(!open) return null
       return ReactDOM.createPortal ( <>
       <div style={Overlay}/>
       <div style={Modal_styles}>
             <Paper style={{marginBottom : '7%' }}>
-           <Button variant="text" onClick={onClose}><CloseIcon/></Button>
+           <Button variant="text" onClick={()=>{
+             history('../')
+           }}><CloseIcon/></Button>
            <h3 style={head}>log in</h3>
            
            </Paper>
            
-           <h2 style={{marginTop:'0px',marginBottom:'5%'}}>Welcome to Airbnb</h2>
+           <h2 style={{marginTop:'0px',marginBottom:'5%'}}>Welcome to Discover</h2>
            <Grid container direction="column"
                   justify="center"
                   columnSpacing={{ xs: 1, sm: 2, md: 3 }}
@@ -117,46 +132,7 @@ const login = ()=>{
     
     <Divider style={{fontSize:'10px', marginBottom:'5%'}}>OR</Divider>
     
-    <Button style={{marginBottom:'10px'}} variant="outlined" fullWidth  >
-    <Grid  container  justify="center" columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-      <Grid item md={1} >
-      <FacebookIcon/>
-      </Grid>
-      <Grid item  md={10}>
-       <h4>Continue With Facebook</h4>
-      </Grid>
-     </Grid>
-     </Button>
-     <Button style={{marginBottom:'10px'}} variant="outlined" fullWidth  >
-    <Grid  container  justify="center" columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-      <Grid item md={1} >
-      <GoogleIcon/>
-      </Grid>
-      <Grid item  md={10}>
-       <h4>Continue With Google</h4>
-      </Grid>
-     </Grid>
-     </Button>
-     <Button style={{marginBottom:'10px'}} variant="outlined" fullWidth  >
-    <Grid container  justify="center" columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-      <Grid item md={1} >
-      <AppleIcon/>
-      </Grid>
-      <Grid item  md={10}>
-       <h4>Continue With Apple</h4>
-      </Grid>
-     </Grid>
-     </Button>
-     <Button style={{marginBottom:'10px'}} variant="outlined" fullWidth  >
-    <Grid container  justify="center" columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-      <Grid item md={1} >
-      <MailOutlineIcon/>
-      </Grid>
-      <Grid item  md={10}>
-       <h4>Continue With Mail</h4>
-      </Grid>
-     </Grid>
-     </Button>
+
      
             </div>
             </>,

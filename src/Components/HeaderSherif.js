@@ -5,12 +5,14 @@ import MenuIcon  from '@mui/icons-material/Menu';
 
 
 const pages = ['home', 'discover'];
-const settings = ['Profile', 'Logout', (localStorage.auth) ? 'Dashboard' : ''];
+const settings = [(localStorage.auth) ? 'Profile' : '', (localStorage.auth) ? 'Logout' : 'Login', (localStorage.auth) ? 'Dashboard' : ''];
 
 const Header = (props) => {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
     const [active, setActive] = useState(1);
+
+    console.log(localStorage.auth)
 
     let navigate = useNavigate();
 
@@ -34,10 +36,22 @@ const Header = (props) => {
     const handleCloseUserMenu = (e) => {
         if (e === 'Logout') {
             localStorage.clear()
+            navigate(`../discover`)
+            console.log(e)
         }
         if (e === 'Dashboard') {
 
             navigate(`../dashboard`)
+
+        }
+        if (e === 'Login') {
+
+            navigate(`../login`)
+
+        }
+        if (e === 'Profile') {
+
+            navigate(`../user-profile`)
 
         }
         setAnchorElUser(null);

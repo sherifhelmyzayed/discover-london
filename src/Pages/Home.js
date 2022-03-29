@@ -6,6 +6,7 @@ import FourthSection from './HomePage/FourthSection'
 
 
 const Home = () => {
+  console.log(localStorage)
   return (
     <>
       
