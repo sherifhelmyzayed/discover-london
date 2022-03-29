@@ -29,7 +29,7 @@ const formik = useFormik({
         },
         validationSchema : validationSchema,
         onSubmit: values => {
-            axios.post('http://localhost:3000/user',values)
+            axios.post('http://localhost:4000/sign-up',values)
               .then(function (response) {
                 console.log(response);
               })

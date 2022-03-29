@@ -31,15 +31,15 @@ export default function PopupEdit(props) {
            const newData = { [props.feild ]: data}
            console.log(newData)
 
-        // axios.post('http://localhost:3000/user',newData)
-    //       .then(function (response) {
-    //         console.log(response);
-    //       })
-    //       .catch(function (error) {
-    //         console.log(error);
-    //       });
-    // },
-}
+        axios.patch('http://localhost:4000/user',newData)
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    
+  }
 
 
 
