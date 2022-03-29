@@ -31,12 +31,12 @@ const NavBar = () => {
                     <Typography sx={{
                         width: 300,
                         marginLeft: 5,
-                        fontFamily: 'syne',
+                        fontFamily: 'lato',
                         fontSize: 18,
                         fontWeight: 800,
                         color: 'white'
                     }}>
-                        Navigation
+                        Discover London
                     </Typography>
                 </Box>
                 <Box sx={{

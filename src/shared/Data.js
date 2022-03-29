@@ -573,21 +573,21 @@ export const messages = [
     {
         from: "sherif",
         to: "ahmed",
-        text: "ya fashel",
+        text: "Hey Ahmed",
         date: '9:30 am',
         read: true
     },
     {
         from: "ahmed",
         to: "sherif",
-        text: "ana asef",
+        text: "Hey Sherif",
         date: '9:31 am',
         read: true
     },
     {
         from: "sherif",
         to: "ahmed",
-        text: "ya fashel",
+        text: "Test",
         date: '10:31',
         read: true
     },
@@ -631,7 +631,7 @@ export const messages = [
         to: "sherif",
         text: "canceled",
         date: '9:31',
-        read: true
+        read: true////////////////////////
     },
 ]
 

@@ -22,7 +22,9 @@ const FirstSectionUpdated = () => {
         background: 'linear-gradient(to top, rgb(10, 27, 47), rgb(0, 0, 0))',
         height: '100vh',
         display: "flex",
-        flexDirection: 'column'
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
       }}>
         <NavBar />
         <Grid container spacing={2} ml={5} mt={15}  justifyContent="center">
@@ -41,7 +43,7 @@ const FirstSectionUpdated = () => {
             <Typography sx={{
               fontWeight: '800',
               fontSize: '1.8em',
-              fontFamily: 'syne',
+              fontFamily: 'lato',
               textShadow: "-1px 11px 25px rgba(9,9,9,0.9)",
               color: 'white',
 

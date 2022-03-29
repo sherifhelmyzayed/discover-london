@@ -20,6 +20,7 @@ export default function UserProfile() {
         
     }}
     const [user , setUser] = useState([]);
+    const [auth , setAuth] = useState(false);
     
     useEffect(()=>{
       axios.get("http://localhost:4000/user", { headers: { Authorization: tok } })
@@ -27,7 +28,11 @@ export default function UserProfile() {
      // If request is good...
      setUser(response.data)
      localStorage.setItem('id', response.data._id)
-
+     if(response.data.role == 'host'){
+       setAuth(true)
+       localStorage.setItem('auth', true)
+     }
+     console.log(response.data)
      
      
   })
