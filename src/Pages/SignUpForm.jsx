@@ -80,12 +80,10 @@ const Input = styled('input')({
                  multiple
                  type="file"  
                  onChange={ImageHandele} />
-                <Button variant="contained" component="span">
+                <Button variant="contained"  fullWidth component="span">
                     Upload  photo
                 </Button>
             </label>
-            <span style ={{margin : "5px 10px" , fontSize : ".8rem"}}>
-              {formik.values.photo.name }hh </span>
 
       </Grid>
    
@@ -213,13 +211,18 @@ const Input = styled('input')({
         </Grid>
        
         <Grid item xs={6} justifyContent="space-between" >
-             <Button  variant="outlined" sx={{textTransform: 'capitalize' , width : "100%"}} > <Link to="/creat-account" style={{ color : "#0c2442",  textDecoration :"none" }} > 
-             Back
-           </Link> </Button>
+             <Button  variant="outlined" sx={{textTransform: 'capitalize' , width : "100%"}} >
+                <Link to="/creat-account" style={{ color : "#0c2442",  textDecoration :"none" }} > 
+                   Back
+               </Link> 
+            </Button>
         </Grid>
 
          <Grid item xs={6} >
-                <Button type="submit" variant="contained"   sx={{textTransform: 'capitalize' , width : "100%"}}  > Submit </Button>
+                <Button type="submit" variant="contained"
+                   sx={{textTransform: 'capitalize' , width : "100%"}}  >
+                      Submit
+                 </Button>
           </Grid>
 
         </Grid>

@@ -11,7 +11,7 @@ const FaildEdit =(props)=>{
         <Grid item xs={ 12} md ={3} >
               <Typography sx={{fontSize :{xs : '1rem' , md : "1.1rem" , xl:"1.2rem"  }  , fontWeight :600 ,
                textAlign :  "left",  margin : "5px" , padding : "0" }}  variant="h1" component="h4" >
-               {props.faild} :
+               {props.name} :
               </Typography>
                            
         </Grid>
