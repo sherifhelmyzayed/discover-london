@@ -144,7 +144,7 @@ const MapBox = (props) => {
                                             zIndex: '100000000'
                                         }
                                     }}
-                                    >{item.fields.price}
+                                    >${item.fields.price}
                                     </Box>
                                 </Marker>
                             ))
