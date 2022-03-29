@@ -46,19 +46,21 @@ const Home = () => {
     setPerActive(parseFloat(e.target.getAttribute('id')))
   }
 
-  // useEffect(() => {
-  //   const dataPer = (perActive === 0)
-  //     ? longSummary[0].week
-  //     : (perActive === 1)
-  //       ? longSummary[0].month
-  //       : (perActive === 2)
-  //         ? longSummary[0].year
-  //         : '';
+  useEffect(() => {
+    if (longSummary[0]) {
+      const dataPer = (perActive === 0)
+        ? longSummary[0].week
+        : (perActive === 1)
+          ? longSummary[0].month
+          : (perActive === 2)
+            ? longSummary[0].year
+            : '';
+  
+      setPerStat(dataPer)
+      console.log(dataPer);
+    }
 
-  //   setPerStat(dataPer)
-  //   console.log(dataPer);
-
-  // }, [perActive]);
+  }, [perActive, longSummary]);
 
 console.log(longSummary)
 

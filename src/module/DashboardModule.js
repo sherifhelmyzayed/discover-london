@@ -45,8 +45,8 @@ const DashboardModule = () => {
         // });
         
         axios.get(`http://localhost:4000/user/host/rate/${uid}`).then((res) => {
-            setUserRate(res.data[0])
-            console.log(res.data[0])
+            setUserRate(res.data)
+            console.log(res.data)
         });
         return () => {
         };
@@ -55,15 +55,14 @@ const DashboardModule = () => {
 
     const contextValue = useMemo(
         () => ({
-            // import data in memo here
-            
+            longSummary: userRate
         }),
-        []
+        [userRate]
     );
 
     return (
         <Suspense fallback={<h1>LOOOOOOOOOOAAADINGGGG</h1>}>
-            <DashboardContext.Provider value={userRate}>
+            <DashboardContext.Provider value={contextValue}>
                 <Header clickHandler={setStepperOpenHandler}/>
                 <CreateListing stateDialog={stepperOpen} clickHandler={setStepperOpenHandler}/>
                 <Grid
