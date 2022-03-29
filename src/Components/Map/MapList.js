@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router';
 import { Card, Box, CardContent, Typography, Grid, Divider } from '@material-ui/core'
 import StarIcon from '@mui/icons-material/Star';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -10,8 +11,10 @@ const MapList = (props) => {
         hoverCardHandlerRemove
     } = props
 
+    let navigate = useNavigate();
+
     const clickHandler = (e) => {
-        console.log(e)
+        navigate(`../property/${e}`)
     }
     return (
         <>
@@ -22,20 +25,22 @@ const MapList = (props) => {
                             <Grid container spacing={3} >
                                 <Grid item md={5}>
                                     <Box sx={{
-                                        height: 180,
+                                        height: 160,
                                         margin: "30px 10px",
                                         backgroundImage: `url(${listing.fields.medium_url})`,
+                                        backgroundRepeat: 'no-repeat',
+                                        backgroundSize: 'cover',
                                         borderRadius: 10, cursor: "pointer"
                                     }} />
                                 </Grid>
-                                <Grid item md={7} marginLeft={5} sx={{ height: 180 }}>
+                                <Grid item md={7} marginLeft={5} sx={{ height: 160 }}>
                                     <CardContent sx={{ flex: '1 0 auto' }}>
-                                        <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: 200 }}>
+                                        <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: 180 }}>
                                             <Box>
-                                                <Typography component="div" variant="subtitle3">
+                                                <Typography component="div" variant="caption">
                                                     {listing.fields.neighbourhood_cleansed}
                                                 </Typography>
-                                                <Typography variant="h5" color="text.secondary" component="div">
+                                                <Typography variant="h6" color="text.secondary" component="div">
                                                     {listing.fields.name}
                                                 </Typography>
                                                 <Typography component="div" variant="caption">
@@ -53,14 +58,14 @@ const MapList = (props) => {
                                             <Box display="flex" justifyContent="space-between" alignItems="center">
                                                 <Box display="flex" justifyContent="center" alignItems="center">
                                                     <StarIcon color="primary" fontSize="medium" sx={{ marginRight: 1, marginTop: 0, color: "red" }} />
-                                                    <Typography variant="subtitle1" marginLeft={3}>{
+                                                    <Typography variant="subtitle2" marginLeft={3}>{
                                                         (listing.fields.review_scores_rating > 0) ? (
                                                             listing.fields.review_scores_rating / 20
                                                         ) : 0
                                                     } ({listing.fields.number_of_reviews} reviews)</Typography>
                                                 </Box>
                                                 <Box>
-                                                    <Typography variant="h5" display="inline">${listing.fields.price}</Typography>
+                                                    <Typography variant="subtitle1" display="inline">${listing.fields.price}</Typography>
                                                     <Typography variant="caption" display="inline"> / night</Typography>
                                                 </Box>
                                             </Box>

@@ -59,7 +59,7 @@ const MapBox = (props) => {
                     bounds={
                         [{ lat: 51.50118837862644, lng: -0.09768202553641459 }, { lat: 51.23203941746053, lng: -0.2299947300747931 }]
                     }
-                    style={{ width: '100%', height: '100vh' }}
+                    style={{ width: '100%', height: 'calc(100vh - 140px)' }}
                     mapStyle="mapbox://styles/mapbox/dark-v10"
                     mapboxAccessToken={MAPBOX_TOKEN}
                     onDragEnd={handle}

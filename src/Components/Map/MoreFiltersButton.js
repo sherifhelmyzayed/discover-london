@@ -1,6 +1,7 @@
 import {useState, forwardRef} from 'react';
 import {Dialog, Slide, ToggleButton} from '@mui/material';
 import MoreFilterContent from './MoreFilterContent';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -26,7 +27,10 @@ export default function MoreFiltersButton(props) {
         borderRadius: 5,
         height: 35
       }}>
-        Filters
+        Filters <KeyboardArrowDownIcon sx={{
+          transform: open ? 'rotate(180deg)' : '',
+          transition: 'all ease 0.5s'
+        }} />
       </ToggleButton>
       <Dialog
         open={open}

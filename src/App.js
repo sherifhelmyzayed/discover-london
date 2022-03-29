@@ -8,6 +8,7 @@ import DashboardModule from './module/DashboardModule';
 import MapEss from './Pages/MapEss';
 import BecomeHost from './Pages/BecomeHost';
 import Mainpage from './Components/MapPage/MapBox/mainpage'
+import HeaderSherif from './Components/HeaderSherif'
 import SignUpForm from './Pages/SignUpForm';
 import CreetAccount from './Pages/CreetAccount';
 import Hosting from './Pages/Hosting';
@@ -131,10 +132,10 @@ function App() {
               <Route path="dashboard/*" element={<DashboardModule />} /> 
               <Route path="property" element={<Property />} />
               <Route path="/mapess" element={<MapEss />} />
-              <Route path="hosting" element={<BecomeHost />} /> 
-              <Route path="hosting" element={<BecomeHost />} /> 
+              <Route path="/hosting" element={<BecomeHost />} /> 
+              {/* <Route path="hosting" element={<BecomeHost />} />  */}
               <Route path="mapbox" element={<Mainpage />}/>
-              <Route path="hosting" element={<Hosting />} /> 
+              {/* <Route path="hosting" element={<Hosting />} />  */}
               {/* <Route path="hosting" element={<BecomeHost />} />  */}
               {/* <Route path="mapbox" element={<MapBox />}/> */}
               <Route path="/discover" element={<Discover />}/>
@@ -142,7 +143,6 @@ function App() {
               <Route path="/sign-up" element={<SignUpForm />}/>
               <Route path="/profile" element={<UserEditProfile />}/>  
               <Route path="/user-profile" element={<UserProfile />}/>
-              <Route path="/calculations" element={<Calculations/>}/>
             </Routes>
           </BrowserRouter>
         </ThemeContext.Provider>

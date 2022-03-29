@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Menu, Fade, Box, Typography, Button, ToggleButton, Slider } from '@mui/material';
-
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 const PriceFilter = (props) => {
   const {priceFilter, setPriceFilter} = props;
@@ -43,7 +43,10 @@ const PriceFilter = (props) => {
         borderRadius: 5,
         height: 35
       }}>
-        Price
+        Price <KeyboardArrowDownIcon sx={{
+          transform: open ? 'rotate(180deg)' : '',
+          transition: 'all ease 0.5s'
+        }} />
       </ToggleButton>
       <Menu sx={menuStyle}
         id="fade-menu"
@@ -84,14 +87,14 @@ const PriceFilter = (props) => {
               max : ${priceFilter[1]}
             </Typography>
           </Box>
-          <Box sx={{ justifyContent: 'space-between', display: "flex", padding: "  15px 30px 10px 0" }} >
+          {/* <Box sx={{ justifyContent: 'space-between', display: "flex", padding: "  15px 30px 10px 0" }} >
             <Typography variant="clickable2" component="subtitle2" sx={{ cursor: 'pointer' }} onClick={() => { setPriceFilter([20, 600]) }}>
               clear
             </Typography>
             <Button size="small" variant="contained" color='secondary' sx={{ cursor: 'pointer' }} onClick={() => { setPriceFilter([20, 600]) }} >
               Save
             </Button>
-          </Box>
+          </Box> */}
         </Box>
 
       </Menu>
