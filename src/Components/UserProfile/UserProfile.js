@@ -26,6 +26,9 @@ export default function UserProfile() {
      .then(response => {
      // If request is good...
      setUser(response.data)
+     localStorage.setItem('id', response.data._id)
+
+     
      
   })
   

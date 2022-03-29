@@ -18,7 +18,8 @@ import { ThemeContext } from '../App';
 
 import { Grid } from '@mui/material';
 import CreateListing from '../Components/Dashboard/CreateListing';
-
+let uid = localStorage.getItem('id')
+console.log(localStorage)
 
 export const DashboardContext = createContext();
 
@@ -32,22 +33,46 @@ const DashboardModule = () => {
     }
 
     const { mainTheme } = useContext(ThemeContext);
+    const [userRate , setUserRate] = useState({});
+    const [userDaily, setUserDaily] = useState({});
+    const [reserv, setReserv] = useState({});
+    const [id , setId] = useState([]);
 
     // add hosting state here
     useEffect(() => {
-        axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
-            // return res.data in state
+        // axios.get("http://localhost:4000/user", { headers: { Authorization: tok } }).then((res) => {
+        //     console.log(res.data)
+        //     setUser(res.data)
+        //     setId(res.data._id)
+        // });
+        axios.get(`http://localhost:4000/user/host/rate/${uid}`).then((res) => {
+            setUserRate(res.data)
         });
-        return () => {
-        };
+
+        axios.get(`http://localhost:4000/user/host/data/${uid}`).then((res) => {
+            setUserDaily(res.data)
+        });
+
+        axios.get(`http://localhost:4000/user/booking/${uid}`).then((res) => {
+            setReserv(res.data)
+            console.log(reserv)
+        });
+
+        
+        // Get >> aprove reservation request 
+        // Post >> decline ""  ""   "" 
+        // Id bta3 elbooking
+        // http://localhost:4000/user/booking/:id 
+
     }, []);
 
 
     const contextValue = useMemo(
         () => ({
-            // import data in memo here
+            longSummary: userRate,
+            dailySummary: userDaily
         }),
-        []
+        [userRate, userDaily]
     );
 
     return (
@@ -64,7 +89,7 @@ const DashboardModule = () => {
                     <LeftSidebar />
                     <Grid item md={9}>
                         <Routes>
-                            <Route index element={<Home />} />
+                            <Route index element={<Home />} />h
                             <Route path="home" element={<Home />} />
                             <Route path="performance" element={<Performance />} />
                             <Route path="inbox" element={<Inbox theme={mainTheme} />} />
