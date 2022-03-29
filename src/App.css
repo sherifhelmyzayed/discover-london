@@ -2,8 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Lato', sans-serif;
-  font-family: 'Montserrat', sans-serif;
+  /* font-family: 'Lato', sans-serif;
+  font-family: 'Montserrat', sans-serif; */
 
 }
 
@@ -17,5 +17,5 @@
 
 .mapboxgl-popup-content {
   padding: 0 !important;
-  max-width: 200px;
+  max-width: 160px;
 }

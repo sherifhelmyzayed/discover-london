@@ -4,17 +4,19 @@ import {AppBar, Box, Toolbar, Typography, IconButton, Menu, Container, Avatar, B
 import MenuIcon  from '@mui/icons-material/Menu';
 
 
-const pages = ['home', 'inbox', 'reservations', 'listings'];
+const pages = ['home', 'discover'];
 const settings = ['Profile', 'Logout'];
 
 const Header = (props) => {
-    const { clickHandler } = props
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
-    const [active, setActive] = useState(0);
+    const [active, setActive] = useState(1);
 
     let navigate = useNavigate();
 
+    const clickHandler = ()=>{
+        navigate(`../hosting`)
+    }
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -35,7 +37,7 @@ const Header = (props) => {
         event.stopPropagation();
         setActive(event.target.getAttribute('id'))
         handleCloseNavMenu()
-        navigate(`/dashboard/${event.target.getAttribute('val')}`)
+        navigate(`../${event.target.getAttribute('val')}`)
     };
 
     return (
@@ -54,7 +56,7 @@ const Header = (props) => {
                         component="div"
                         sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
                     >
-                        DASHBOARD
+                        discover LONDON
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -130,7 +132,7 @@ const Header = (props) => {
                     <Box sx={{ flexGrow: 0 }}>
                         <Button onClick={()=>{clickHandler(true)}} size="small" variant="contained" color="primary" sx={{
                             marginRight: 2
-                        }}>Add new listing</Button>
+                        }}>BECOME A HOST</Button>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar sx={{ width: 30, height: 30 }} alt="Remy Sharp" src="/static/images/avatar/2.jpg" />

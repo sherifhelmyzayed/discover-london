@@ -19,7 +19,7 @@ import { ThemeContext } from '../App';
 import { Grid } from '@mui/material';
 import CreateListing from '../Components/Dashboard/CreateListing';
 let uid = localStorage.getItem('id')
-
+console.log(localStorage)
 
 export const DashboardContext = createContext();
 
@@ -34,6 +34,8 @@ const DashboardModule = () => {
 
     const { mainTheme } = useContext(ThemeContext);
     const [userRate , setUserRate] = useState({});
+    const [userDaily, setUserDaily] = useState({});
+    const [reserv, setReserv] = useState({});
     const [id , setId] = useState([]);
 
     // add hosting state here
@@ -43,21 +45,34 @@ const DashboardModule = () => {
         //     setUser(res.data)
         //     setId(res.data._id)
         // });
-        
         axios.get(`http://localhost:4000/user/host/rate/${uid}`).then((res) => {
             setUserRate(res.data)
-            console.log(res.data)
         });
-        return () => {
-        };
+
+        axios.get(`http://localhost:4000/user/host/data/${uid}`).then((res) => {
+            setUserDaily(res.data)
+        });
+
+        axios.get(`http://localhost:4000/user/booking/${uid}`).then((res) => {
+            setReserv(res.data)
+            console.log(reserv)
+        });
+
+        
+        // Get >> aprove reservation request 
+        // Post >> decline ""  ""   "" 
+        // Id bta3 elbooking
+        // http://localhost:4000/user/booking/:id 
+
     }, []);
 
 
     const contextValue = useMemo(
         () => ({
-            longSummary: userRate
+            longSummary: userRate,
+            dailySummary: userDaily
         }),
-        [userRate]
+        [userRate, userDaily]
     );
 
     return (

@@ -1,7 +1,6 @@
 import React from 'react'
 import Avatar from '@mui/material/Avatar';
 import ArrowDownIcon from '@mui/icons-material/ArrowDownwardOutlined';
-// import bg from '../../assets/headerHome.jpg'
 import NavBar from '../../Components/NavigationBar/NavBar';
 import { Box, Typography } from '@mui/material';
 

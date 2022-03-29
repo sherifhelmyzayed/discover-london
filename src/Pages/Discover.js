@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Grid } from '@mui/material';
 import Map from '../Components/Map/Map';
-import NavBar from '../Components/NavigationBar/NavBar';
 import MapList from '../Components/Map/MapList';
-import axios from "axios";
 import Filter from '../Components/Map/Filter';
-
+import HeaderSherif from '../Components/HeaderSherif';
 import listings from '../shared/airbnb-listings (1).json'
 
 
@@ -67,7 +65,7 @@ const Discover = () => {
     // "property_type": "Apartment"
     const filterAmenity = (importedData) => (
         importedData.filter(item =>
-            item.fields.cancellation_policy.includes(filterAmenities.cancellation ? "strict" :"") 
+            item.fields.cancellation_policy.includes(filterAmenities.cancellation ? "strict" : "")
             && item.fields.amenities.includes(filterAmenities.iron ? "Iron" : "")
             && item.fields.amenities.includes(filterAmenities.parking ? "kitchen" : "")
             && item.fields.amenities.includes(filterAmenities.washer ? "parking" : "")
@@ -85,7 +83,7 @@ const Discover = () => {
             &&
             item.fields.bathrooms >= moreFilters.bathrooms
             &&
-             (
+            (
                 (moreFilters.property.House)
                     ? item.fields.property_type === "House"
                     : ''
@@ -142,7 +140,7 @@ const Discover = () => {
 
     return (
         <>
-            {/* <NavBar /> */}
+            <HeaderSherif />
             <Filter
                 filterAmenities={filterAmenities}
                 setFilterAmenities={setFilterAmenities}
@@ -151,8 +149,8 @@ const Discover = () => {
                 moreFilters={moreFilters}
                 setMoreFilters={setMoreFilters}
             />
-            <Grid container spacing={3} style={{ width: '100vw' }}>
-                <Grid item xs={12} md={6} sx={{ height: '100vh', overflow: 'auto' }}>
+            <Grid container spacing={1} sx={{paddingLeft: 1}} >
+                <Grid item xs={12} md={6} sx={{ height: 'calc(100vh - 140px)', overflow: 'auto' }}>
                     <MapList data={data} hoverCardHandler={hoverCardHandler} hoverCardHandlerRemove={hoverCardHandlerRemove} />
                 </Grid>
                 <Grid item xs={12} md={6}>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router';
 import Map, { Marker, NavigationControl, Popup } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { Paper, Box, Typography, Card } from '@mui/material';
@@ -33,14 +34,18 @@ const MapBox = (props) => {
         setPopupOpen(false)
         setData(null)
     }
+    let navigate = useNavigate();
 
+    const clickHandler = (e) => {
+        navigate(`../property/${e}`)
+    }
 
     useEffect(() => {
         if (inputEl.current) {
             setBoundaries({ ...boundaries, 'southWest': inputEl.current.getBounds()._sw, 'northEast': inputEl.current.getBounds()._ne })
             // const zoom = 161759-(123814 * Math.pow(Math.E, (0.0182408*inputEl.current.getZoom()))
             setCameraZoom({
-                point:[inputEl.current.getCenter().lat, inputEl.current.getCenter().lng],
+                point: [inputEl.current.getCenter().lat, inputEl.current.getCenter().lng],
             })
 
         };
@@ -59,7 +64,7 @@ const MapBox = (props) => {
                     bounds={
                         [{ lat: 51.50118837862644, lng: -0.09768202553641459 }, { lat: 51.23203941746053, lng: -0.2299947300747931 }]
                     }
-                    style={{ width: '100%', height: '100vh' }}
+                    style={{ width: '100%', height: 'calc(100vh - 140px)' }}
                     mapStyle="mapbox://styles/mapbox/dark-v10"
                     mapboxAccessToken={MAPBOX_TOKEN}
                     onDragEnd={handle}
@@ -81,17 +86,18 @@ const MapBox = (props) => {
                             >
                                 {
                                     <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', height: '100%', margin: 0 }}>
-                                        <Box sx={{
-                                            height: 160,
+                                        <Box onClick={() => { clickHandler(popupContent.id) }} sx={{
+                                            height: 120,
                                             width: '100%',
                                             margin: 0,
                                             backgroundImage: `url(${popupContent.image})`,
-                                            borderRadius: 1
+                                            borderRadius: 1,
+                                            cursor: 'pointer'
                                         }} />
                                         <Box>
                                             <Box display="flex" justifyContent="start" alignItems="center" padding={1}>
                                                 <StarIcon color="primary" fontSize="small" sx={{ marginRight: 1, marginTop: 0, color: "red" }} />
-                                                <Typography variant="subtitle2" marginLeft={3}>{
+                                                <Typography variant="caption" marginLeft={3}>{
                                                     (popupContent.feedback > 0) ? (
                                                         popupContent.feedback / 20
                                                     ) : 0
@@ -100,11 +106,11 @@ const MapBox = (props) => {
                                                 ) : 0})
                                                 </Typography>
                                             </Box>
-                                            <Box padding={1}>
-                                                <Typography component="div" variant="subtitle2">
+                                            <Box paddingX={1}>
+                                                <Typography component="div" variant="caption">
                                                     {popupContent.title}
                                                 </Typography>
-                                                <Typography component="div" variant="subtitle2">
+                                                <Typography component="div" variant="caption">
                                                     $ {popupContent.price} / night
                                                 </Typography>
                                             </Box>
@@ -126,7 +132,8 @@ const MapBox = (props) => {
                                             price: item.fields.price,
                                             feedback: item.fields.review_scores_rating,
                                             title: item.fields.name,
-                                            number_of_reviews: item.fields.number_of_reviews
+                                            number_of_reviews: item.fields.number_of_reviews,
+                                            id: item.fields.id
                                         })
                                     }} sx={{
                                         padding: 1,
@@ -134,7 +141,8 @@ const MapBox = (props) => {
                                         fontSize: 16,
                                         // fontSize: 16,
                                         borderRadius: 50,
-                                        width: '50px',
+                                        width: '40px',
+                                        height: '34px',
                                         textAlign: 'center',
                                         backgroundColor: (hovered === item.fields.id) ? 'primary.main' : 'white',
                                         color: (hovered === item.fields.id) ? 'ofwhite' : 'primary.main',
@@ -144,7 +152,10 @@ const MapBox = (props) => {
                                             zIndex: '100000000'
                                         }
                                     }}
-                                    >{item.fields.price}
+                                    >
+                                        <Typography variant="caption" component="p">
+                                            ${item.fields.price}
+                                        </Typography>
                                     </Box>
                                 </Marker>
                             ))

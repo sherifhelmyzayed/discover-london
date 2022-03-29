@@ -19,8 +19,8 @@ const Filter = (props) => {
     }
     return (
         <Grid container>
-            <Grid item md={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <Box sx={{ width: '100%', display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
+            <Grid item md={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <Box sx={{ width: '100%', display: 'flex', justifyContent: 'space-around', alignItems: 'center',  margin: "10px 0"  }}>
                     <PriceFilter
                         priceFilter={priceFilter}
                         setPriceFilter={setPriceFilter}
