@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import bc from '../../assets/gruop.jpg'
+import { Link } from 'react-router-dom'
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -59,7 +60,9 @@ const SuperHost = ()=>{
                                 Questions about hosting?
                              <br />      Ask a Superhost.
                         </Typography>
-                        <Button sx={botton} color="white" variant="oulLine">Try Hosting</Button>
+                        <Button sx={botton} color="white" variant="oulLine"> <Link to="/creat-account" style={{ color : "white",  textDecoration :"none" }} > 
+                   try Hosting
+               </Link> </Button>
                      
                                 
                          </Box>

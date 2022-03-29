@@ -5,10 +5,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import Home from './Pages/Home';
 import Property from './Pages/Property';
 import PropertyV2 from './Pages/Property page dynamic/Property';
-
+import BecomeHost from './Pages/BecomeHost';
 import DashboardModule from './module/DashboardModule';
 import MapEss from './Pages/MapEss';
-import BecomeHost from './Pages/BecomeHost';
 import Mainpage from './Components/MapPage/MapBox/mainpage'
 import HeaderSherif from './Components/HeaderSherif'
 import SignUpForm from './Pages/SignUpForm';
@@ -159,7 +158,7 @@ function App() {
               <Route path="/home" element={<Home />} />
               <Route path="dashboard/*" element={<DashboardModule />} />
               <Route path="propertyv2/:id" element={<PropertyV2 />} />
-              <Route path="/hosting" element={<Hosting />} />
+              <Route path="/hosting" element={<BecomeHost />} />
               <Route path="mapbox" element={<Mainpage />} />
               <Route path="/discover" element={<Discover />} />
               <Route path="/sign-up" element={<SignUpForm />} />
