@@ -7,12 +7,12 @@ import Property from './Pages/Property';
 import DashboardModule from './module/DashboardModule';
 import MapEss from './Pages/MapEss';
 import MapBox from './Components/MapPage/MapBox/MapBox';
-import BecomeHost from './Pages/BecomeHost';
+// import BecomeHost from './Pages/BecomeHost';
 import Mainpage from './Components/MapPage/MapBox/mainpage'
-import SignUpForm from './Pages/SignUpForm';
-import CreetAccount from './Pages/CreetAccount';
-import Hosting from './Pages/Hosting';
-
+// import SignUpForm from './Pages/SignUpForm';
+// import CreetAccount from './Pages/CreetAccount';
+// import Hosting from './Pages/Hosting';
+import PropertyV2 from './Pages/Property page dynamic/Property'
 
 
 export const ThemeContext = createContext();
@@ -63,10 +63,33 @@ const mainTheme = createTheme({
     essamText: {
       fontFamily: 'syne'
     },
+    headline: {
+      fontFamily: 'syne',
+      fontSize: '1.5rem',
+      fontWeight: 700,
+      color: '#0c2442'
+    }, logo: {
+      fontFamily: 'syne',
+      fontSize: '1.2rem',
+      fontWeight: 700,
+      color: 'white'
+    }
+    ,
     subtitle1: {
       fontFamily: 'lato',
       fontWeight: 500,
       fontSize: 14
+    },
+    subtitle6: {
+      fontFamily: 'lato',
+      fontWeight: 500,
+      fontSize: 15,
+      color: '#0c2442'
+    }, subtitle7: {
+      fontFamily: 'lato',
+      fontWeight: 600,
+      fontSize: 15,
+      color: '#4f5a71'
     },
     subtitle2: {
       fontFamily: 'lato',
@@ -124,17 +147,18 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="dashboard/*" element={<DashboardModule />} /> 
+              <Route path="dashboard/*" element={<DashboardModule />} />
               <Route path="property" element={<Property />} />
+              <Route path="propertyv2/:id" element={<PropertyV2 />} />
               <Route path="/mapess" element={<MapEss />} />
-              <Route path="hosting" element={<BecomeHost />} /> 
-              <Route path="hosting" element={<BecomeHost />} /> 
-              <Route path="mapbox" element={<Mainpage />}/>
-              <Route path="hosting" element={<Hosting />} /> 
               {/* <Route path="hosting" element={<BecomeHost />} />  */}
-              <Route path="mapbox" element={<MapBox />}/>
-              <Route path="/creat-account" element={<CreetAccount />}/>
-              <Route path="/sign-up" element={<SignUpForm />}/>
+              {/* <Route path="hosting" element={<BecomeHost />} />  */}
+              <Route path="mapbox" element={<Mainpage />} />
+              {/* <Route path="hosting" element={<Hosting />} />  */}
+              {/* <Route path="hosting" element={<BecomeHost />} />  */}
+              <Route path="mapbox" element={<MapBox />} />
+              {/* <Route path="/creat-account" element={<CreetAccount />}/> */}
+              {/* <Route path="/sign-up" element={<SignUpForm />}/> */}
             </Routes>
           </BrowserRouter>
         </ThemeContext.Provider>
