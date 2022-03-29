@@ -18,6 +18,7 @@ import { ThemeContext } from '../App';
 
 import { Grid } from '@mui/material';
 import CreateListing from '../Components/Dashboard/CreateListing';
+let uid = localStorage.getItem('id')
 
 
 export const DashboardContext = createContext();
@@ -32,11 +33,20 @@ const DashboardModule = () => {
     }
 
     const { mainTheme } = useContext(ThemeContext);
+    const [userRate , setUserRate] = useState({});
+    const [id , setId] = useState([]);
 
     // add hosting state here
     useEffect(() => {
-        axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
-            // return res.data in state
+        // axios.get("http://localhost:4000/user", { headers: { Authorization: tok } }).then((res) => {
+        //     console.log(res.data)
+        //     setUser(res.data)
+        //     setId(res.data._id)
+        // });
+        
+        axios.get(`http://localhost:4000/user/host/rate/${uid}`).then((res) => {
+            setUserRate(res.data[0])
+            console.log(res.data[0])
         });
         return () => {
         };
@@ -46,13 +56,14 @@ const DashboardModule = () => {
     const contextValue = useMemo(
         () => ({
             // import data in memo here
+            
         }),
         []
     );
 
     return (
         <Suspense fallback={<h1>LOOOOOOOOOOAAADINGGGG</h1>}>
-            <DashboardContext.Provider value={contextValue}>
+            <DashboardContext.Provider value={userRate}>
                 <Header clickHandler={setStepperOpenHandler}/>
                 <CreateListing stateDialog={stepperOpen} clickHandler={setStepperOpenHandler}/>
                 <Grid
@@ -64,7 +75,7 @@ const DashboardModule = () => {
                     <LeftSidebar />
                     <Grid item md={9}>
                         <Routes>
-                            <Route index element={<Home />} />
+                            <Route index element={<Home />} />h
                             <Route path="home" element={<Home />} />
                             <Route path="performance" element={<Performance />} />
                             <Route path="inbox" element={<Inbox theme={mainTheme} />} />

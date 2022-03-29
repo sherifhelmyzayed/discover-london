@@ -62,6 +62,7 @@ const login = ()=>{
     if(response.data.token != undefined){
       history('/user-profile')
       localStorage.setItem('token', response.data.token)
+      
     }
 
   });
