@@ -14,7 +14,7 @@ const MapList = (props) => {
     let navigate = useNavigate();
 
     const clickHandler = (e) => {
-        navigate(`../property/${e}`)
+        navigate(`../propertyV2/${e}`)
     }
     return (
         <>

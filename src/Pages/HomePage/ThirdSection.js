@@ -26,6 +26,9 @@ const ThirdSection = () => {
                     Lorem Ipsum has been the industry's" cta="Find rentals"/>
 
                 </Box>
+                <Box sx={{width:'100%',height:'10h'}}>
+
+                </Box>
             </Box>
         </>
     )
