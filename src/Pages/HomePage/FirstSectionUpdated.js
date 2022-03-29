@@ -3,8 +3,17 @@ import house from '../../assets/house.jpg'
 import NavBar from '../../Components/NavigationBar/NavBar';
 import { Box, Typography, Button, Grid } from '@mui/material';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { useNavigate } from 'react-router-dom';
+
 
 const FirstSectionUpdated = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/discover')
+  }
+
+  
   return (
     <>
 
@@ -50,7 +59,7 @@ const FirstSectionUpdated = () => {
               </Typography>
               <Box sx={{ marginTop: 4 }}>
 
-                <Button variant="outlined" sx={{ color: 'white', border: '1px solid white', fontWeight: '300', width: '8.125rem' }}>DISCOVER &nbsp;<ArrowForwardIosIcon sx={{ fontSize: 15 }} /></Button>
+                <Button variant="outlined" sx={{ color: 'white', border: '1px solid white', fontWeight: '300', width: '14.125rem' }} onClick={handleClick}>DISCOVER LONDON &nbsp;<ArrowForwardIosIcon sx={{ fontSize: 15 }} /></Button>
 
               </Box>
             </Box>

@@ -48,7 +48,7 @@ const SecondSection = () => {
                         <Box sx={{
                             background: `url(${TabletMockUp
                                 })`, width: '48%', height: '43.75rem', borderRadius: 5, backgroundPosition: 'center',
-                            backgroundSize: 'contain', backgroundRepeat: 'no-repeat', marginRight: 20
+                            backgroundSize: 'contain', backgroundRepeat: 'no-repeat'
                         }}>
 
                         </Box>
