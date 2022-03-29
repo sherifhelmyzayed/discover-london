@@ -67,32 +67,43 @@ const Discover = () => {
     // "property_type": "Apartment"
     const filterAmenity = (importedData) => (
         importedData.filter(item =>
-            (filterAmenities.cancellation)
-                ? item.fields.cancellation_policy !== "strict"
-                : item
-                    && (filterAmenities.iron)
-                    ? item.fields.amenities.includes("Iron")
-                    : item
-                        && (filterAmenities.kitchen)
-                        ? item.fields.amenities.includes("kitchen")
-                        : item
-                            && (filterAmenities.parking)
-                            ? item.fields.amenities.includes("parking")
-                            : item
-                                && (filterAmenities.washer)
-                                ? item.fields.amenities.includes("Washer")
-                                : item
-                                    && (filterAmenities.wifi)
-                                    ? item.fields.amenities.includes("wifi")
-                                    : item
-                                        && (filterAmenities.ac)
-                                        ? item.fields.amenities.includes("Air conditioning")
-                                        : item
-                                            && (filterAmenities.tv)
-                                            ? item.fields.amenities.includes("TV")
-                                            : item
+            item.fields.cancellation_policy.includes(filterAmenities.cancellation ? "strict" :"") 
+            && item.fields.amenities.includes(filterAmenities.iron ? "Iron" : "")
+            && item.fields.amenities.includes(filterAmenities.parking ? "kitchen" : "")
+            && item.fields.amenities.includes(filterAmenities.washer ? "parking" : "")
+            && item.fields.amenities.includes(filterAmenities.wifi ? "Washer" : "")
+            && item.fields.amenities.includes(filterAmenities.ac ? "Air conditioning" : "")
+            && item.fields.amenities.includes(filterAmenities.tv ? "TV" : "")
         )
     )
+    // const filterAmenity = (importedData) => (
+    //     importedData.filter(item =>
+    //         (filterAmenities.cancellation)
+    //             ? item.fields.cancellation_policy !== "strict"
+    //             : item
+    //                 && (filterAmenities.iron)
+    //                 ? item.fields.amenities.includes("Iron")
+    //                 : item
+    //                     && (filterAmenities.kitchen)
+    //                     ? item.fields.amenities.includes("kitchen")
+    //                     : item
+    //                         && (filterAmenities.parking)
+    //                         ? item.fields.amenities.includes("parking")
+    //                         : item
+    //                             && (filterAmenities.washer)
+    //                             ? item.fields.amenities.includes("Washer")
+    //                             : item
+    //                                 && (filterAmenities.wifi)
+    //                                 ? item.fields.amenities.includes("wifi")
+    //                                 : item
+    //                                     && (filterAmenities.ac)
+    //                                     ? item.fields.amenities.includes("Air conditioning")
+    //                                     : item
+    //                                         && (filterAmenities.tv)
+    //                                         ? item.fields.amenities.includes("TV")
+    //                                         : item
+    //     )
+    // )
 
     const filterMore = (importedData) => {
         let data1 = importedData.filter(item =>
@@ -101,7 +112,8 @@ const Discover = () => {
             item.fields.bedrooms >= moreFilters.bedrooms
             &&
             item.fields.bathrooms >= moreFilters.bathrooms
-            && (
+            &&
+             (
                 (moreFilters.property.House)
                     ? item.fields.property_type === "House"
                     : ''
@@ -111,8 +123,8 @@ const Discover = () => {
                             || (moreFilters.property.Loft)
                             ? item.fields.property_type === "Loft"
                             : ''
-                                || (moreFilters.property.Loft)
-                                ? item.fields.property_type === "Loft"
+                                || (moreFilters.property.Villa)
+                                ? item.fields.property_type === "Villa"
                                 : ''
             )
         )
