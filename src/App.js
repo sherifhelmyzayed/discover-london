@@ -154,21 +154,22 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
               <Route path="dashboard/*" element={<DashboardModule />} />
               <Route path="property" element={<Property />} />
               <Route path="propertyv2/:id" element={<PropertyV2 />} />
               <Route path="/mapess" element={<MapEss />} />
-              <Route path="/hosting" element={<BecomeHost />} /> 
+              <Route path="/hosting" element={<BecomeHost />} />
               {/* <Route path="hosting" element={<BecomeHost />} />  */}
-              <Route path="mapbox" element={<Mainpage />}/>
+              <Route path="mapbox" element={<Mainpage />} />
               {/* <Route path="hosting" element={<Hosting />} />  */}
               {/* <Route path="hosting" element={<BecomeHost />} />  */}
               {/* <Route path="mapbox" element={<MapBox />}/> */}
-              <Route path="/discover" element={<Discover />}/>
-              <Route path="/creat-account" element={<CreetAccount />}/>
-              <Route path="/sign-up" element={<SignUpForm />}/>
-              <Route path="/profile" element={<UserEditProfile />}/>  
-              <Route path="/user-profile" element={<UserProfile />}/>
+              <Route path="/discover" element={<Discover />} />
+              <Route path="/creat-account" element={<CreetAccount />} />
+              <Route path="/sign-up" element={<SignUpForm />} />
+              <Route path="/profile" element={<UserEditProfile />} />
+              <Route path="/user-profile" element={<UserProfile />} />
             </Routes>
           </BrowserRouter>
         </ThemeContext.Provider>

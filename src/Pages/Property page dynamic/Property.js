@@ -7,6 +7,7 @@ import axios from "axios";
 import style from './style.css'
 import { useParams } from 'react-router-dom'
 import SimilarProperties from './SimilarProperties';
+import HeaderSherif from '../../Components/HeaderSherif'
 
 const PropertyV2 = () => {
     const { id } = useParams();
@@ -54,7 +55,8 @@ const PropertyV2 = () => {
 
     return (
         <>
-            <PrimarySearchAppBar />
+        <HeaderSherif/>
+            {/* <PrimarySearchAppBar /> */}
             <Container sx={{ marginTop: '3em' }}>
 
 

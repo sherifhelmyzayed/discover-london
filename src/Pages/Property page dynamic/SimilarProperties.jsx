@@ -2,7 +2,6 @@ import { Box, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import outside from '../../images/outside.jpg'
 import outside2 from '../../images/outside2.jpg'
-import Carousel from 'react-material-ui-carousel'
 import { Button } from '@mui/material'
 import axios from "axios";
 import CircularProgress from '@mui/material/CircularProgress';
