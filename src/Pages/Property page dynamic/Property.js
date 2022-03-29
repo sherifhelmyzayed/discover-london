@@ -55,6 +55,8 @@ const PropertyV2 = () => {
     return (
         <>
             <HeaderSherif />
+    
+            {/* <PrimarySearchAppBar /> */}
             <Container sx={{ marginTop: '3em' }}>
 
 
