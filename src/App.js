@@ -4,6 +4,8 @@ import { Routes, Route, BrowserRouter } from "react-router-dom"
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import Home from './Pages/Home';
 import Property from './Pages/Property';
+import PropertyV2 from './Pages/Property page dynamic/Property';
+
 import DashboardModule from './module/DashboardModule';
 import MapEss from './Pages/MapEss';
 import BecomeHost from './Pages/BecomeHost';
