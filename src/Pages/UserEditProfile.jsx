@@ -2,8 +2,8 @@ import Grid from '@mui/material/Grid';
 import FaildEdit from '../Components/form/FaildEdit' 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import { useEffect } from 'react';
 import { styled } from '@mui/material/styles';
+import Divider from '@mui/material/Divider';
 
 
 const Input = styled('input')({
@@ -27,9 +27,7 @@ const UserProfile = ()=>{
          id: "000"
         }
 
-        useEffect(() => {
-           console.log(data)
-        },[])
+     
 
 
   return (<Box  sx={{minHeight : "100vh" ,  display : "flex" ,   justifyContent: 'center', alignItems: 'center',}}>
