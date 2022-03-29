@@ -1,6 +1,6 @@
 import { Grid } from '@mui/material';
 import React from 'react';
-import MapBox from './MapBox';
+import MapBox from './Map';
 import List from '../List/List';
 
 

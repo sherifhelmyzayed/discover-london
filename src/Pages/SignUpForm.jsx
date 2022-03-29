@@ -2,50 +2,16 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { useFormik } from 'formik';
 import InputText from '../Components/form/InputText'
-import * as yup from 'yup';
+import validationSchema from '../module/vaildSchima'
 import PassInput from '../Components/form/PassInput';
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import PhotoCamera from '@mui/icons-material/PhotoCamera';
-import Stack from '@mui/material/Stack';
 import axios from 'axios'
+import { Link } from 'react-router-dom'
+
 
 export default function SignUpForm() {
-
-const nameVaild = yup.string()
-                .matches(/^[a-zA-Z]+$/ , 'it must be Characters')
-                .min(2, 'Too Short!')
-                .max(15, 'Too Long!')
-                .required('Required');
-
-const passVaild =  yup.string()
-    .required('Required')
-    .min(8, 'Too Short!')
- ;
-
-const passdConfirVaild =  yup.string()
-              .required('Required')
-              .oneOf([yup.ref('password')], 'Passwords does not match');
-
-const SignupSchema = yup.object().shape({
-    firstName: nameVaild,
-    lastName: nameVaild,
-    city: nameVaild,    
-    postalCode : yup.number(),
-    address : yup.string()
-                .required('Required'),     
-    password : passVaild ,
-    passwordConfirmation : passdConfirVaild ,
-    email: yup.string()
-              .email()
-              .required('Required'), 
-
-   about :  yup.string()
-            .required('Required')
-            .min(20, 'must be more than 20 letter!')
-});
 
 const formik = useFormik({
         initialValues : {
@@ -56,11 +22,12 @@ const formik = useFormik({
             city : "",
             postalCode : "",
             password :"",
+            userName :"",
             passwordConfirmation : "", 
             about : "",
-            photo : null,
+            photo : {},
         },
-        validationSchema : SignupSchema,
+        validationSchema : validationSchema,
         onSubmit: values => {
             axios.post('http://localhost:3000/user',values)
               .then(function (response) {
@@ -72,6 +39,9 @@ const formik = useFormik({
         },
  })
 
+
+
+
  
 const Input = styled('input')({
     display: 'none',
@@ -79,16 +49,31 @@ const Input = styled('input')({
 
   const ImageHandele = (event)=>{
       formik.values.photo = event.target.files[0];
-      console.log(formik.values)
+      console.log(formik.values.photo.name)
   }
 
   return (
       
-<Box sx={{ flexGrow: 1  , padding : "50px"}}>  
+<Box sx={{ flexGrow: 1 , padding : "5px  " , background :"#0c2442" ,
+                  minHeight : "100vh" ,
+                   display : "flex",
+                   justifyContent : "space-evenly",
+                   alignItems : "center",
+                   flexDirection: 'column',}}>  
    <form onSubmit={formik.handleSubmit} >
 
-      <Grid container spacing={2}>
-      <Grid item xs={12} >
+      <Grid container spacing={2}   sx={{background :"white",
+                    borderRadius : "10px",
+                    mainHeight : "90vh" ,
+                    margin : "auto",
+                    padding : "0px 25px 10px 5px",
+                    width : {
+                        xs: "95%",
+                        md : "80%",
+                        lg : "50%",
+                    }}}
+                     >
+      <Grid item xs={3} >
             <label htmlFor="contained-button-file">
                 <Input accept="image/*"
                  id="contained-button-file" 
@@ -99,10 +84,24 @@ const Input = styled('input')({
                     Upload  photo
                 </Button>
             </label>
-
+            <span style ={{margin : "5px 10px" , fontSize : ".8rem"}}>
+              {formik.values.photo.name }hh </span>
 
       </Grid>
    
+      <Grid item xs={9} >
+             <InputText text={formik.touched.userName ? formik.errors.userName : null}
+                        vaild={formik.touched.userName && formik.errors.firstName}
+                        feild = 'User Name'
+                        name="userName" 
+                        change={formik.handleChange}
+                        blur = {formik.handleBlur }
+                        val={formik.values.userName}
+                        type ='text'
+            /> 
+          
+
+        </Grid>
         <Grid item xs={6} >
              <InputText text={formik.touched.firstName ? formik.errors.firstName : null}
                         vaild={formik.touched.firstName && formik.errors.firstName}
@@ -113,6 +112,7 @@ const Input = styled('input')({
                         val={formik.values.firstName}
                         type ='text'
             /> 
+          
 
         </Grid>
 
@@ -211,10 +211,21 @@ const Input = styled('input')({
                     mult = {true}
                     /> 
         </Grid>
+       
+        <Grid item xs={6} justifyContent="space-between" >
+             <Button  variant="outlined" sx={{textTransform: 'capitalize' , width : "100%"}} > <Link to="/creat-account" style={{ color : "#0c2442",  textDecoration :"none" }} > 
+             Back
+           </Link> </Button>
+        </Grid>
+
+         <Grid item xs={6} >
+                <Button type="submit" variant="contained"   sx={{textTransform: 'capitalize' , width : "100%"}}  > Submit </Button>
+          </Grid>
+
         </Grid>
         
-        <Button type="submit" > submit </Button>
       </ form >
+      
     </Box>
         
   );

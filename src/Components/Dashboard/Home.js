@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect,useContext } from 'react'
 import { Box, Card, Typography } from '@mui/material'
 import PerformanceGraph from './PerformanceGraph'
 import ButtonSmall from '../Buttons/ButtonSmall'
@@ -7,12 +7,12 @@ import KeyIcon from '@mui/icons-material/Key';
 import KeyOffIcon from '@mui/icons-material/KeyOff';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import StarIcon from '@mui/icons-material/Star';
-
-import { dailySummary, longSummary } from '../../shared/Data';
-
+import { DashboardContext } from '../../module/DashboardModule';
+// import {longSummary, dailySummary} from '../../shared/Data';
 
 const Home = () => {
   // daily stat buttons states
+  const {longSummary, dailySummary} = useContext(DashboardContext)
   const [active, setActive] = useState(0)
   const [stat, setStat] = useState({ checkin: 0, checkout: 0, trips: 0, pendingReviews: 0 })
 
@@ -25,17 +25,21 @@ const Home = () => {
   const subButtonHandler = (e) => {
     setActive(parseFloat(e.target.getAttribute('id')))
   }
-
+ 
+  
   useEffect(() => {
-    const data = (active === 0)
+    if (dailySummary[0]) {
+
+      const data = (active === 0)
       ? dailySummary[0].today
       : (active === 1)
-        ? dailySummary[0].tomorrow
-        : (active === 2)
-          ? dailySummary[0].week
-          : '';
-
-    setStat(data)
+      ? dailySummary[0].tomorrow
+      : (active === 2)
+      ? dailySummary[0].week
+      : '';
+      
+      setStat(data)
+    }
   }, [active]);
 
 
@@ -46,22 +50,23 @@ const Home = () => {
   }
 
   useEffect(() => {
-    const dataPer = (perActive === 0)
-      ? longSummary[0].week
-      : (perActive === 1)
-        ? longSummary[0].month
-        : (perActive === 2)
-          ? longSummary[0].year
-          : '';
+    if (longSummary[0]) {
+      const dataPer = (perActive === 0)
+        ? longSummary[0].week
+        : (perActive === 1)
+          ? longSummary[0].month
+          : (perActive === 2)
+            ? longSummary[0].year
+            : '';
+  
+      setPerStat(dataPer)
+    }
 
-    setPerStat(dataPer)
-    console.log(dataPer);
-
-  }, [perActive]);
-
+  }, [perActive, longSummary]);
 
 
   return (
+    
     <Box maxWidth={800} marginX="auto" marginTop={5}>
       <Box container justifyContent="space-between" alignItems="center" display='flex' direction="row" wrap="no-wrap"
       >

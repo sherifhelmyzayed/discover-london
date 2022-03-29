@@ -6,13 +6,16 @@ import Home from './Pages/Home';
 import Property from './Pages/Property';
 import DashboardModule from './module/DashboardModule';
 import MapEss from './Pages/MapEss';
-import MapBox from './Components/MapPage/MapBox/MapBox';
-// import BecomeHost from './Pages/BecomeHost';
+import BecomeHost from './Pages/BecomeHost';
 import Mainpage from './Components/MapPage/MapBox/mainpage'
-// import SignUpForm from './Pages/SignUpForm';
-// import CreetAccount from './Pages/CreetAccount';
-// import Hosting from './Pages/Hosting';
-import PropertyV2 from './Pages/Property page dynamic/Property'
+import SignUpForm from './Pages/SignUpForm';
+import CreetAccount from './Pages/CreetAccount';
+import Hosting from './Pages/Hosting';
+import UserEditProfile from './Pages/UserEditProfile.jsx';
+import Discover from './Pages/Discover';
+import Calculations from './Pages/calculations';
+import UserProfile from './Components/UserProfile/UserProfile';
+
 
 
 export const ThemeContext = createContext();
@@ -36,7 +39,8 @@ const mainTheme = createTheme({
     },
     ofwhite: '#ffffff',
     light: '#f7f7f7',
-    grey1: '#efefef'
+    grey1: '#efefef',
+    red: "#FF0000",
   },
 
   // Typography should be edit according to layout
@@ -152,13 +156,13 @@ function App() {
               <Route path="propertyv2/:id" element={<PropertyV2 />} />
               <Route path="/mapess" element={<MapEss />} />
               {/* <Route path="hosting" element={<BecomeHost />} />  */}
-              {/* <Route path="hosting" element={<BecomeHost />} />  */}
-              <Route path="mapbox" element={<Mainpage />} />
-              {/* <Route path="hosting" element={<Hosting />} />  */}
-              {/* <Route path="hosting" element={<BecomeHost />} />  */}
-              <Route path="mapbox" element={<MapBox />} />
-              {/* <Route path="/creat-account" element={<CreetAccount />}/> */}
-              {/* <Route path="/sign-up" element={<SignUpForm />}/> */}
+              {/* <Route path="mapbox" element={<MapBox />}/> */}
+              <Route path="/discover" element={<Discover />}/>
+              <Route path="/creat-account" element={<CreetAccount />}/>
+              <Route path="/sign-up" element={<SignUpForm />}/>
+              <Route path="/profile" element={<UserEditProfile />}/>  
+              <Route path="/user-profile" element={<UserProfile />}/>
+              <Route path="/calculations" element={<Calculations/>}/>
             </Routes>
           </BrowserRouter>
         </ThemeContext.Provider>
