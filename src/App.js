@@ -158,13 +158,10 @@ function App() {
               <Route path="property" element={<Property />} />
               <Route path="propertyv2/:id" element={<PropertyV2 />} />
               <Route path="/mapess" element={<MapEss />} />
-<<<<<<< HEAD
               <Route path="/hosting" element={<BecomeHost />} /> 
               {/* <Route path="hosting" element={<BecomeHost />} />  */}
               <Route path="mapbox" element={<Mainpage />}/>
               {/* <Route path="hosting" element={<Hosting />} />  */}
-=======
->>>>>>> 62a32013e9b220b6e0d3a316971d456f6a952492
               {/* <Route path="hosting" element={<BecomeHost />} />  */}
               {/* <Route path="mapbox" element={<MapBox />}/> */}
               <Route path="/discover" element={<Discover />}/>
