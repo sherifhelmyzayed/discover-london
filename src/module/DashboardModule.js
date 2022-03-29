@@ -12,19 +12,27 @@ import Listings from '../Components/Dashboard/Listings';
 import Home from '../Components/Dashboard/Home';
 import LeftSidebar from '../Components/Dashboard/LeftSidebar';
 import Header from '../Components/Dashboard/Header';
-
+import { useNavigate  } from "react-router-dom";
 import { ThemeContext } from '../App';
 
 
 import { Grid } from '@mui/material';
 import CreateListing from '../Components/Dashboard/CreateListing';
 let uid = localStorage.getItem('id')
-console.log(localStorage)
+let auth = localStorage.getItem('auth')
+
 
 export const DashboardContext = createContext();
 
 
 const DashboardModule = () => {
+
+    let history = useNavigate ();
+    if(!auth){
+       history('/')
+       }
+
+
 
     const [stepperOpen, setStepperOpen] = useState(false)
 
@@ -37,6 +45,7 @@ const DashboardModule = () => {
     const [userDaily, setUserDaily] = useState({});
     const [reserv, setReserv] = useState({});
     const [id , setId] = useState([]);
+    
 
     // add hosting state here
     useEffect(() => {
@@ -74,7 +83,8 @@ const DashboardModule = () => {
         }),
         [userRate, userDaily]
     );
-
+   
+   
     return (
         <Suspense fallback={<h1>LOOOOOOOOOOAAADINGGGG</h1>}>
             <DashboardContext.Provider value={contextValue}>

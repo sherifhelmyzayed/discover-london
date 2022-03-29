@@ -5,7 +5,7 @@ import MenuIcon  from '@mui/icons-material/Menu';
 
 
 const pages = ['home', 'discover'];
-const settings = ['Profile', 'Logout'];
+const settings = ['Profile', 'Logout', (localStorage.auth) ? 'Dashboard' : ''];
 
 const Header = (props) => {
     const [anchorElNav, setAnchorElNav] = useState(null);
@@ -18,6 +18,8 @@ const Header = (props) => {
         navigate(`../hosting`)
     }
 
+
+
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };
@@ -29,7 +31,15 @@ const Header = (props) => {
         setAnchorElNav(null);
     };
 
-    const handleCloseUserMenu = () => {
+    const handleCloseUserMenu = (e) => {
+        if (e === 'Logout') {
+            localStorage.clear()
+        }
+        if (e === 'Dashboard') {
+
+            navigate(`../dashboard`)
+
+        }
         setAnchorElUser(null);
     };
 
@@ -155,7 +165,7 @@ const Header = (props) => {
                             onClose={handleCloseUserMenu}
                         >
                             {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                                <MenuItem key={setting} onClick={()=>handleCloseUserMenu(setting)}>
                                     <Typography textAlign="center">{setting}</Typography>
                                 </MenuItem>
                             ))}

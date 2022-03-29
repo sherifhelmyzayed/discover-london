@@ -1,11 +1,20 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import {AppBar, Box, Toolbar, Typography, IconButton, Menu, Container, Avatar, Button, Tooltip, MenuItem} from '@mui/material';
+import Modal from '../Buttons/form/Modal';
 import MenuIcon  from '@mui/icons-material/Menu';
 
+let auth = localStorage.getItem('auth')
 
 const pages = ['home', 'inbox', 'reservations', 'listings'];
-const settings = ['Profile', 'Logout'];
+var settings = [];
+if(!auth){
+    settings = ['login', 'signup'];
+
+}else{
+    settings = ['Profile', 'Logout'];
+}
+
 
 const Header = (props) => {
     const { clickHandler } = props

@@ -8,11 +8,11 @@ import KeyOffIcon from '@mui/icons-material/KeyOff';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import StarIcon from '@mui/icons-material/Star';
 import { DashboardContext } from '../../module/DashboardModule';
-// import {longSummary, dailySummary} from '../../shared/Data';
+import {longSummary, dailySummary} from '../../shared/Data';
 
 const Home = () => {
   // daily stat buttons states
-  const {longSummary, dailySummary} = useContext(DashboardContext)
+  // const {longSummary, dailySummary} = useContext(DashboardContext)
   const [active, setActive] = useState(0)
   const [stat, setStat] = useState({ checkin: 0, checkout: 0, trips: 0, pendingReviews: 0 })
 

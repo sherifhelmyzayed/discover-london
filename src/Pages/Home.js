@@ -10,7 +10,7 @@ const Home = () => {
     <>
       
       <FirstSectionUpdated />
-      <Modal/>
+     
       <SecondSection />
       <ThirdSection />
       <FourthSection />
