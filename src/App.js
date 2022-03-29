@@ -4,6 +4,8 @@ import { Routes, Route, BrowserRouter } from "react-router-dom"
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import Home from './Pages/Home';
 import Property from './Pages/Property';
+import PropertyV2 from './Pages/Property page dynamic/Property';
+
 import DashboardModule from './module/DashboardModule';
 import MapEss from './Pages/MapEss';
 import BecomeHost from './Pages/BecomeHost';
@@ -68,10 +70,33 @@ const mainTheme = createTheme({
     essamText: {
       fontFamily: 'syne'
     },
+    headline: {
+      fontFamily: 'syne',
+      fontSize: '1.5rem',
+      fontWeight: 700,
+      color: '#0c2442'
+    }, logo: {
+      fontFamily: 'syne',
+      fontSize: '1.2rem',
+      fontWeight: 700,
+      color: 'white'
+    }
+    ,
     subtitle1: {
       fontFamily: 'lato',
       fontWeight: 500,
       fontSize: 14
+    },
+    subtitle6: {
+      fontFamily: 'lato',
+      fontWeight: 500,
+      fontSize: 15,
+      color: '#0c2442'
+    }, subtitle7: {
+      fontFamily: 'lato',
+      fontWeight: 600,
+      fontSize: 15,
+      color: '#4f5a71'
     },
     subtitle2: {
       fontFamily: 'lato',
@@ -129,13 +154,17 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="dashboard/*" element={<DashboardModule />} /> 
+              <Route path="dashboard/*" element={<DashboardModule />} />
               <Route path="property" element={<Property />} />
+              <Route path="propertyv2/:id" element={<PropertyV2 />} />
               <Route path="/mapess" element={<MapEss />} />
+<<<<<<< HEAD
               <Route path="/hosting" element={<BecomeHost />} /> 
               {/* <Route path="hosting" element={<BecomeHost />} />  */}
               <Route path="mapbox" element={<Mainpage />}/>
               {/* <Route path="hosting" element={<Hosting />} />  */}
+=======
+>>>>>>> 62a32013e9b220b6e0d3a316971d456f6a952492
               {/* <Route path="hosting" element={<BecomeHost />} />  */}
               {/* <Route path="mapbox" element={<MapBox />}/> */}
               <Route path="/discover" element={<Discover />}/>

@@ -1,0 +1,22 @@
+.features-list {
+    margin-left: 1rem;
+    list-style: none;
+    columns: 3;
+}
+
+.features-list  li::before {
+    content: "-";
+    color: '#b5b5b5';
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+.features-list li {
+    font-family: lato;
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+    font-weight: 300;
+    color: '#0c2442';
+}
