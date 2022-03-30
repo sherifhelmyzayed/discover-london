@@ -51,7 +51,7 @@ const mainTheme = createTheme({
   // Typography should be edit according to layout
   typography: {
     fontFamily: 'Montserrat',
-    fontWeightRegular: 200,
+    fontWeightRegular: 500,
     fontWeightMedium: 400,
     fontWeightBold: 800,
     fontSize: 12,

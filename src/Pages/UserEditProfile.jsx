@@ -3,7 +3,6 @@ import FaildEdit from '../Components/SignUpform/FaildEdit'
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
-import Divider from '@mui/material/Divider';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -36,7 +35,7 @@ const UserProfile = ()=>{
   useEffect(()=>{
   const token = localStorage.getItem('token');
   
-  axios.get(`http://localhost:4000/user`, { headers: {"Authorization" : token }})
+  axios.get(`http://localhost:4000/user`, { headers: {"authorization" : token }})
   .then(function (response) {
       setdata( response.data )
       setIsLoding( false)
@@ -47,7 +46,7 @@ const UserProfile = ()=>{
         console.log(error)
         
       })
-    })
+    },[])
     
     
     
