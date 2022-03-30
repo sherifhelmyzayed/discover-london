@@ -46,7 +46,7 @@ const UserProfile = ()=>{
         console.log(error)
         
       })
-    })
+    },[])
     
     
     

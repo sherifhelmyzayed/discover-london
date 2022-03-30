@@ -1,14 +1,13 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import CreateIcon from '@mui/icons-material/Create';
-import { useFormik } from 'formik';
-import axios from 'axios'
+import * as React from "react";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import CreateIcon from "@mui/icons-material/Create";
+import axios from "axios";
 
 export default function PopupEdit(props) {
   const [open, setOpen] = React.useState(false);
@@ -22,49 +21,44 @@ export default function PopupEdit(props) {
     setOpen(false);
   };
 
+  const changeHandel = (event) => {
+    setData(event.target.value);
+  };
 
- const changeHandel =(event)=>{
-      setData(event.target.value)
-  }
+  const submitHandel = () => {
+    const newData = { [props.feild]: data };
+    console.log(newData);
 
-    const submitHandel=()=> {
-           const newData = { [props.feild ]: data}
-           console.log(newData)
+    const id = localStorage.getItem("id");
+    const token = localStorage.getItem("token");
+    console.log(token);
 
-        const id = localStorage.getItem('id');
-        const token =  localStorage.getItem('token');
-        console.log(token)
-  
-        axios.patch(`http://localhost:4000/user`,{ headers: {"Authorization" : `Bearer ${token}`}}, newData)
+    axios
+      .patch(
+        `http://localhost:4000/user`,
+        { headers: { Authorization: `Bearer ${token}` } },
+        newData
+      )
 
-        .then(function (response) {
-          console.log(response)
-          
-            })
-            
-            .catch(function (error) {
-              console.log(error)
-              
-            })
+      .then(function (response) {
+        console.log(response);
+      })
 
-          
-    
-  }
-
-
-
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
-          <CreateIcon />
+        <CreateIcon />
       </Button>
       <Dialog open={open} onClose={handleClose} fullWidth>
         <DialogTitle>{props.feild}</DialogTitle>
         <DialogContent>
-          <DialogContentText sx={{ width : "90%"  }} >
-            you can update your data 
-                  
+          <DialogContentText sx={{ width: "90%" }}>
+            you can update your data
           </DialogContentText>
           <TextField
             autoFocus
@@ -72,9 +66,8 @@ export default function PopupEdit(props) {
             id="name"
             fullWidth
             variant="standard"
-            value = {data}
-            onChange ={changeHandel}
-
+            value={data}
+            onChange={changeHandel}
           />
         </DialogContent>
         <DialogActions>
