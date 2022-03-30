@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import CloseIcon from '@mui/icons-material/Close';
@@ -61,24 +61,31 @@ const login = ()=>{
     username : username,
     password : password,
   }).then((response)=>{
-    console.log(response.data.token)
+    console.log(response.data)
     if(response.data.token != undefined){
-      history('/discover')
+      
       localStorage.setItem('token', response.data.token)
+      localStorage.setItem('id', response.data.user._id)
+      localStorage.setItem('name', response.data.user.firstName)
+      if(response.data.user.role === 'host'){
+        setAuth(true)
+        localStorage.setItem('auth', true)
+         }
+    }
+    
+
+  })}
+
+  useEffect(()=>{
+    if(auth){
+      setTimeout(() => {
+        history('/discover')
+      }, 3000);
       
     }
-
-  })};
-  axios.get("http://localhost:4000/user", { headers: { Authorization: tok } })
-  .then(response => {
- // If request is good...
- 
- localStorage.setItem('id', response.data._id)
- if(response.data.role == 'host'){
-   setAuth(true)
-   localStorage.setItem('auth', true)
- }
-});
+  },[auth])
+  
+       
 
         if(!open) return null
       return ReactDOM.createPortal ( <>

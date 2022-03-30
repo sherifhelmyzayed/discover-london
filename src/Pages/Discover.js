@@ -5,6 +5,7 @@ import MapList from '../Components/Map/MapList';
 import Filter from '../Components/Map/Filter';
 import HeaderSherif from '../Components/HeaderSherif';
 import listings from '../shared/airbnb-listings (1).json'
+let auth = localStorage.getItem('auth')
 
 
 const Discover = () => {
@@ -117,6 +118,8 @@ const Discover = () => {
     const hoverCardHandlerRemove = () => {
         setHovered(null)
     }
+    
+   
 
     useEffect(() => {
         // axios.get(URL).then(response => {
@@ -126,7 +129,7 @@ const Discover = () => {
         // }).catch(error => {
         //     console.log(error)
         // })
-
+        
         const lat1 = (boundaries) ? boundaries.northEast.lat : 51.489119889002126
         const lat2 = (boundaries) ? boundaries.southWest.lat : 51.261667988171695
         const log1 = (boundaries) ? boundaries.northEast.lng : -0.01115745233397547
@@ -136,7 +139,7 @@ const Discover = () => {
             .filter(item => item.fields.geolocation[0] > lat2 && item.fields.geolocation[0] < lat1 && item.fields.geolocation[1] > log2 && item.fields.geolocation[1] < log1)
         setData(sortAndSlice(filterPrice(filterAmenity(filterMore(importedData)))))
         setinitialView(true)
-    }, [trigger, priceFilter, filterAmenities, moreFilters])
+    }, [trigger, priceFilter, filterAmenities, moreFilters ])
 
     return (
         <>
