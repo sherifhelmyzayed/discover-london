@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import PropTypes from 'prop-types';
 import { styled } from '@mui/system';
 import { alpha } from '@mui/material/styles';
@@ -19,7 +19,9 @@ import Tooltip from '@mui/material/Tooltip';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import { Typography, Grid, Button } from '@mui/material';
+import axios from 'axios'
 
+let uid = localStorage.getItem('id')
 
 
 const Image = styled('img')({
@@ -37,268 +39,7 @@ const ImageGuest = styled('img')({
 
 
 
-const rows = [
-  {
-    id: '62367dcca242a102c8e7f4ea',
-    confirmation: 2467891,
-    checkin: '2022-03-15',
-    checkout: '2022-03-24',
-    listing: {
-      id: '625',
-      title: "new ",
-      description: "description of this property",
-      image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
-    },
-    guest: {
-      id: '622098a84f93748a635ffde2',
-      photo: "https://material-ui.com/static/images/avatar/3.jpg",
-      firstName: "Mostafa",
-      lastName: "Amar",
-      city: 'Egypt'
-    },
-    approved: 'true',
-  },
-  {
-    id: '62367dcca242a102c8e7f4ea22',
-    confirmation: 2467892,
-    checkin: '2022-03-15',
-    checkout: '2022-03-24',
-    listing: {
-      id: '625',
-      title: "new ",
-      description: "description of this property",
-      image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
-    },
-    guest: {
-      id: '622098a84f93748a635ffde23',
-      photo: "https://material-ui.com/static/images/avatar/3.jpg",
-      firstName: "Mostafa",
-      lastName: "Amar",
-      city: 'Egypt'
-    },
-    approved: 'false',
-  },
-  {
-    id: '62367dcca242a102c8e7f4e44a',
-    confirmation: 2467893,
-    checkin: '2022-03-15',
-    checkout: '2022-03-24',
-    listing: {
-      id: '625',
-      title: "new ",
-      description: "description of this property",
-      image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
-    },
-    guest: {
-      id: '622098a84f93748a635ffde12',
-      photo: "https://material-ui.com/static/images/avatar/3.jpg",
-      firstName: "Mostafa",
-      lastName: "Amar",
-      city: 'Egypt'
-    },
-    approved: 'true',
-  },
-  {
-    id: '62367dcca242a102c8e7f24ea',
-    confirmation: 2467894,
-    checkin: '2022-03-15',
-    checkout: '2022-03-24',
-    listing: {
-      id: '625',
-      title: "new ",
-      description: "description of this property",
-      image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
-    },
-    guest: {
-      id: '622098a84f93748a63512ffde2',
-      photo: "https://material-ui.com/static/images/avatar/3.jpg",
-      firstName: "Mostafa",
-      lastName: "Amar",
-      city: 'Egypt'
-    },
-    approved: true,
-  },
-  {
-    id: '62367dcca242a102c8e7f24ea',
-    confirmation: 2467895,
-    checkin: '2022-03-15',
-    checkout: '2022-03-24',
-    listing: {
-      id: '625',
-      title: "new ",
-      description: "description of this property",
-      image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
-    },
-    guest: {
-      id: '622098a84f93748a6235ffde2',
-      photo: "https://material-ui.com/static/images/avatar/3.jpg",
-      firstName: "Mostafa",
-      lastName: "Amar",
-      city: 'Egypt'
-    },
-    approved: 'true',
-  },
-  {
-    id: '62367dcca242a102c821e7f4ea',
-    confirmation: 2467896,
-    checkin: '2022-03-15',
-    checkout: '2022-03-24',
-    listing: {
-      id: '625',
-      title: "new ",
-      description: "description of this property",
-      image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
-    },
-    guest: {
-      id: '622098a84f93748a635ff1de2',
-      photo: "https://material-ui.com/static/images/avatar/3.jpg",
-      firstName: "Mostafa",
-      lastName: "Amar",
-      city: 'Egypt'
-    },
-    approved: true,
-  },
-  {
-    id: '62367dcca242a102c8e127f4ea',
-    confirmation: 2467897,
-    checkin: '2022-03-15',
-    checkout: '2022-03-24',
-    listing: {
-      id: '625',
-      title: "new ",
-      description: "description of this property",
-      image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
-    },
-    guest: {
-      id: '622098a84f93748a635ff12de2',
-      photo: "https://material-ui.com/static/images/avatar/3.jpg",
-      firstName: "Mostafa",
-      lastName: "Amar",
-      city: 'Egypt'
-    },
-    approved: 'true',
-  },
-  {
-    id: '62367dcca242a102c812e7f4ea',
-    confirmation: 2467898,
-    checkin: '2022-03-15',
-    checkout: '2022-03-24',
-    listing: {
-      id: '625',
-      title: "new ",
-      description: "description of this property",
-      image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
-    },
-    guest: {
-      id: '622098a84f9374128a635ffde2',
-      photo: "https://material-ui.com/static/images/avatar/3.jpg",
-      firstName: "Mostafa",
-      lastName: "Amar",
-      city: 'Egypt'
-    },
-    approved: true,
-  },
-  {
-    id: '62367dcca24122a102c8e7f4ea',
-    confirmation: 2467899,
-    checkin: '2022-03-15',
-    checkout: '2022-03-24',
-    listing: {
-      id: '625',
-      title: "new ",
-      description: "description of this property",
-      image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
-    },
-    guest: {
-      id: '622098a8124f93748a635ffde2',
-      photo: "https://material-ui.com/static/images/avatar/3.jpg",
-      firstName: "Mostafa",
-      lastName: "Amar",
-      city: 'Egypt'
-    },
-    approved: true,
-  },
-  {
-    id: '62367dcca24212a102c8e7f4ea',
-    confirmation: 2467900,
-    checkin: '2022-03-15',
-    checkout: '2022-03-24',
-    listing: {
-      id: '625',
-      title: "new ",
-      description: "description of this property",
-      image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
-    },
-    guest: {
-      id: '622098a84f9123748a635ffde2',
-      photo: "https://material-ui.com/static/images/avatar/3.jpg",
-      firstName: "Mostafa",
-      lastName: "Amar",
-      city: 'Egypt'
-    },
-    approved: true,
-  },
-  {
-    id: '62367dcca24122a102c8e7f4ea',
-    confirmation: 246901,
-    checkin: '2022-03-15',
-    checkout: '2022-03-24',
-    listing: {
-      id: '625',
-      title: "new ",
-      description: "description of this property",
-      image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
-    },
-    guest: {
-      id: '622098a84f9371248a635ffde2',
-      photo: "https://material-ui.com/static/images/avatar/3.jpg",
-      firstName: "Mostafa",
-      lastName: "Amar",
-      city: 'Egypt'
-    },
-    approved: true,
-  },
-  {
-    id: '6231267dcca242a102c8e7f4ea',
-    confirmation: 246902,
-    checkin: '2022-03-15',
-    checkout: '2022-03-24',
-    listing: {
-      id: '625',
-      title: "new ",
-      description: "description of this property",
-      image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
-    },
-    guest: {
-      id: '622098a84f9123748a635ffde2',
-      photo: "https://material-ui.com/static/images/avatar/3.jpg",
-      firstName: "Mostafa",
-      lastName: "Amar",
-      city: 'Egypt'
-    },
-    approved: true,
-  },
-  {
-    id: '2162367dcca242a102c8e7f4ea',
-    confirmation: 246903,
-    checkin: '2022-03-15',
-    checkout: '2022-03-24',
-    approved: 'true',
-    listing: {
-      id: '625',
-      title: "new ",
-      description: "description of this property",
-      image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
-    },
-    guest: {
-      id: '622098a84f93748a635f2fde2',
-      photo: "https://material-ui.com/static/images/avatar/3.jpg",
-      firstName: "Mostafa",
-      lastName: "Amar",
-      city: 'Egypt'
-    },
-  },
-]
+
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -465,7 +206,297 @@ const Reservations = () => {
   const [selected, setSelected] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(3);
+  const [reserv , setReserv] = useState({})
+  const [guest , setGuest] = useState({})
+  const [list , setList] = useState({})
+  useEffect(()=>{
+    axios.get(`http://localhost:4000/booking/host/${uid}`).then((res)=>{
+      setReserv(res.data)
+    }).then(()=>{
+      reserv.map((el)=>(
+        axios.get(`http://localhost:4000/user/${el.guest}`).then((res)=>{
+          // console.log(res)
+          setReserv((current)=>({...current, "guest": res.data}))
 
+        })
+      ))
+      reserv.map((el)=>(
+        axios.get(`http://localhost:4000/list/${el.property}`).then((res)=>{
+          // console.log(res)
+          setReserv((current)=>({...current, "property": res.data}))
+          console.log(reserv)
+        })
+      ))
+    })
+
+    },[])
+
+    const rows = [
+      // reserv.map((R)=>{
+        
+      // })
+      // {
+      //   id: '62367dcca242a102c8e7f4ea',
+      //   confirmation: 2467891,
+      //   checkin: '2022-03-15',
+      //   checkout: '2022-03-24',
+      //   listing: {
+      //     id: '625',
+      //     title: "new ",
+      //     description: "description of this property",
+      //     image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
+      //   },
+      //   guest: {
+      //     id: '622098a84f93748a635ffde2',
+      //     photo: "https://material-ui.com/static/images/avatar/3.jpg",
+      //     firstName: "Mostafa",
+      //     lastName: "Amar",
+      //     city: 'Egypt'
+      //   },
+      //   approved: 'true',
+      // },
+      // {
+      //   id: '62367dcca242a102c8e7f4ea22',
+      //   confirmation: 2467892,
+      //   checkin: '2022-03-15',
+      //   checkout: '2022-03-24',
+      //   listing: {
+      //     id: '625',
+      //     title: "new ",
+      //     description: "description of this property",
+      //     image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
+      //   },
+      //   guest: {
+      //     id: '622098a84f93748a635ffde23',
+      //     photo: "https://material-ui.com/static/images/avatar/3.jpg",
+      //     firstName: "Mostafa",
+      //     lastName: "Amar",
+      //     city: 'Egypt'
+      //   },
+      //   approved: 'false',
+      // },
+      // {
+      //   id: '62367dcca242a102c8e7f4e44a',
+      //   confirmation: 2467893,
+      //   checkin: '2022-03-15',
+      //   checkout: '2022-03-24',
+      //   listing: {
+      //     id: '625',
+      //     title: "new ",
+      //     description: "description of this property",
+      //     image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
+      //   },
+      //   guest: {
+      //     id: '622098a84f93748a635ffde12',
+      //     photo: "https://material-ui.com/static/images/avatar/3.jpg",
+      //     firstName: "Mostafa",
+      //     lastName: "Amar",
+      //     city: 'Egypt'
+      //   },
+      //   approved: 'true',
+      // },
+      // {
+      //   id: '62367dcca242a102c8e7f24ea',
+      //   confirmation: 2467894,
+      //   checkin: '2022-03-15',
+      //   checkout: '2022-03-24',
+      //   listing: {
+      //     id: '625',
+      //     title: "new ",
+      //     description: "description of this property",
+      //     image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
+      //   },
+      //   guest: {
+      //     id: '622098a84f93748a63512ffde2',
+      //     photo: "https://material-ui.com/static/images/avatar/3.jpg",
+      //     firstName: "Mostafa",
+      //     lastName: "Amar",
+      //     city: 'Egypt'
+      //   },
+      //   approved: true,
+      // },
+      // {
+      //   id: '62367dcca242a102c8e7f24ea',
+      //   confirmation: 2467895,
+      //   checkin: '2022-03-15',
+      //   checkout: '2022-03-24',
+      //   listing: {
+      //     id: '625',
+      //     title: "new ",
+      //     description: "description of this property",
+      //     image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
+      //   },
+      //   guest: {
+      //     id: '622098a84f93748a6235ffde2',
+      //     photo: "https://material-ui.com/static/images/avatar/3.jpg",
+      //     firstName: "Mostafa",
+      //     lastName: "Amar",
+      //     city: 'Egypt'
+      //   },
+      //   approved: 'true',
+      // },
+      // {
+      //   id: '62367dcca242a102c821e7f4ea',
+      //   confirmation: 2467896,
+      //   checkin: '2022-03-15',
+      //   checkout: '2022-03-24',
+      //   listing: {
+      //     id: '625',
+      //     title: "new ",
+      //     description: "description of this property",
+      //     image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
+      //   },
+      //   guest: {
+      //     id: '622098a84f93748a635ff1de2',
+      //     photo: "https://material-ui.com/static/images/avatar/3.jpg",
+      //     firstName: "Mostafa",
+      //     lastName: "Amar",
+      //     city: 'Egypt'
+      //   },
+      //   approved: true,
+      // },
+      // {
+      //   id: '62367dcca242a102c8e127f4ea',
+      //   confirmation: 2467897,
+      //   checkin: '2022-03-15',
+      //   checkout: '2022-03-24',
+      //   listing: {
+      //     id: '625',
+      //     title: "new ",
+      //     description: "description of this property",
+      //     image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
+      //   },
+      //   guest: {
+      //     id: '622098a84f93748a635ff12de2',
+      //     photo: "https://material-ui.com/static/images/avatar/3.jpg",
+      //     firstName: "Mostafa",
+      //     lastName: "Amar",
+      //     city: 'Egypt'
+      //   },
+      //   approved: 'true',
+      // },
+      // {
+      //   id: '62367dcca242a102c812e7f4ea',
+      //   confirmation: 2467898,
+      //   checkin: '2022-03-15',
+      //   checkout: '2022-03-24',
+      //   listing: {
+      //     id: '625',
+      //     title: "new ",
+      //     description: "description of this property",
+      //     image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
+      //   },
+      //   guest: {
+      //     id: '622098a84f9374128a635ffde2',
+      //     photo: "https://material-ui.com/static/images/avatar/3.jpg",
+      //     firstName: "Mostafa",
+      //     lastName: "Amar",
+      //     city: 'Egypt'
+      //   },
+      //   approved: true,
+      // },
+      // {
+      //   id: '62367dcca24122a102c8e7f4ea',
+      //   confirmation: 2467899,
+      //   checkin: '2022-03-15',
+      //   checkout: '2022-03-24',
+      //   listing: {
+      //     id: '625',
+      //     title: "new ",
+      //     description: "description of this property",
+      //     image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
+      //   },
+      //   guest: {
+      //     id: '622098a8124f93748a635ffde2',
+      //     photo: "https://material-ui.com/static/images/avatar/3.jpg",
+      //     firstName: "Mostafa",
+      //     lastName: "Amar",
+      //     city: 'Egypt'
+      //   },
+      //   approved: true,
+      // },
+      // {
+      //   id: '62367dcca24212a102c8e7f4ea',
+      //   confirmation: 2467900,
+      //   checkin: '2022-03-15',
+      //   checkout: '2022-03-24',
+      //   listing: {
+      //     id: '625',
+      //     title: "new ",
+      //     description: "description of this property",
+      //     image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
+      //   },
+      //   guest: {
+      //     id: '622098a84f9123748a635ffde2',
+      //     photo: "https://material-ui.com/static/images/avatar/3.jpg",
+      //     firstName: "Mostafa",
+      //     lastName: "Amar",
+      //     city: 'Egypt'
+      //   },
+      //   approved: true,
+      // },
+      // {
+      //   id: '62367dcca24122a102c8e7f4ea',
+      //   confirmation: 246901,
+      //   checkin: '2022-03-15',
+      //   checkout: '2022-03-24',
+      //   listing: {
+      //     id: '625',
+      //     title: "new ",
+      //     description: "description of this property",
+      //     image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
+      //   },
+      //   guest: {
+      //     id: '622098a84f9371248a635ffde2',
+      //     photo: "https://material-ui.com/static/images/avatar/3.jpg",
+      //     firstName: "Mostafa",
+      //     lastName: "Amar",
+      //     city: 'Egypt'
+      //   },
+      //   approved: true,
+      // },
+      // {
+      //   id: '6231267dcca242a102c8e7f4ea',
+      //   confirmation: 246902,
+      //   checkin: '2022-03-15',
+      //   checkout: '2022-03-24',
+      //   listing: {
+      //     id: '625',
+      //     title: "new ",
+      //     description: "description of this property",
+      //     image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
+      //   },
+      //   guest: {
+      //     id: '622098a84f9123748a635ffde2',
+      //     photo: "https://material-ui.com/static/images/avatar/3.jpg",
+      //     firstName: "Mostafa",
+      //     lastName: "Amar",
+      //     city: 'Egypt'
+      //   },
+      //   approved: true,
+      // },
+      // {
+      //   id: '2162367dcca242a102c8e7f4ea',
+      //   confirmation: 246903,
+      //   checkin: '2022-03-15',
+      //   checkout: '2022-03-24',
+      //   approved: 'true',
+      //   listing: {
+      //     id: '625',
+      //     title: "new ",
+      //     description: "description of this property",
+      //     image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
+      //   },
+      //   guest: {
+      //     id: '622098a84f93748a635f2fde2',
+      //     photo: "https://material-ui.com/static/images/avatar/3.jpg",
+      //     firstName: "Mostafa",
+      //     lastName: "Amar",
+      //     city: 'Egypt'
+      //   },
+      // },
+    ]
+    
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
