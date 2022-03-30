@@ -32,8 +32,11 @@ export default function PopupEdit(props) {
            console.log(newData)
 
         const id = localStorage.getItem('id');
+        const token =  localStorage.getItem('token');
+        console.log(token)
   
-        axios.get(`http://localhost:4000/user/${id}`, newData)
+        axios.patch(`http://localhost:4000/user`,{ headers: {"Authorization" : `Bearer ${token}`}}, newData)
+
         .then(function (response) {
           console.log(response)
           
