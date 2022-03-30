@@ -1,17 +1,11 @@
-import React,{useState} from 'react'
-import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import CloseIcon from '@mui/icons-material/Close';
 import  ReactDOM  from 'react-dom';
-import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import GoogleIcon from '@mui/icons-material/Google';
-import AppleIcon from '@mui/icons-material/Apple';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
 const Modal_styles = {
     position : 'fixed',

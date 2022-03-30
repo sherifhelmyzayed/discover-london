@@ -1,5 +1,6 @@
 import React from 'react'
 import { Tooltip, Typography, Box } from '@mui/material'
+import { Link } from 'react-router-dom'
 
 
 const HostRegister = () => {
@@ -16,7 +17,11 @@ const HostRegister = () => {
                         fontWeight: 400,
                         color: 'white',
                         cursor: 'pointer'
-                    }}>Become a host</Typography>
+                    }}>
+                     <Link to="/hosting" style={{ color : "white",  textDecoration :"none" }} > 
+                        Become a host
+                      </Link>
+                    </Typography>
                 </Box>
 
             </Tooltip>

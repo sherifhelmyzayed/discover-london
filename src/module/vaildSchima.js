@@ -19,7 +19,7 @@ const passdConfirVaild =  yup.string()
     firstName: nameVaild,
     lastName: nameVaild,
     city: nameVaild,    
-    userName : yup.string()
+    username : yup.string()
                .required('Required'),  
                
     postalCode : yup.number(),

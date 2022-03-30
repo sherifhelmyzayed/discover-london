@@ -1,9 +1,11 @@
 import Grid from '@mui/material/Grid';
-import FaildEdit from '../Components/form/FaildEdit' 
+import FaildEdit from '../Components/SignUpform/FaildEdit' 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import Divider from '@mui/material/Divider';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 
 const Input = styled('input')({
@@ -11,23 +13,44 @@ const Input = styled('input')({
 });
 
 
-const UserProfile = ()=>{
- 
- 
-  let data =  {
-        firstName: "sss",
-        lastName: "xxxx",
-        address: "dddd",
-        email: "randa12@d.c",
-         city: "dd",
-         postalCode: "333",
-         password: "12345678",
-        passwordConfirmation: "12345678",
-         about: "aaaaaaaaaaaaaaaaaaaaaaaaaaasss",
-         photo: {},
-         id: 1
-        }
 
+const UserProfile = ()=>{
+  
+  const [isLoding  , setIsLoding] = useState(true )
+
+ const [data , setdata] = useState(  {
+        firstName: "your name",
+        lastName: "father name",
+        username: "fe",
+        address: "world",
+        email: "email@gmail.com",
+         city: "cario",
+         postalCode: "0000",
+         password: "********",
+         about: "your describtion",
+         photo: {},
+         id: "000"
+        })
+
+
+  useEffect(()=>{
+  const token = localStorage.getItem('token');
+  
+  axios.get(`http://localhost:4000/user`, { headers: {"Authorization" : token }})
+  .then(function (response) {
+      setdata( response.data )
+      setIsLoding( false)
+    
+      })
+      
+      .catch(function (error) {
+        console.log(error)
+        
+      })
+    })
+    
+    
+    
 
   return (<Box  sx={{minHeight : "100vh" ,  display : "flex" ,   justifyContent: 'center', alignItems: 'center',}}>
     <Grid container spacing={2} xs={12}  sx={{
@@ -54,19 +77,20 @@ const UserProfile = ()=>{
 
       
     </Grid>
+    {!isLoding ?
    <Grid xs={12} md={7} lg={9} >    
 
-       <FaildEdit  faild ="userName"   data={data.username} />
-       <FaildEdit  faild ="fristName"  data={data.firstName} />
-       <FaildEdit  faild ="lastName"   data={data.lastName} />
-       <FaildEdit  faild ="address"     data={data.address} />
-       <FaildEdit  faild ="postalCode"  data={data.postalCode} />
-       <FaildEdit  faild ="city"        data={data.city} />
-       <FaildEdit  faild ="about"       data={data.about} />
-       <FaildEdit  faild ="email"       data={data.email} />
-       <FaildEdit  faild ="password"    data='********' />
-          
+       <FaildEdit  faild ="username"   name="User Name"   data={data.username} />
+       <FaildEdit  faild ="fristName"  name="Frist Name"  data={data.firstName} />
+       <FaildEdit  faild ="lastName"   name="Last Name"   data={data.lastName} />
+       <FaildEdit  faild ="address"    name="Address"     data={data.address} />
+       <FaildEdit  faild ="postalCode" name="Postal Code" data={data.postalCode} />
+       <FaildEdit  faild ="city"       name="City"        data={data.city} />
+       <FaildEdit  faild ="about"      name="About"       data={data.about} />
+       <FaildEdit  faild ="email"      name="E-mail"      data={data.email} />
+       <FaildEdit  faild ="password"   name="Password"    data='********' />
      </Grid>  
+   : null }
     </Grid>
     </Box>
   )

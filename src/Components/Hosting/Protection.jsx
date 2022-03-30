@@ -4,6 +4,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import bg from '../../assets/sofa.png'
+import { Link } from 'react-router-dom'
 
 
 const botton = {
@@ -61,13 +62,17 @@ const Protection = ()=>{
                         <Typography sx={{fontSize :{xs : '4rem' , md : "5rem" , xl:"7rem"  }  , fontWeight :900 ,
                          textAlign : {xs : "center", md :'left', }}}
                                 variant="h1" component="h4" gutterBottom>
-                                    aircover  
+                                    descover London   
                             </Typography>
                             <Typography sx={textStyle} variant="subtitle1" component="p" gutterBottom>
                                 Top-to-bottom protection. <br />
-                                Free for Hosts. Only on Airbnb.
+                                Free for Hosts. Only on descover London.
                             </Typography>
-                            <Button sx={botton} color="white" variant="oulLine">Explore aircover</Button>
+                            <Button sx={botton} color="white" variant="oulLine">
+                            <Link to="/creat-account" style={{ color : "#0c2442",  textDecoration :"none" }} > 
+                            Explore descover London
+                            </Link> 
+                                 </Button>
                     </Grid>
 
                     <Grid item xs={12} md={6} sx={imgAreaStyle} >

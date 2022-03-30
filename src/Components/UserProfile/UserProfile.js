@@ -1,7 +1,5 @@
 import React ,{useState,useEffect} from 'react'
-import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -15,11 +13,7 @@ import axios from 'axios'
 import HeaderSherif from '../../Components/HeaderSherif'
 export default function UserProfile() {
   let tok = localStorage.getItem('token')
-  var options = {
-    headers: {
-        'autherization': {tok},
-        
-    }}
+
     const [user , setUser] = useState([]);
     const [auth , setAuth] = useState(false);
     
@@ -69,10 +63,7 @@ export default function UserProfile() {
           
         }
       />
-      <div style={{ marginBottom: '22%',textAlign:'center'}}>
-      <a  href=''>Uplode photo</a>
-      </div>
-      
+
 <hr/>
       <CardContent>
         <Typography  >

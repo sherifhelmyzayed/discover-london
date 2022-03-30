@@ -4,6 +4,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import bg from "../../assets/opendoor.jpg"
+import { Link } from 'react-router-dom'
 
 
 const imgStyle  = {height :{ xs : "50vh" ,
@@ -51,13 +52,15 @@ const TryHostingOne = ()=>{
                                 Open your door <br />
                                  to hosting
                         </Typography>
-                        <Button sx={botton} color="white" variant="oulLine">Try Hosting</Button>
+                        <Button sx={botton} color="white" variant="oulLine"> <Link to="/creat-account" style={{ color : "white",  textDecoration :"none" }} > 
+                   Back
+               </Link> </Button>
                      
                     </Grid>
                     <Grid item sx={imgStyle} xs={12} md ={6} 
                       >
                        <Box >
-                           tesr
+                        
                        </Box>
                     </Grid>
                 </Grid>

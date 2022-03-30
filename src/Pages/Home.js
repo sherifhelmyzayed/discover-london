@@ -1,8 +1,8 @@
 import SecondSection from './HomePage/SecondSection'
-import FirstSectionUpdated from './HomePage/FirstSectionUpdated'
 import ThirdSection from './HomePage/ThirdSection'
-import Modal from '../Components/Buttons/form/Modal'
+import LogInModal from '../Components/Buttons/form/LogInModal'
 import FourthSection from './HomePage/FourthSection'
+import HomeHeader from './HomePage/HomeHeader'
 
 
 const Home = () => {
@@ -10,8 +10,7 @@ const Home = () => {
   return (
     <>
       
-      <FirstSectionUpdated />
-     
+      <HomeHeader />
       <SecondSection />
       <ThirdSection />
       <FourthSection />

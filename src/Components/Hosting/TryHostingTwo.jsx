@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import bg from '../../assets/frontdoor.jpg'
+import { Link } from 'react-router-dom'
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -67,7 +68,9 @@ const TryHostingOne = ()=>{
                               Join us. We’ll help you every
                                   step of the way.
                         </Typography>
-                        <Button sx={botton} color="white" variant="oulLine">Let's go</Button>
+                        <Button sx={botton} color="white" variant="oulLine"> <Link to="/mapbox" style={{ color : "white",  textDecoration :"none" }} > 
+                   Back
+               </Link> </Button>
                      
                      </Grid>
                  </Grid>

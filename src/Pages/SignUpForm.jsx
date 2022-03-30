@@ -1,17 +1,27 @@
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { useFormik } from 'formik';
-import InputText from '../Components/form/InputText'
+import InputText from '../Components/SignUpform/InputText'
 import validationSchema from '../module/vaildSchima'
-import PassInput from '../Components/form/PassInput';
+import PassInput from '../Components/SignUpform/InputText';
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
-import axios from 'axios'
-import { Link } from 'react-router-dom'
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import CircularProgress from '@mui/material/CircularProgress';
+import { useNavigate } from "react-router-dom";
 
 
 export default function SignUpForm() {
+ 
+  
+const [loading, setLoading] = React.useState(false);
+const [error, setError] = React.useState(false);
+// const [massege, setMassege] = React.useState("test");
+
+let massege = "test"
+const navigate = useNavigate()
 
 const formik = useFormik({
         initialValues : {
@@ -22,31 +32,42 @@ const formik = useFormik({
             city : "",
             postalCode : "",
             password :"",
-            userName :"",
+            username :"",
             passwordConfirmation : "", 
             about : "",
             photo : {},
-        },
-        validationSchema : validationSchema,
-        onSubmit: values => {
-            axios.post('http://localhost:3000/user',values)
+          },
+          validationSchema : validationSchema,
+          onSubmit: values => {
+            setLoading(true)
+
+            axios.post('http://localhost:4000/user/sign-up-login',values)
               .then(function (response) {
-                console.log(response);
+                setLoading(false)
+                localStorage.setItem('token',response.data.token);
+                localStorage.setItem('id',response.data.id);
+                       navigate("/edit-profile")
               })
+
               .catch(function (error) {
-                console.log(error);
+                setLoading(false)
+                setError(error.massage)
+                  
+            
               });
-        },
- })
+  
 
-
+}
+})
 
 
  
-const Input = styled('input')({
-    display: 'none',
+ 
+ 
+ const Input = styled('input')({
+   display: 'none',
   });
-
+  
   const ImageHandele = (event)=>{
       formik.values.photo = event.target.files[0];
       console.log(formik.values.photo.name)
@@ -80,23 +101,21 @@ const Input = styled('input')({
                  multiple
                  type="file"  
                  onChange={ImageHandele} />
-                <Button variant="contained" component="span">
+                <Button variant="contained"  fullWidth component="span">
                     Upload  photo
                 </Button>
             </label>
-            <span style ={{margin : "5px 10px" , fontSize : ".8rem"}}>
-              {formik.values.photo.name }hh </span>
 
       </Grid>
    
       <Grid item xs={9} >
-             <InputText text={formik.touched.userName ? formik.errors.userName : null}
-                        vaild={formik.touched.userName && formik.errors.firstName}
+             <InputText text={formik.touched.username ? formik.errors.username : null}
+                        vaild={formik.touched.username && formik.errors.username}
                         feild = 'User Name'
-                        name="userName" 
+                        name="username" 
                         change={formik.handleChange}
                         blur = {formik.handleBlur }
-                        val={formik.values.userName}
+                        val={formik.values.username}
                         type ='text'
             /> 
           
@@ -213,17 +232,48 @@ const Input = styled('input')({
         </Grid>
        
         <Grid item xs={6} justifyContent="space-between" >
-             <Button  variant="outlined" sx={{textTransform: 'capitalize' , width : "100%"}} > <Link to="/creat-account" style={{ color : "#0c2442",  textDecoration :"none" }} > 
-             Back
-           </Link> </Button>
+             <Button  variant="outlined" sx={{textTransform: 'capitalize' , width : "100%"}} >
+                <Link to="/creat-account" style={{ color : "#0c2442",  textDecoration :"none" }} > 
+                   Back
+               </Link> 
+            </Button>
         </Grid>
 
          <Grid item xs={6} >
-                <Button type="submit" variant="contained"   sx={{textTransform: 'capitalize' , width : "100%"}}  > Submit </Button>
+      
+
+      <Box sx={{ position: 'relative' }}>
+        <Button fullWidth  type="submit" 
+          variant="contained"
+          disabled={loading}
+          // onClick={handleButtonClick}
+        >
+          submit
+        </Button>
+        {loading && (
+          <CircularProgress
+          size={24}
+            sx={{
+              color: "red",
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              marginTop: '-12px',
+              marginLeft: '-12px',
+            }}
+            />
+            )}
+      </Box>
+    
           </Grid>
+          <Grid xs={12} sx={{textAlign : "center" , fontSize : ".8rem", color : "red"
+                            
+        }}>
+            {error ? "error" : null }
+                        
 
         </Grid>
-        
+        </Grid>
       </ form >
       
     </Box>
