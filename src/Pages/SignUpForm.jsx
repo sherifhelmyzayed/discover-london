@@ -41,16 +41,18 @@ const formik = useFormik({
           onSubmit: values => {
             setLoading(true)
 
-            axios.post('http://localhost:4000/user/sign-up',values)
+            axios.post('http://localhost:4000/user/sign-up-login',values)
               .then(function (response) {
-                      console.log(response.data );
-                       navigate("/user-profile")
+                setLoading(false)
+                localStorage.setItem('token',response.data.token);
+                localStorage.setItem('id',response.data.id);
+                       navigate("/edit-profile")
               })
 
               .catch(function (error) {
-                console.log("s")
                 setLoading(false)
-                  setError(true)
+                setError(error.massage)
+                  
             
               });
   

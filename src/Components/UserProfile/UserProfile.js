@@ -10,6 +10,7 @@ import { red } from "@mui/material/colors";
 import StarIcon from '@mui/icons-material/Star';
 import CheckIcon from '@mui/icons-material/Check';
 import axios from 'axios'
+import HeaderSherif from '../../Components/HeaderSherif'
 export default function UserProfile() {
   let tok = localStorage.getItem('token')
 
@@ -38,6 +39,7 @@ export default function UserProfile() {
 
   return (
     <>
+    <HeaderSherif/>
     
  <Box sx={{ flexGrow: 1 , width : '50vw', margin:'0 auto', marginTop:'8%' }}>
       <Grid container spacing={2}>

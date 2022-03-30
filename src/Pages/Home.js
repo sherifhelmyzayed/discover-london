@@ -6,6 +6,7 @@ import HomeHeader from './HomePage/HomeHeader'
 
 
 const Home = () => {
+  console.log(localStorage)
   return (
     <>
       

@@ -18,7 +18,7 @@ const MoreFilterContent = (props) => {
       item: ['House', 'Apartment', 'Loft', 'Villa']
    }]
 
-   const {moreFilters, setMoreFilters} = props
+   const { moreFilters, setMoreFilters } = props
 
    const handleCheckBox = (e, item) => {
       setMoreFilters((current) => ({ ...current, [item]: { ...moreFilters[item], [e]: !moreFilters[item][e] } }))

@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import CloseIcon from '@mui/icons-material/Close';
@@ -24,7 +24,7 @@ const Modal_styles = {
     backgroundColor:'#fff',
     width : '29vw',
     padding : '20px',
-    height : '70vh',
+    height : 'auto',
     borderRadius: '2%',
     zIndex : 1000
 }
@@ -45,39 +45,61 @@ const head = {
     marginBottom: '20px'
     
 }
-
+let tok = localStorage.getItem('token')
 
     
     export default function LoginForm({open,onClose}) {
 const [username , setUsername] = useState('');
 const [password , setPassword] = useState('');
+const [auth , setAuth] = useState(false);
+
 let history = useNavigate ();
+
 const login = ()=>{
     
   axios.post("http://localhost:4000/user/login",{
     username : username,
     password : password,
   }).then((response)=>{
-    console.log(response.data.token)
+    console.log(response.data)
     if(response.data.token != undefined){
-      history('/user-profile')
+      
       localStorage.setItem('token', response.data.token)
+      localStorage.setItem('id', response.data.user._id)
+      localStorage.setItem('name', response.data.user.firstName)
+      if(response.data.user.role === 'host'){
+        setAuth(true)
+        localStorage.setItem('auth', true)
+         }
+    }
+    
+
+  })}
+
+  useEffect(()=>{
+    if(auth){
+      setTimeout(() => {
+        history('/discover')
+      }, 3000);
       
     }
+  },[auth])
+  
+       
 
-  });
-};
         if(!open) return null
       return ReactDOM.createPortal ( <>
       <div style={Overlay}/>
       <div style={Modal_styles}>
             <Paper style={{marginBottom : '7%' }}>
-           <Button variant="text" onClick={onClose}><CloseIcon/></Button>
+           <Button variant="text" onClick={()=>{
+             history('../')
+           }}><CloseIcon/></Button>
            <h3 style={head}>log in</h3>
            
            </Paper>
            
-           <h2 style={{marginTop:'0px',marginBottom:'5%'}}>Welcome to Airbnb</h2>
+           <h2 style={{marginTop:'0px',marginBottom:'5%'}}>Welcome to Discover</h2>
            <Grid container direction="column"
                   justify="center"
                   columnSpacing={{ xs: 1, sm: 2, md: 3 }}
