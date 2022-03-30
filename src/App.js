@@ -1,5 +1,5 @@
 import './App.css';
-import { createContext, Suspense } from 'react';
+import { createContext, Suspense ,useState , useEffect , useMemo} from 'react';
 import { Routes, Route, BrowserRouter } from "react-router-dom"
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import Home from './Pages/Home';
@@ -21,6 +21,9 @@ import UserResravation from './Pages/UserResravtion';
 
 
 export const ThemeContext = createContext();
+export const UserContext = createContext();
+
+
 
 
 const mainTheme = createTheme({
@@ -144,10 +147,24 @@ const mainTheme = createTheme({
   }
 
 })
+
 function App() {
+  const [user , setUser] = useState({auth: false ,id : null });
+  const [token , setToken] = useState({token : '' });
+  // const ChangeState = ()=>{
+  //   setUser({...user})
+  // }
+  const UserValue = useMemo(
+    () => ({
+     user,setUser,token , setToken
+    }),
+    [user]
+);
+  
   return (
 
     <Suspense fallback={<h1>LOOOOOOOOOOAAADINGGGG</h1>}>
+      <UserContext.Provider value={UserValue}>
       <ThemeProvider theme={mainTheme}>
         <ThemeContext.Provider value={{ mainTheme }}>
           <BrowserRouter>
@@ -170,6 +187,7 @@ function App() {
           </BrowserRouter>
         </ThemeContext.Provider>
       </ThemeProvider>
+      </UserContext.Provider>
     </Suspense>
   )
 }

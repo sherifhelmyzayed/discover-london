@@ -1,16 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import {AppBar, Box, Toolbar, Typography, IconButton, Menu, Container, Avatar, Button, Tooltip, MenuItem} from '@mui/material';
 import MenuIcon  from '@mui/icons-material/Menu';
 
 
 const pages = ['home', 'discover'];
-const settings = ['Profile', 'Logout', (localStorage.auth) ? 'Dashboard' : ''];
+
+const settings = [(localStorage.token) ? 'Profile' : '', (localStorage.token) ? 'Logout' : 'Login', (localStorage.token) ? 'Dashboard' : ''];
 
 const Header = (props) => {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
     const [active, setActive] = useState(1);
+
+    console.log(localStorage.auth)
 
     let navigate = useNavigate();
 
@@ -34,10 +37,22 @@ const Header = (props) => {
     const handleCloseUserMenu = (e) => {
         if (e === 'Logout') {
             localStorage.clear()
+            navigate(`../discover`)
+            console.log(e)
         }
         if (e === 'Dashboard') {
 
             navigate(`../dashboard`)
+
+        }
+        if (e === 'Login') {
+
+            navigate(`../login`)
+
+        }
+        if (e === 'Profile') {
+
+            navigate(`../user-profile`)
 
         }
         setAnchorElUser(null);
@@ -49,6 +64,10 @@ const Header = (props) => {
         handleCloseNavMenu()
         navigate(`../${event.target.getAttribute('val')}`)
     };
+    const [auth , setAuth]= useState(false)
+    useEffect(()=>{
+      setAuth(localStorage.getItem('auth'))
+    },[auth])
 
     return (
         <AppBar position="static" color="light" sx={{
