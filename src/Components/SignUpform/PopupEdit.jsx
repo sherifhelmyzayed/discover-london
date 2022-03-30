@@ -31,13 +31,20 @@ export default function PopupEdit(props) {
            const newData = { [props.feild ]: data}
            console.log(newData)
 
-        // axios.patch('http://localhost:4000/user',newData)
-        //   .then(function (response) {
-        //     console.log(response);
-        //   })
-        //   .catch(function (error) {
-        //     console.log(error);
-        //   });
+        const id = localStorage.getItem('id');
+  
+        axios.get(`http://localhost:4000/user/${id}`, newData)
+        .then(function (response) {
+          console.log(response)
+          
+            })
+            
+            .catch(function (error) {
+              console.log(error)
+              
+            })
+
+          
     
   }
 

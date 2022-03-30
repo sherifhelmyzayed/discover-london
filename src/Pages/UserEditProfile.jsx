@@ -50,10 +50,7 @@ const UserProfile = ()=>{
     })
     
     
-    const upDateHandel =(e)=>{
-      
-    }
-
+    
 
   return (<Box  sx={{minHeight : "100vh" ,  display : "flex" ,   justifyContent: 'center', alignItems: 'center',}}>
     <Grid container spacing={2} xs={12}  sx={{

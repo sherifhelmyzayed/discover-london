@@ -45,9 +45,8 @@ const formik = useFormik({
               .then(function (response) {
                 setLoading(false)
                 localStorage.setItem('token',response.data.token);
-                      console.log("local" ,localStorage.getItem('token') );
-                      console.log(response.data.token);
-                       navigate("/user-profile")
+                localStorage.setItem('id',response.data.id);
+                       navigate("/edit-profile")
               })
 
               .catch(function (error) {
