@@ -9,7 +9,7 @@ const UserResravation =()=>{
         let id = "6243fd43fed535dd39e88a69"
         axios.get(`http://localhost:4000/booking/my-bookings/${id}`)
         .then(function (response) {
-            console.log(response );
+           
         })
         
         .catch(function (error) {

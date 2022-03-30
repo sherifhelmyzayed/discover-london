@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import Divider from '@mui/material/Divider';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 
@@ -15,25 +15,13 @@ const Input = styled('input')({
 
 
 const UserProfile = ()=>{
-
-  useEffect(()=>{
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDM3ZmM3ZjJhMGZkMDRjNDkxNmQ1NiIsImlhdCI6MTY0ODY1NDA3NX0.VgpArvbvt5k-gTyUCMO6Gw5326c3p2h3XeJkSBNrycs"
   
-    axios.get(`http://localhost:4000/booking/my-bookings/${token}`)
-    .then(function (response) {
-        console.log(response );
-    })
-    
-    .catch(function (error) {
-        console.log(error)
-        
-    })
-})
- 
- 
-  let data =  {
+  const [isLoding  , setIsLoding] = useState(true )
+
+ const [data , setdata] = useState(  {
         firstName: "your name",
         lastName: "father name",
+        username: "fe",
         address: "world",
         email: "email@gmail.com",
          city: "cario",
@@ -42,9 +30,29 @@ const UserProfile = ()=>{
          about: "your describtion",
          photo: {},
          id: "000"
-        }
+        })
 
-     
+
+  useEffect(()=>{
+  const token = localStorage.getItem('token');
+  
+  axios.get(`http://localhost:4000/user`, { headers: {"Authorization" : token }})
+  .then(function (response) {
+      setdata( response.data )
+      setIsLoding( false)
+    
+      })
+      
+      .catch(function (error) {
+        console.log(error)
+        
+      })
+    })
+    
+    
+    const upDateHandel =(e)=>{
+      
+    }
 
 
   return (<Box  sx={{minHeight : "100vh" ,  display : "flex" ,   justifyContent: 'center', alignItems: 'center',}}>
@@ -72,9 +80,10 @@ const UserProfile = ()=>{
 
       
     </Grid>
+    {!isLoding ?
    <Grid xs={12} md={7} lg={9} >    
 
-       <FaildEdit  faild ="userName"   name="User Name"   data={data.username} />
+       <FaildEdit  faild ="username"   name="User Name"   data={data.username} />
        <FaildEdit  faild ="fristName"  name="Frist Name"  data={data.firstName} />
        <FaildEdit  faild ="lastName"   name="Last Name"   data={data.lastName} />
        <FaildEdit  faild ="address"    name="Address"     data={data.address} />
@@ -83,8 +92,8 @@ const UserProfile = ()=>{
        <FaildEdit  faild ="about"      name="About"       data={data.about} />
        <FaildEdit  faild ="email"      name="E-mail"      data={data.email} />
        <FaildEdit  faild ="password"   name="Password"    data='********' />
-          
      </Grid>  
+   : null }
     </Grid>
     </Box>
   )

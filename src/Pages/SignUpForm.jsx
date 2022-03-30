@@ -43,14 +43,17 @@ const formik = useFormik({
 
             axios.post('http://localhost:4000/user/sign-up-login',values)
               .then(function (response) {
-                      console.log(response.data );
-                      //  navigate("/user-profile")
+                setLoading(false)
+                localStorage.setItem('token',response.data.token);
+                      console.log("local" ,localStorage.getItem('token') );
+                      console.log(response.data.token);
+                       navigate("/user-profile")
               })
 
               .catch(function (error) {
-                console.log("s")
                 setLoading(false)
-                  setError(true)
+                setError(error.massage)
+                  
             
               });
   
