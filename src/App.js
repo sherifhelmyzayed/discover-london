@@ -51,7 +51,7 @@ const mainTheme = createTheme({
   // Typography should be edit according to layout
   typography: {
     fontFamily: 'Montserrat',
-    fontWeightRegular: 200,
+    fontWeightRegular: 500,
     fontWeightMedium: 400,
     fontWeightBold: 800,
     fontSize: 12,
@@ -179,8 +179,8 @@ function App() {
               <Route path="/discover" element={<Discover />} />
               <Route path="/sign-up" element={<SignUpForm />} />
               <Route path="/edit-profile" element={<UserEditProfile />} />
-              <Route path="/log-Ins" element={<LogInForm />} />
-              <Route path="/login" element={<LogInModal />} />
+              {/* <Route path="/log-In" element={<LogInForm />} /> */}
+              <Route path="/log-In" element={<LogInModal />} />
               <Route path="/Reservaiton" element={<UserResravation />} />
               <Route path="/user-profile" element={<UserProfile />} />
             </Routes>
