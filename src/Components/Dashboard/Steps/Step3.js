@@ -38,6 +38,16 @@ const Step0 = (props) => {
         }
     }
 
+    const priceHandler = (e) => {
+        if (e.target.value.length < 6) {
+            setError2(true)
+        } else {
+            console.log("true")
+            setError2(false)
+            setCreateProperty((current) => ({ ...current, 'price': e.target.value }));
+        }
+    }
+
 
     return (
         <>
@@ -76,6 +86,21 @@ const Step0 = (props) => {
                     InputLabelProps={{ style: { fontSize: 14, fontWeight: 400 } }}
                 />
             </Box>
+            <Box>
+                <TextField
+                    id="standard-basic"
+                    label="Price Per night"
+                    variant="standard"
+                    onChange={priceHandler}
+                    required={true}
+                    margin="normal"
+                    size="medium"
+                    type='number'
+                    InputProps={{ style: { fontSize: 16, fontWeight: 400 } }}
+                    InputLabelProps={{ style: { fontSize: 14, fontWeight: 400 } }}
+                />
+            </Box>
+            
         </>
 
     )

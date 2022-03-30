@@ -19,9 +19,9 @@ import Step0 from './Steps/Step0';
 import Step1 from './Steps/Step1';
 import Step2 from './Steps/Step2';
 import Step3 from './Steps/Step3';
-import Step4 from './Steps/Step3';
-import Step5 from './Steps/Step3';
-import Step6 from './Steps/Step3';
+import Step4 from './Steps/Step4';
+import Step5 from './Steps/Step5';
+import Step6 from './Steps/Step6';
 import { StarBorderPurple500 } from '@mui/icons-material';
 
 
@@ -118,7 +118,8 @@ const CreateListing = (props) => {
                         ? (<Step5 createProperty={createProperty} setCreateProperty={setCreateProperty}/>)
                         : (step === 6)
                           ? (<Step6 createProperty={createProperty} setCreateProperty={setCreateProperty}/>)
-                          : ''}
+                          : ''
+                          }
           </Box>
         </Grid>
 
