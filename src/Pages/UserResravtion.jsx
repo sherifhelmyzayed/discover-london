@@ -21,13 +21,14 @@ const [data , setdata] = useState([])
         })
     })
 
-const deletHandel=()=>{
+const deletHandel=(id)=>{
+    console.log(id)
 
 }
     
    let repet = data.map((el)=>{
                 return (
-                    <ReservationCard />
+                    <ReservationCard id={el.id} fun={deletHandel} />
                 )})
     return (<Box sx={{   display : "flex",
                         justifyContent : "space-evenly",
