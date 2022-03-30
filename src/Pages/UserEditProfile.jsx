@@ -4,6 +4,8 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import Divider from '@mui/material/Divider';
+import { useEffect } from 'react';
+import axios from 'axios';
 
 
 const Input = styled('input')({
@@ -11,7 +13,22 @@ const Input = styled('input')({
 });
 
 
+
 const UserProfile = ()=>{
+
+  useEffect(()=>{
+  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDM3ZmM3ZjJhMGZkMDRjNDkxNmQ1NiIsImlhdCI6MTY0ODY1NDA3NX0.VgpArvbvt5k-gTyUCMO6Gw5326c3p2h3XeJkSBNrycs"
+  
+    axios.get(`http://localhost:4000/booking/my-bookings/${token}`)
+    .then(function (response) {
+        console.log(response );
+    })
+    
+    .catch(function (error) {
+        console.log(error)
+        
+    })
+})
  
  
   let data =  {
