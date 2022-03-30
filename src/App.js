@@ -3,22 +3,18 @@ import { createContext, Suspense } from 'react';
 import { Routes, Route, BrowserRouter } from "react-router-dom"
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import Home from './Pages/Home';
-import Property from './Pages/Property';
 import PropertyV2 from './Pages/Property page dynamic/Property';
 import BecomeHost from './Pages/BecomeHost';
 import DashboardModule from './module/DashboardModule';
-import MapEss from './Pages/MapEss';
 import Mainpage from './Components/MapPage/MapBox/mainpage'
-import HeaderSherif from './Components/HeaderSherif'
 import SignUpForm from './Pages/SignUpForm';
-import CreetAccount from './Pages/CreetAccount';
-import Hosting from './Pages/Hosting';
 import UserEditProfile from './Pages/UserEditProfile.jsx';
 import Discover from './Pages/Discover';
-import Calculations from './Pages/calculations';
 import UserProfile from './Components/UserProfile/UserProfile';
-import Modal from './Components/Buttons/form/Modal'
-let auth = localStorage.getItem('auth')
+import LogInModal from './Components/Buttons/form/LogInModal'
+import NavBar from './Components/NavigationBar/NavBar';
+
+
 
 
 
@@ -153,6 +149,7 @@ function App() {
       <ThemeProvider theme={mainTheme}>
         <ThemeContext.Provider value={{ mainTheme }}>
           <BrowserRouter>
+          <NavBar />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/home" element={<Home />} />
@@ -162,8 +159,8 @@ function App() {
               <Route path="mapbox" element={<Mainpage />} />
               <Route path="/discover" element={<Discover />} />
               <Route path="/sign-up" element={<SignUpForm />} />
-              <Route path="/profile" element={<UserEditProfile />} />
-              <Route path="/login" element={<Modal />} />
+              <Route path="/edit-profile" element={<UserEditProfile />} />
+              <Route path="/login" element={<LogInModal />} />
               <Route path="/user-profile" element={<UserProfile />} />
             </Routes>
           </BrowserRouter>

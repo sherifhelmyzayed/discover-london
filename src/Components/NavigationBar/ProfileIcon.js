@@ -5,7 +5,8 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { Tooltip ,Box  } from '@mui/material';
 import { useNavigate  } from "react-router-dom";
-import Modal from '../Buttons/form/Modal';
+import LogInModal from '../Buttons/form/LogInModal';
+import { Link } from 'react-router-dom'
 
 
 const ProfileIcon = () => {
@@ -51,11 +52,18 @@ const ProfileIcon = () => {
       >
         {/* <MenuItem onClick={handleClose}>Profile</MenuItem> */}
         <MenuItem style={{zIndex:'0'}}>
-        <Modal/>
+        <LogInModal/>
         </MenuItem>
-        <MenuItem onClick={handleClose}>sign Up</MenuItem>
+        <MenuItem onClick={handleClose}>
+          
+            <Button color="white" variant="oulLine" fullWidth>
+                <Link to="/sign-up" style={{ color : "black",  textDecoration :"none" }} > 
+                   sign up 
+                </Link>
+            </Button>
+          </MenuItem>
       </Menu>
-        
+      
         </Box>
     )
 }

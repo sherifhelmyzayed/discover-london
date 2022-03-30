@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Grid';
-import FaildEdit from '../Components/form/FaildEdit' 
+import FaildEdit from '../Components/SignUpform/FaildEdit' 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';

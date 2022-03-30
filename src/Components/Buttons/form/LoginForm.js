@@ -115,7 +115,7 @@ const login = ()=>{
     
     <Button onClick={login} style={{marginTop:'8%',marginBottom:'5%'}} variant="contained" fullWidth>Login</Button>
     
-    <Divider style={{fontSize:'10px', marginBottom:'5%'}}>OR</Divider>
+    {/* <Divider style={{fontSize:'10px', marginBottom:'5%'}}>OR</Divider>
     
     <Button style={{marginBottom:'10px'}} variant="outlined" fullWidth  >
     <Grid  container  justify="center" columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
@@ -157,7 +157,8 @@ const login = ()=>{
       </Grid>
      </Grid>
      </Button>
-     
+      */
+      }
             </div>
             </>,
             document.getElementById('portal')

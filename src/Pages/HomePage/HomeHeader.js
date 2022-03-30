@@ -1,12 +1,11 @@
 import React from 'react'
 import house from '../../assets/house.jpg'
-import NavBar from '../../Components/NavigationBar/NavBar';
 import { Box, Typography, Button, Grid } from '@mui/material';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useNavigate } from 'react-router-dom';
 
 
-const FirstSectionUpdated = () => {
+const HomeHeader = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -26,7 +25,6 @@ const FirstSectionUpdated = () => {
         justifyContent: 'center',
         alignItems: 'center'
       }}>
-        <NavBar />
         <Grid container spacing={2} ml={5} mt={15}  justifyContent="center">
           <Grid item xs={12}>
             <Box sx={{
@@ -78,4 +76,4 @@ const FirstSectionUpdated = () => {
   )
 }
 
-export default FirstSectionUpdated
+export default HomeHeader
