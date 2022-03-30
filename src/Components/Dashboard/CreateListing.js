@@ -15,6 +15,14 @@ import Fade from '@mui/material/Fade';
 import { Box, Grid, Stepper, Step, StepLabel, MobileStepper, Slider } from '@mui/material'
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import Step0 from './Steps/Step0';
+import Step1 from './Steps/Step1';
+import Step2 from './Steps/Step2';
+import Step3 from './Steps/Step3';
+import Step4 from './Steps/Step3';
+import Step5 from './Steps/Step3';
+import Step6 from './Steps/Step3';
+import { StarBorderPurple500 } from '@mui/icons-material';
 
 
 // transitional slide
@@ -28,6 +36,19 @@ const TransitionFade = forwardRef(function Transition(props, ref) {
 
 const CreateListing = (props) => {
 
+  const [step, setStep] = useState(0)
+  const [createProperty, setCreateProperty] = useState({
+    guests_included: 0,
+    bedrooms: 0,
+    bathrooms: 0,
+  })
+
+  const nextStep = () => {
+    setStep(step + 1)
+  }
+  const prevStep = () => {
+    setStep(step + -1)
+  }
   const { stateDialog, clickHandler } = props
 
   return (
@@ -57,29 +78,47 @@ const CreateListing = (props) => {
           </Toolbar>
         </AppBar>
         <Grid container>
-          <Box sx={{ width: '100%'}}>
+          <Box sx={{ width: '100%' }}>
             <MobileStepper
               variant="progress"
               steps={6}
               position="static"
-              activeStep={2}
-              sx={{ maxWidth: '100%', justifyContent:'center' }}
+              activeStep={step}
+              sx={{ maxWidth: '100%', justifyContent: 'center' }}
               nextButton={
-                <Button size="small" onClick={2} disabled={2 === 5}>
+                <Button size="small" onClick={nextStep} disabled={2 === 5}>
                   Next
                   <KeyboardArrowRight />
                 </Button>
               }
               backButton={
-                <Button size="small" onClick={2} disabled={2 === 0}>
+                <Button size="small" onClick={prevStep} disabled={2 === 0}>
                   <KeyboardArrowLeft />
                   Back
                 </Button>
               }
             />
           </Box>
-          <Box sx={{width:'100%', display: 'flex', justifyContent: 'center', alignItems: 'center' , marginTop: 'auto', marginBottom: 'auto'}}>
-              test
+          <Box sx={{ height: 'calc(100vh - 120px)', width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: 'auto', marginBottom: 'auto' }}>
+
+            {(step === 0) ? 
+            (<Step0 createProperty={createProperty} setCreateProperty={setCreateProperty}/>)
+              :
+              (step === 1)
+                ? (
+                  <Step1 createProperty={createProperty} setCreateProperty={setCreateProperty}/>
+                )
+                : (step === 2)
+                  ? (<Step2 createProperty={createProperty} setCreateProperty={setCreateProperty}/>)
+                  : (step === 3)
+                    ? (<Step3 createProperty={createProperty} setCreateProperty={setCreateProperty}/>)
+                    : (step === 4)
+                      ? (<Step4 createProperty={createProperty} setCreateProperty={setCreateProperty}/>)
+                      : (step === 5)
+                        ? (<Step5 createProperty={createProperty} setCreateProperty={setCreateProperty}/>)
+                        : (step === 6)
+                          ? (<Step6 createProperty={createProperty} setCreateProperty={setCreateProperty}/>)
+                          : ''}
           </Box>
         </Grid>
 

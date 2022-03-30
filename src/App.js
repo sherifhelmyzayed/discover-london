@@ -162,7 +162,7 @@ function App() {
               <Route path="/discover" element={<Discover />} />
               <Route path="/sign-up" element={<SignUpForm />} />
               <Route path="/edit-profile" element={<UserEditProfile />} />
-              <Route path="/log-In" element={<LogInForm />} />
+              {/* <Route path="/log-In" element={<LogInForm />} /> */}
               <Route path="/log-In" element={<LogInModal />} />
               <Route path="/Reservaiton" element={<UserResravation />} />
               <Route path="/user-profile" element={<UserProfile />} />
