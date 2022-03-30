@@ -52,7 +52,11 @@ const ProfileIcon = () => {
       >
         {/* <MenuItem onClick={handleClose}>Profile</MenuItem> */}
         <MenuItem style={{zIndex:'0'}}>
-        <LogInModal/>
+            <Button color="white" variant="oulLine" fullWidth>
+                <Link to="/Log-In" style={{ color : "black",  textDecoration :"none" }} > 
+                   Log In
+                </Link>
+            </Button>
         </MenuItem>
         <MenuItem onClick={handleClose}>
           

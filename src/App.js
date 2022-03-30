@@ -8,11 +8,13 @@ import BecomeHost from './Pages/BecomeHost';
 import DashboardModule from './module/DashboardModule';
 import Mainpage from './Components/MapPage/MapBox/mainpage'
 import SignUpForm from './Pages/SignUpForm';
+import LogInForm from './Pages/LogInForm';
 import UserEditProfile from './Pages/UserEditProfile.jsx';
 import Discover from './Pages/Discover';
 import UserProfile from './Components/UserProfile/UserProfile';
 import LogInModal from './Components/Buttons/form/LogInModal'
 import NavBar from './Components/NavigationBar/NavBar';
+import UserResravation from './Pages/UserResravtion';
 
 
 
@@ -160,7 +162,9 @@ function App() {
               <Route path="/discover" element={<Discover />} />
               <Route path="/sign-up" element={<SignUpForm />} />
               <Route path="/edit-profile" element={<UserEditProfile />} />
-              <Route path="/login" element={<LogInModal />} />
+              <Route path="/log-In" element={<LogInForm />} />
+              <Route path="/log-In" element={<LogInModal />} />
+              <Route path="/Reservaiton" element={<UserResravation />} />
               <Route path="/user-profile" element={<UserProfile />} />
             </Routes>
           </BrowserRouter>
