@@ -11,12 +11,9 @@ export default function Modal() {
     const [isOpenSignUp , setIsOpenSignUp]= useState(false);
     return (<>
       <div>
-        {/* <button >login</button> */}
-        <Button  onClick={()=> setIsOpen(true)}color="white" variant="oulLine" fullWidth>
-                   login
-                
-        </Button>
-      <LoginForm open={isOpen} onClose={()=> setIsOpen(false)}> </LoginForm>
+        {/* <button onClick={()=> setIsOpen(true)}>login</button> */}
+        
+      <LoginForm open={true} > </LoginForm>
       
       </div>
       </>

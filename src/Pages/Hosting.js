@@ -76,7 +76,8 @@ export default function Hosting() {
           </div>
               
           </Box>
-          <Box sx={{ width: '90vw', height: '100vh',margin:'0 auto' ,backgroundImage: `url(${Capture})` }}>
+          
+          <Box sx={{ width: '100vw', height: '100vh', marginLeft:'6%' ,backgroundImage: `url(${Capture})`,backgroundRepeat: "no-repeat" }}>
           <div style={divv}>
                  <h2>Questions about Hosting ?</h2>
                   <h2>Ask a super Host</h2> 
@@ -85,6 +86,7 @@ export default function Hosting() {
                   </div>
               
           </Box>
+       
           <Box sx={{ width: '90vw', height: '80vh',margin:'0 auto',backgroundColor: 'whitesmoke'  }}>
           
           <Grid container >
@@ -92,7 +94,7 @@ export default function Hosting() {
           <div style={{position:'relative' , top:'20%',left:'8%' , fontSize:"35px"}}>
         <h1> <span style={{color:'red'}}>air </span>cover</h1>
                   <p>Top-to-bottom protection.<br/> 
-                  Free for Hosts. Only on Airbnb.</p> 
+                  Free for Hosts. Only on discover London.</p> 
                   <Button variant="contained" sx={{marginTop:'8%',padding:'15px' , borderRadius:'7%'}}>Try Hosting</Button>
                   </div>
         </Grid>

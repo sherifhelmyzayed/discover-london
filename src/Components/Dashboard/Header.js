@@ -36,7 +36,17 @@ const Header = (props) => {
         setAnchorElNav(null);
     };
 
-    const handleCloseUserMenu = () => {
+    const handleCloseUserMenu = (e) => {
+        if (e === 'Logout') {
+            localStorage.clear()
+            navigate(`../discover`)
+
+        }
+        if (e === 'Profile') {
+
+            navigate(`../user-profile`)
+
+        }
         setAnchorElUser(null);
     };
 
@@ -162,7 +172,7 @@ const Header = (props) => {
                             onClose={handleCloseUserMenu}
                         >
                             {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                                <MenuItem key={setting} onClick={()=>handleCloseUserMenu(setting)}>
                                     <Typography textAlign="center">{setting}</Typography>
                                 </MenuItem>
                             ))}

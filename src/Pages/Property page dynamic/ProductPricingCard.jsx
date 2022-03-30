@@ -1,18 +1,19 @@
 import { Avatar, Box, Typography } from '@mui/material'
-import React, { useEffect, useState } from 'react'
 import BedroomChildOutlinedIcon from '@mui/icons-material/BedroomChildOutlined';
 import BathroomOutlinedIcon from '@mui/icons-material/BathroomOutlined';
 import PersonPinOutlinedIcon from '@mui/icons-material/PersonPinOutlined';
 import Divider from '@mui/material/Divider';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
+
+
+
+
+
 
 const ProductPricingCard = (props) => {
     const { amenities, hostImage, host, price, accomadates, bathrooms
         , bedrooms, reviews, neighbourhood, city, title } = props
 
-    const featuresArr = amenities.split(',')
+  
 
 
     return (
@@ -74,7 +75,7 @@ const ProductPricingCard = (props) => {
                 <Box sx={{ width: '100%' }} mb={3}>
                     <Typography sx={{ fontFamily: 'syne', fontSize: '1.4rem', fontWeight: 600, marginBottom: 2, color: 'primary.main' }}>FEATURES & AMENIITES</Typography>
                     <ul className="features-list">
-                        {featuresArr.map((item, i) => {
+                        {amenities.map((item, i) => {
                             return <li key={i}>{item}</li>
                         })}
                     </ul>
@@ -90,21 +91,10 @@ const ProductPricingCard = (props) => {
                     <Avatar src={`${hostImage}`} alt={`${host}`} />
 
                 </Box>
-                <Box sx={{ display: 'flex' }}>
 
-                    <Button variant="contained" disableElevation sx={{ marginRight: 1 }}>
-                        Reserve
-                    </Button>
-
-                    <Tooltip title="Chat with the host">
-                        <Button variant="contained" disableElevation><ChatBubbleOutlineOutlinedIcon /> </Button>
-
-                    </Tooltip>
-
-                </Box>
-
+                  
             </Box>
-
+           
 
         </>
     )

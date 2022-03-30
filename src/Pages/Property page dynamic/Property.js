@@ -7,9 +7,12 @@ import style from './style.css'
 import { useParams } from 'react-router-dom'
 import SimilarProperties from './SimilarProperties';
 import HeaderSherif from '../../Components/HeaderSherif'
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import ReservationCalender from './ReservationCalender'
 
 const PropertyV2 = () => {
-    const { id } = useParams();
+    // const { id } = useParams();
 
     const [title, setTitle] = useState('')
     const [city, setCity] = useState('')
@@ -22,40 +25,42 @@ const PropertyV2 = () => {
     const [price, setPrice] = useState('')
     const [host, setHost] = useState('')
     const [hostImage, setHostImage] = useState('')
-    const [amenities, setAmenities] = useState('')
+    const [amenities, setAmenities] = useState([])
     const [popertyPic, setPropertyPic] = useState('')
     const [description, setDescription] = useState('')
 
 
 
-    const URL = `https://data.opendatasoft.com/api/records/1.0/search/?dataset=airbnb-listings%40public&q=&rows=1&facet=id&refine.id=${id}`
+    const URL = "http://localhost:4000/list/624429d4722286d23a286158"
+
     useEffect(() => {
         axios.get(URL).then(response => {
-            setTitle(response.data.records[0].fields.name)
-            setCity(response.data.records[0].fields.city)
-            setNeighbourhood(response.data.records[0].fields.neighbourhood_cleansed)
-            setReviews(response.data.records[0].fields.number_of_reviews)
-            setSummary(response.data.records[0].fields.summary)
-            setBedrooms(response.data.records[0].fields.bedrooms)
-            setBathrooms(response.data.records[0].fields.bathrooms)
-            setAccomadates(response.data.records[0].fields.guests_included)
-            setPrice(response.data.records[0].fields.price)
-            setHost(response.data.records[0].fields.host_name)
-            setHostImage(response.data.records[0].fields.host_thumbnail_url)
-            setAmenities(response.data.records[0].fields.amenities)
-            setPropertyPic(response.data.records[0].fields.xl_picture_url)
-            setDescription(response.data.records[0].fields.description)
+            setTitle(response.data.name)
+            setCity(response.data.city)
+            setNeighbourhood(response.data.neighbourhood_cleansed)
+            setReviews(response.data.number_of_reviews)
+            setSummary(response.data.summary)
+            setBedrooms(response.data.bedrooms)
+            setBathrooms(response.data.bathrooms)
+            setAccomadates(response.data.guests_included)
+            setPrice(response.data.price)
+            setHost(response.data.host_name)
+            // setHostImage(response.data.host_thumbnail_url)
+            setAmenities(response.data.amenities)
+            // setPropertyPic(response.data.xl_picture_url)
+            setDescription(response.data.description)
+
         }).catch(error => {
             console.log(error)
         })
-    })
+    }, [])
 
 
 
     return (
         <>
             <HeaderSherif />
-    
+
             {/* <PrimarySearchAppBar /> */}
             <Container sx={{ marginTop: '3em' }}>
 
@@ -91,6 +96,14 @@ const PropertyV2 = () => {
                         <Box sx={{
                             boxShadow: 2, width: '100%', transition: '0.3s', borderRadius: 5, padding: 2
                         }} mt={2}>
+
+                            <ReservationCalender />
+                        </Box>
+                    </Grid>
+                    <Grid item xs={12} xl={10} lg={10} md={10}>
+                        <Box sx={{
+                            boxShadow: 2, width: '100%', transition: '0.3s', borderRadius: 5, padding: 2
+                        }} mt={2}>
                             <Typography mt={2} mb={2} sx={{ fontSize: '1rem', fontFamily: 'lato', color: '#0c2442', }}>
                                 {description}
                             </Typography>
@@ -108,12 +121,12 @@ const PropertyV2 = () => {
 
                 </Grid>
             </Container>
-
             <Box sx={{ width: '100%', height: '7vh', backgroundColor: 'primary.main', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <Typography sx={{ color: 'white' }}>
                     This is a beta version and doesn't represent the final quality of this product
                 </Typography>
             </Box>
+
         </>
     )
 }

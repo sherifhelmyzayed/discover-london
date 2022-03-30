@@ -99,7 +99,7 @@ const DashboardModule = () => {
                     <LeftSidebar />
                     <Grid item md={9}>
                         <Routes>
-                            <Route index element={<Home />} />h
+                            <Route index element={<Home />} />
                             <Route path="home" element={<Home />} />
                             <Route path="performance" element={<Performance />} />
                             <Route path="inbox" element={<Inbox theme={mainTheme} />} />
