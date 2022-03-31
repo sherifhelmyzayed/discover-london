@@ -133,6 +133,7 @@ const Step0 = (props) => {
                     required={true}
                     margin="normal"
                     size="medium"
+                    defaultValue={createProperty.name}
                     InputProps={{ style: { fontSize: 16, fontWeight: 400 } }}
                     InputLabelProps={{ style: { fontSize: 14, fontWeight: 400 } }}
                 />
@@ -148,6 +149,7 @@ const Step0 = (props) => {
                     required={true}
                     margin="normal"
                     size="medium"
+                    defaultValue={createProperty.neighbourhood_cleansed}
                     InputProps={{ style: { fontSize: 16, fontWeight: 400 } }}
                     InputLabelProps={{ style: { fontSize: 14, fontWeight: 400 } }}
                 />
