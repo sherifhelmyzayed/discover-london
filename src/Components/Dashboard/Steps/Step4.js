@@ -7,23 +7,28 @@ const filterStyle = {
     overflowY: 'hidden', overflowX: 'hidden',
  }
  const amenitiesMore = [
-    'House', 'Apartment', 'Loft', 'Villa'
+    'Iron', 'Parking', 'Washer', 'Internet', 'Air conditioning', 'TV'
  ]
-
-
 
 
 const Step4 = (props) => {
     const { createProperty, setCreateProperty } = props
 
-    const [arr, setArr] = useState(false)
+    const [arr, setArr] = useState(['Apartment'])
 
-    const handleCheckBox = (e, item) => {
-        // setCreateProperty((current) => ({ ...current, [item]: { ...createProperty[item], [e]: !createProperty[item][e] } }))
-        console.log(arr)
+    const handleCheckBox = (e) => {
+        let arra = [...createProperty.amenities]
+        if (arra.includes(e)) {
+            console.log(arra)
+            let newArr = arra.filter((el)=>(el!==e))
+            console.log(newArr)
+            setCreateProperty((current) => ({ ...current, "amenities": newArr }));     
+        }
+        else {
+            // setCreateProperty.amenities([...arr, e])
+            setCreateProperty((current) => ({ ...current, "amenities": [...arra, e] }));              
 
-        setArr(e)
-        console.log(arr)
+        }
      }
     
     
@@ -46,8 +51,7 @@ const Step4 = (props) => {
                                         <Grid item xs={12} md={6}>
                                             <FormGroup>
                                                 <FormControlLabel control={<Checkbox onClick={() => { handleCheckBox(item, 'property') }} checked={
-                                                    // createProperty.amenities[item]
-                                                    false
+                                                    createProperty.amenities.includes(item)
                                                     } />} label={item} />
                                             </FormGroup>
                                         </Grid>

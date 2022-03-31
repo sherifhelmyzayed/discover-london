@@ -15,9 +15,9 @@ const [data , setdata] = useState([1.2])
            setIsLoding(false)
         })
      
-        // .catch(function (error) {
-        //     console.log("s")        
-        // })
+        .catch(function (error) {
+            console.log(error)        
+        })
     })
 
 const deletHandel=(id)=>{
@@ -34,7 +34,6 @@ const deletHandel=(id)=>{
                         padding : "10px 5%",
                         alignItems : "center",}}>
               { !isLoding ? repet : null  }
-              tt
             </Box>
     
 
