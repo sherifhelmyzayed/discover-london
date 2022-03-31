@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Typography, List, ListItem, ListItemText, MenuItem, Menu, Box, TextField } from '@mui/material'
+import { Typography, List, ListItem, ListItemText, IconButton, InputAdornment, Box, TextField } from '@mui/material'
 
 
 
@@ -96,11 +96,21 @@ const Step0 = (props) => {
                     margin="normal"
                     size="medium"
                     type='number'
-                    InputProps={{ style: { fontSize: 16, fontWeight: 400 } }}
+                    InputProps={{ style: { fontSize: 16, fontWeight: 400, startAdornment: <InputAdornment position="start">kgsss</InputAdornment>, } }}
                     InputLabelProps={{ style: { fontSize: 14, fontWeight: 400 } }}
+                    endAdornment={
+                        <InputAdornment position="end">
+                            <IconButton
+                                aria-label="toggle password visibility"
+                                edge="end"
+                            >
+                                ss
+                            </IconButton>
+                        </InputAdornment>
+                    }
                 />
             </Box>
-            
+
         </>
 
     )
