@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { Typography, List, ListItem, ListItemText, MenuItem, Menu, Box, TextField } from '@mui/material'
+import { Typography, Box, TextField } from '@mui/material'
 
 const Step5 = (props) => {
 
-    const { setCreateProperty } = props
+    const {createProperty, setCreateProperty } = props
     const [error2, setError2] = useState(false)
 
 
@@ -38,6 +38,8 @@ const Step5 = (props) => {
                     margin="normal"
                     size="medium"
                     fullWidth={true}
+                    defaultValue={createProperty.description}
+
                     InputProps={{height: '5000px', style: { fontSize: 16, fontWeight: 400 } }}
                     InputLabelProps={{ style: { fontSize: 14, fontWeight: 400 } }}
                     minRows={4}

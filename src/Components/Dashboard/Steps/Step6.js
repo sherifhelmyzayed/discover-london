@@ -1,28 +1,31 @@
-import {useState} from 'react';
+import { useState, useRef } from 'react';
 import { styled } from '@mui/material/styles';
-import {Button, Typography} from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import Stack from '@mui/material/Stack';
+import axios from 'axios'
 
 const Input = styled('input')({
-  display: 'none',
+    display: 'none',
 });
 const Step6 = (props) => {
 
-    const { setCreateProperty } = props
-    const [error2, setError2] = useState(false)
+    const { createProperty, setCreateProperty } = props
+    const [selectedFile, setSelectedFile] = useState(null)
 
 
 
-    const summaryhoodHandler = (e) => {
-        if (e.target.value.length < 6) {
-            setError2(true)
-        } else {
-            console.log("true")
-            setError2(false)
-            setCreateProperty((current) => ({ ...current, 'description': e.target.value }));
-        }
+
+
+    const clickHandler = (e) => {
+        console.log(e.target.files[0])
+        console.log(createProperty)
+        setSelectedFile(e.target.files[0])
+    }
+
+    const fileUploadHandler = () => {
+        axios.patch('http://localhost:4000/puplic/listing-624494eaac4fa8e379d1ebec-1648685750735-3.jpeg')
     }
 
 
@@ -40,8 +43,10 @@ const Step6 = (props) => {
                 </Button>
             </label>
             <label htmlFor="icon-button-file">
-                <Input accept="image/*" id="icon-button-file" type="file" />
+                <Input type="file" onChange={clickHandler} />
+                {(selectedFile) ? <Typography variant="subtitle2" component="subtitile2">selected File is {selectedFile.name}</Typography> : ''}
                 <IconButton color="primary" aria-label="upload picture" component="span">
+                    Upload
                     <PhotoCamera />
                 </IconButton>
             </label>
