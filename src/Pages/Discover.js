@@ -18,7 +18,6 @@ const Discover = () => {
     const [initialView, setinitialView] = useState(false)
     const [cameraZoom, setCameraZoom] = useState(null)
     const [newData, setNewData] = useState(null)
-    const [newListing, setNewListing] = useState(null)
 
     // const equation = ()=>{
     //     161759-123814e^0.0182408x
@@ -57,9 +56,10 @@ const Discover = () => {
 
     useEffect(() => {
         axios.get(`http://localhost:4000/list`).then((res) => {
-            console.log(res.data)
+       
             // res.date.map((item) => (setNewData((current) => ({ ...current, "fields": item }))))
             setNewData(res.data.fields.listings)
+            console.log(res.data.fields.listings)
         })
     }, [trigger, priceFilter, filterAmenities, moreFilters])
 

@@ -44,7 +44,7 @@ const MapList = (props) => {
                                                     {listing.fields.name}
                                                 </Typography>
                                                 <Typography component="div" variant="caption">
-                                                    {listing.fields.accommodates} guests - {listing.fields.bedrooms} bedroom - {listing.fields.beds} bed - {listing.fields.bathrooms} bathrooms
+                                                    {listing.fields.accommodates} guests - {listing.fields.bedrooms} bedroom - {listing.fields.guests_included} bed - {listing.fields.bathrooms} bathrooms
                                                 </Typography>
                                                 <Typography component="div" variant="caption">
                                                     {
@@ -62,7 +62,9 @@ const MapList = (props) => {
                                                         (listing.fields.review_scores_rating > 0) ? (
                                                             listing.fields.review_scores_rating / 20
                                                         ) : 0
-                                                    } ({listing.fields.number_of_reviews} reviews)</Typography>
+                                                    } (
+                                                        {/* {listing.fields.number_of_reviews} reviews */}
+                                                        )</Typography>
                                                 </Box>
                                                 <Box>
                                                     <Typography variant="subtitle1" display="inline">${listing.fields.price}</Typography>
