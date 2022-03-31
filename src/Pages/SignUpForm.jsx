@@ -20,7 +20,6 @@ const [loading, setLoading] = React.useState(false);
 const [error, setError] = React.useState(false);
 // const [massege, setMassege] = React.useState("test");
 
-let massege = "test"
 const navigate = useNavigate()
 
 const formik = useFormik({

@@ -67,6 +67,9 @@ const login = ()=>{
       localStorage.setItem('token', response.data.token)
       localStorage.setItem('id', response.data.user._id)
       localStorage.setItem('name', response.data.user.firstName)
+      setTimeout(() => {
+        history('/discover')
+      }, 3000);
       if(response.data.user.role === 'host'){
         setAuth(true)
         localStorage.setItem('auth', true)
@@ -76,14 +79,7 @@ const login = ()=>{
 
   })}
 
-  useEffect(()=>{
-    if(auth){
-      setTimeout(() => {
-        history('/discover')
-      }, 3000);
-      
-    }
-  },[auth])
+  
   
        
 

@@ -64,10 +64,10 @@ const Header = (props) => {
         handleCloseNavMenu()
         navigate(`../${event.target.getAttribute('val')}`)
     };
-    const [auth , setAuth]= useState(false)
-    useEffect(()=>{
-      setAuth(localStorage.getItem('auth'))
-    },[auth])
+   
+    
+    
+    
 
     return (
         <AppBar position="static" color="light" sx={{

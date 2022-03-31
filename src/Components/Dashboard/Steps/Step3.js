@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Typography, List, ListItem, ListItemText, MenuItem, Menu, Box, TextField } from '@mui/material'
+import { Typography, List, ListItem, ListItemText, IconButton, InputAdornment, Box, TextField } from '@mui/material'
 
 
 
@@ -35,6 +35,16 @@ const Step0 = (props) => {
             console.log("true")
             setError2(false)
             setCreateProperty((current) => ({ ...current, 'summary': e.target.value }));
+        }
+    }
+
+    const priceHandler = (e) => {
+        if (e.target.value.length < 6) {
+            setError2(true)
+        } else {
+            console.log("true")
+            setError2(false)
+            setCreateProperty((current) => ({ ...current, 'price': e.target.value }));
         }
     }
 
@@ -76,6 +86,31 @@ const Step0 = (props) => {
                     InputLabelProps={{ style: { fontSize: 14, fontWeight: 400 } }}
                 />
             </Box>
+            <Box>
+                <TextField
+                    id="standard-basic"
+                    label="Price Per night"
+                    variant="standard"
+                    onChange={priceHandler}
+                    required={true}
+                    margin="normal"
+                    size="medium"
+                    type='number'
+                    InputProps={{ style: { fontSize: 16, fontWeight: 400, startAdornment: <InputAdornment position="start">kgsss</InputAdornment>, } }}
+                    InputLabelProps={{ style: { fontSize: 14, fontWeight: 400 } }}
+                    endAdornment={
+                        <InputAdornment position="end">
+                            <IconButton
+                                aria-label="toggle password visibility"
+                                edge="end"
+                            >
+                                ss
+                            </IconButton>
+                        </InputAdornment>
+                    }
+                />
+            </Box>
+
         </>
 
     )

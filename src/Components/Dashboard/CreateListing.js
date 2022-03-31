@@ -19,9 +19,9 @@ import Step0 from './Steps/Step0';
 import Step1 from './Steps/Step1';
 import Step2 from './Steps/Step2';
 import Step3 from './Steps/Step3';
-import Step4 from './Steps/Step3';
-import Step5 from './Steps/Step3';
-import Step6 from './Steps/Step3';
+import Step4 from './Steps/Step4';
+import Step5 from './Steps/Step5';
+import Step6 from './Steps/Step6';
 import { StarBorderPurple500 } from '@mui/icons-material';
 
 
@@ -41,6 +41,7 @@ const CreateListing = (props) => {
     guests_included: 0,
     bedrooms: 0,
     bathrooms: 0,
+    amenities: []
   })
 
   const nextStep = () => {
@@ -81,7 +82,7 @@ const CreateListing = (props) => {
           <Box sx={{ width: '100%' }}>
             <MobileStepper
               variant="progress"
-              steps={6}
+              steps={7}
               position="static"
               activeStep={step}
               sx={{ maxWidth: '100%', justifyContent: 'center' }}
@@ -118,7 +119,8 @@ const CreateListing = (props) => {
                         ? (<Step5 createProperty={createProperty} setCreateProperty={setCreateProperty}/>)
                         : (step === 6)
                           ? (<Step6 createProperty={createProperty} setCreateProperty={setCreateProperty}/>)
-                          : ''}
+                          : ''
+                          }
           </Box>
         </Grid>
 
