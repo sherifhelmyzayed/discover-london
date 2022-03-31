@@ -69,9 +69,11 @@ const Discover = () => {
 
     // filter functions
     const sortAndSlice = (importedData) => (
-        importedData.concat(newData)
-            .sort((a, b) => (b.fields.number_of_reviews - a.fields.number_of_reviews))
-            .slice(0, 20)
+        (newData) ? (
+            importedData.concat(newData)
+                .sort((a, b) => (b.fields.number_of_reviews - a.fields.number_of_reviews))
+                .slice(0, 20)
+        ) : ''
     )
 
     const filterPrice = (importedData) => (
