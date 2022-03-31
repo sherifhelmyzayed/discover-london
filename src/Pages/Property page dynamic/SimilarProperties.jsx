@@ -1,30 +1,36 @@
 import { Box, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import outside from '../../images/outside.jpg'
-import outside2 from '../../images/outside2.jpg'
 import { Button } from '@mui/material'
 import axios from "axios";
 import CircularProgress from '@mui/material/CircularProgress';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const SimilarProperties = () => {
 
+  const navigate = useNavigate();
+
+  const discover = () => {
+    navigate("/discover")
+  }
+
+
 
   const [randomCardData, SetRandomData] = useState({
-    cityCard: 'Test',
+    cityCard: '',
     priceCard: 12,
     pictureCard: ''
   })
 
   const [randomCardData2, SetRandomData2] = useState({
-    cityCard: 'Test',
+    cityCard: '',
     priceCard: 12,
     pictureCard: ''
   })
 
   const [randomCardData3, SetRandomData3] = useState({
-    cityCard: 'Test',
+    cityCard: '',
     priceCard: 12,
     pictureCard: ''
   })
@@ -49,7 +55,7 @@ const SimilarProperties = () => {
   }, [])
 
   useEffect(() => {
-    const ids = [9690677, 6017649, 13531067, 2461357]
+    const ids = [ 6017649, 13531067, 2461357]
 
     const randomNum = Math.floor(Math.random() * ids.length)
 
@@ -102,7 +108,7 @@ const SimilarProperties = () => {
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center', borderRadius: 2,
             height: '10rem'
-          }} >
+          }} mt={3}>
           </Box>
 
           <Box sx={{ display: 'flex', width: '100%', alignItems: 'center', justifyContent: 'center' }}>
@@ -114,10 +120,10 @@ const SimilarProperties = () => {
               $/Night
             </Typography>
           </Box>
-          <Box sx={{ display: 'flex', width: '100%', flexDirection: 'column', alignItems: 'center' }}>
+          <Box sx={{ display: 'flex', width: '100%', flexDirection: 'column', alignItems: 'center' }} >
 
             <Button variant="contained" disableElevation sx=
-              {{ width: '60%' }}>VIEW DETAILS</Button>
+              {{ width: '60%' }} onClick={discover}>Discover</Button>
 
           </Box>
         </Box>
@@ -132,10 +138,10 @@ const SimilarProperties = () => {
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center', borderRadius: 2,
             height: '10rem'
-          }} >
+          }} mt={3}>
           </Box>
 
-          <Box sx={{ display: 'flex', width: '100%', alignItems: 'center', justifyContent: 'center' }}>
+          <Box sx={{ display: 'flex', width: '100%', alignItems: 'center', justifyContent: 'center' }} >
             <Typography sx={{ fontSize: '2.5rem', fontFamily: 'syne', color: '#0c2442' }}>
               {randomCardData2.priceCard}
 
@@ -147,7 +153,7 @@ const SimilarProperties = () => {
           <Box sx={{ display: 'flex', width: '100%', flexDirection: 'column', alignItems: 'center' }}>
 
             <Button variant="contained" disableElevation sx=
-              {{ width: '60%' }}>VIEW DETAILS</Button>
+              {{ width: '60%' }} onClick={discover}>Discover</Button>
 
           </Box>
 
@@ -163,7 +169,7 @@ const SimilarProperties = () => {
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center', borderRadius: 2,
             height: '10rem'
-          }} >
+          }} mt={3}>
           </Box>
 
           <Box sx={{ display: 'flex', width: '100%', alignItems: 'center', justifyContent: 'center' }}>
@@ -178,7 +184,7 @@ const SimilarProperties = () => {
           <Box sx={{ display: 'flex', width: '100%', flexDirection: 'column', alignItems: 'center' }}>
 
             <Button variant="contained" disableElevation sx=
-              {{ width: '60%' }}>VIEW DETAILS</Button>
+              {{ width: '60%' }} onClick={discover}>Discover</Button>
 
           </Box>
 

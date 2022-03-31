@@ -17,17 +17,28 @@ const ReservationCalender = () => {
     const url = `http://localhost:4000/booking`
     const [reservationMsg, setReservationMsg] = useState(false)
 
+    const { id } = useParams();
+    const URL2 = `http://localhost:4000/list/${id}`
 
+    let hostID 
+
+    axios.get(URL2).then(res => {
+        hostID = res.data.host
+    }).catch(err => {
+        console.log(err)
+    })
 
     const reserve = () => {
         axios.post(url, {
-            property: '622098a84f93748a635ffde1',
-            host: '622098a84f93748a635ffde2',
-            guest: '622098a84f93748a635ffde3',
+            property: id,
+            host: hostID,
+            guest: localStorage.id,
             checkIn: checkInValue,
             checkOut: checkOutValue,
         }).then(res => {
             console.log(res)
+
+
         }).catch(error => {
             console.log(error, "Error")
         })
@@ -81,7 +92,7 @@ const ReservationCalender = () => {
 
             </Box>
 
-            {reservationMsg && <Typography mt={2}>Reserved Successfuly</Typography>}  
+            {reservationMsg && <Typography mt={2}>Reserved Successfuly</Typography>}
 
 
 

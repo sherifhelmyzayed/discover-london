@@ -58,6 +58,7 @@ const PropertyV2 = () => {
                 setDescription(response.data.description)
             } else {
                 axios.get(URL2).then(response => {
+
                     setAmenitiesStr(response.data.records[0].fields.amenities)
                     setTitle(response.data.records[0].fields.name)
                     setCity(response.data.records[0].fields.city)
@@ -142,7 +143,7 @@ const PropertyV2 = () => {
                     <Grid item xs={12} xl={10} lg={10} md={10} mb={10}>
                         <Box textAlign='center'>
 
-                            <Typography sx={{ fontFamily: 'syne', fontSize: '1.4rem', fontWeight: 600, marginBottom: 2, marginTop: 2, color: 'primary.main' }}>Similar properties nearby</Typography>
+                            <Typography sx={{ fontFamily: 'syne', fontSize: '1.4rem', fontWeight: 600, marginBottom: 2, marginTop: 2, color: 'primary.main' }}>Discover similar properties nearby</Typography>
                         </Box>
                         <SimilarProperties />
                     </Grid>
