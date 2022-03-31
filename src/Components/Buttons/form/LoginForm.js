@@ -133,50 +133,7 @@ const login = ()=>{
     
     <Button onClick={login} style={{marginTop:'8%',marginBottom:'5%'}} variant="contained" fullWidth>Login</Button>
     
-    {/* <Divider style={{fontSize:'10px', marginBottom:'5%'}}>OR</Divider>
     
-    <Button style={{marginBottom:'10px'}} variant="outlined" fullWidth  >
-    <Grid  container  justify="center" columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-      <Grid item md={1} >
-      <FacebookIcon/>
-      </Grid>
-      <Grid item  md={10}>
-       <h4>Continue With Facebook</h4>
-      </Grid>
-     </Grid>
-     </Button>
-     <Button style={{marginBottom:'10px'}} variant="outlined" fullWidth  >
-    <Grid  container  justify="center" columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-      <Grid item md={1} >
-      <GoogleIcon/>
-      </Grid>
-      <Grid item  md={10}>
-       <h4>Continue With Google</h4>
-      </Grid>
-     </Grid>
-     </Button>
-     <Button style={{marginBottom:'10px'}} variant="outlined" fullWidth  >
-    <Grid container  justify="center" columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-      <Grid item md={1} >
-      <AppleIcon/>
-      </Grid>
-      <Grid item  md={10}>
-       <h4>Continue With Apple</h4>
-      </Grid>
-     </Grid>
-     </Button>
-     <Button style={{marginBottom:'10px'}} variant="outlined" fullWidth  >
-    <Grid container  justify="center" columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-      <Grid item md={1} >
-      <MailOutlineIcon/>
-      </Grid>
-      <Grid item  md={10}>
-       <h4>Continue With Mail</h4>
-      </Grid>
-     </Grid>
-     </Button>
-      */
-      }
             </div>
             </>,
             document.getElementById('portal')

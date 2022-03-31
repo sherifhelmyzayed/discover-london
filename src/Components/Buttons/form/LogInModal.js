@@ -11,9 +11,19 @@ export default function Modal() {
     const [isOpenSignUp , setIsOpenSignUp]= useState(false);
     return (<>
       <div>
+<<<<<<< HEAD:src/Components/Buttons/form/Modal.js
+        {/* <button onClick={()=> setIsOpen(true)}>login</button> */}
+        
+      <LoginForm open={true} > </LoginForm>
+=======
+        {/* <button >login</button> */}
+        <Button  onClick={()=> setIsOpen(true)}color="white" variant="oulLine" fullWidth>
+                   login
+                
+        </Button>
+      <LoginForm open={isOpen} onClose={()=> setIsOpen(false)}> </LoginForm>
+>>>>>>> 6489158031d707d8b127dbf87851a6478a580bc5:src/Components/Buttons/form/LogInModal.js
       
-      <LoginForm open={true} onClose={()=> setIsOpen(false)}> </LoginForm>
-
       </div>
       </>
       )
