@@ -41,6 +41,7 @@ const CreateListing = (props) => {
     guests_included: 0,
     bedrooms: 0,
     bathrooms: 0,
+    amenities: []
   })
 
   const nextStep = () => {
@@ -81,7 +82,7 @@ const CreateListing = (props) => {
           <Box sx={{ width: '100%' }}>
             <MobileStepper
               variant="progress"
-              steps={6}
+              steps={7}
               position="static"
               activeStep={step}
               sx={{ maxWidth: '100%', justifyContent: 'center' }}

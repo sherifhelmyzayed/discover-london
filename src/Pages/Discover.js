@@ -5,7 +5,7 @@ import MapList from '../Components/Map/MapList';
 import Filter from '../Components/Map/Filter';
 import HeaderSherif from '../Components/HeaderSherif';
 import listings from '../shared/airbnb-listings (1).json'
-let auth = localStorage.getItem('auth')
+// let auth = localStorage.getItem('auth')
 
 
 const Discover = () => {
@@ -68,9 +68,9 @@ const Discover = () => {
         importedData.filter(item =>
             item.fields.cancellation_policy.includes(filterAmenities.cancellation ? "strict" : "")
             && item.fields.amenities.includes(filterAmenities.iron ? "Iron" : "")
-            && item.fields.amenities.includes(filterAmenities.parking ? "kitchen" : "")
-            && item.fields.amenities.includes(filterAmenities.washer ? "parking" : "")
-            && item.fields.amenities.includes(filterAmenities.wifi ? "Washer" : "")
+            && item.fields.amenities.includes(filterAmenities.parking ? "parking" : "")
+            && item.fields.amenities.includes(filterAmenities.washer ? "Washer" : "")
+            && item.fields.amenities.includes(filterAmenities.wifi ? "Internet" : "")
             && item.fields.amenities.includes(filterAmenities.ac ? "Air conditioning" : "")
             && item.fields.amenities.includes(filterAmenities.tv ? "TV" : "")
         )
@@ -139,8 +139,12 @@ const Discover = () => {
             .filter(item => item.fields.geolocation[0] > lat2 && item.fields.geolocation[0] < lat1 && item.fields.geolocation[1] > log2 && item.fields.geolocation[1] < log1)
         setData(sortAndSlice(filterPrice(filterAmenity(filterMore(importedData)))))
         setinitialView(true)
+<<<<<<< HEAD
+    }, [trigger, priceFilter, filterAmenities, moreFilters ])
+=======
         console.log(importedData)
     }, [trigger, priceFilter, filterAmenities, moreFilters])
+>>>>>>> 5af1480b4ca68ad2cf07bb6f11938a8efc628e37
 
     return (
         <>

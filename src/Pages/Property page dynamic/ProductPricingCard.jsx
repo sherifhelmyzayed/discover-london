@@ -5,10 +5,6 @@ import PersonPinOutlinedIcon from '@mui/icons-material/PersonPinOutlined';
 import Divider from '@mui/material/Divider';
 
 
-
-
-
-
 const ProductPricingCard = (props) => {
     const { amenities, hostImage, host, price, accomadates, bathrooms
         , bedrooms, reviews, neighbourhood, city, title } = props
