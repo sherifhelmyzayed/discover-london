@@ -12,7 +12,7 @@ import Tooltip from '@mui/material/Tooltip';
 import ReservationCalender from './ReservationCalender'
 
 const PropertyV2 = () => {
-    // const { id } = useParams();
+    const { id } = useParams();
 
     const [title, setTitle] = useState('')
     const [city, setCity] = useState('')
@@ -28,28 +28,55 @@ const PropertyV2 = () => {
     const [amenities, setAmenities] = useState([])
     const [popertyPic, setPropertyPic] = useState('')
     const [description, setDescription] = useState('')
+    const [amenitiesString, setAmenitiesStr] = useState('')
 
 
 
-    const URL = "http://localhost:4000/list/624429d4722286d23a286158"
+    const URL = `http://localhost:4000/list/${id}`
+    const URL2 = `https://data.opendatasoft.com/api/records/1.0/search/?dataset=airbnb-listings%40public&q=&rows=1&facet=id&refine.id=${id}`
+
+
 
     useEffect(() => {
         axios.get(URL).then(response => {
-            console.log(response.status)
-            setTitle(response.data.name)
-            setCity(response.data.city)
-            setNeighbourhood(response.data.neighbourhood_cleansed)
-            setReviews(response.data.number_of_reviews)
-            setSummary(response.data.summary)
-            setBedrooms(response.data.bedrooms)
-            setBathrooms(response.data.bathrooms)
-            setAccomadates(response.data.guests_included)
-            setPrice(response.data.price)
-            setHost(response.data.host_name)
-            // setHostImage(response.data.host_thumbnail_url)
-            setAmenities(response.data.amenities)
-            // setPropertyPic(response.data.xl_picture_url)
-            setDescription(response.data.description)
+
+
+            if (response.data.bedrooms) {
+                setTitle(response.data.name)
+                setCity(response.data.city)
+                setNeighbourhood(response.data.neighbourhood_cleansed)
+                setReviews(response.data.number_of_reviews)
+                setSummary(response.data.summary)
+                setBedrooms(response.data.bedrooms)
+                setBathrooms(response.data.bathrooms)
+                setAccomadates(response.data.guests_included)
+                setPrice(response.data.price)
+                setHost(response.data.host_name)
+                setHostImage(response.data.host_thumbnail_url)
+                setAmenities(response.data.amenities)
+                setPropertyPic(response.data.xl_picture_url)
+                setDescription(response.data.description)
+            } else {
+                axios.get(URL2).then(response => {
+                    setAmenitiesStr(response.data.records[0].fields.amenities)
+                    setTitle(response.data.records[0].fields.name)
+                    setCity(response.data.records[0].fields.city)
+                    setNeighbourhood(response.data.records[0].fields.neighbourhood_cleansed)
+                    setReviews(response.data.records[0].fields.number_of_reviews)
+                    setSummary(response.data.records[0].fields.summary)
+                    setBedrooms(response.data.records[0].fields.bedrooms)
+                    setBathrooms(response.data.records[0].fields.bathrooms)
+                    setAccomadates(response.data.records[0].fields.guests_included)
+                    setPrice(response.data.records[0].fields.price)
+                    setHost(response.data.records[0].fields.host_name)
+                    setHostImage(response.data.records[0].fields.host_thumbnail_url)
+                    setPropertyPic(response.data.records[0].fields.xl_picture_url)
+                    setDescription(response.data.records[0].fields.description)
+                }).catch(error => {
+                    console.log(error)
+                })
+            }
+
 
         }).catch(error => {
             console.log(error)
@@ -62,7 +89,6 @@ const PropertyV2 = () => {
         <>
             <HeaderSherif />
 
-            {/* <PrimarySearchAppBar /> */}
             <Container sx={{ marginTop: '3em' }}>
 
 
@@ -84,6 +110,7 @@ const PropertyV2 = () => {
                             neighbourhood={neighbourhood}
                             reviews={reviews}
                             amenities={amenities}
+                            amenitiesString={amenitiesString}
                             bedrooms={bedrooms}
                             bathrooms={bathrooms}
                             summary={summary}
@@ -95,7 +122,7 @@ const PropertyV2 = () => {
                     </Grid>
                     <Grid item xs={12} xl={10} lg={10} md={10}>
                         <Box sx={{
-                            boxShadow: 2, width: '100%', transition: '0.3s', borderRadius: 5, padding: 2
+                            boxShadow: 2, width: '100%', transition: '0.3s', borderRadius: 5, padding: 2,display:'flex',flexDirection:'column',alignItems:'center'
                         }} mt={2}>
 
                             <ReservationCalender />

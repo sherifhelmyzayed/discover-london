@@ -23,7 +23,7 @@ const FirstSection = () => {
                     flexDirection: 'column',
                     width: "100%",
                     textAlign: 'center',
-                }}>
+                }} ml={20}>
                     <Box>
 
                         <Typography sx={{

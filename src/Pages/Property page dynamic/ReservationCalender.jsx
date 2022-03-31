@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
@@ -15,6 +15,8 @@ const ReservationCalender = () => {
     const [checkInValue, setCheckInValue] = useState(null);
     const [checkOutValue, setCheckOutValue] = useState(null);
     const url = `http://localhost:4000/booking`
+    const [reservationMsg, setReservationMsg] = useState(false)
+
 
 
     const reserve = () => {
@@ -29,6 +31,8 @@ const ReservationCalender = () => {
         }).catch(error => {
             console.log(error, "Error")
         })
+        setReservationMsg(true)
+
     }
 
 
@@ -76,6 +80,8 @@ const ReservationCalender = () => {
                 <DraggableDialog />
 
             </Box>
+
+            {reservationMsg && <Typography mt={2}>Reserved Successfuly</Typography>}  
 
 
 

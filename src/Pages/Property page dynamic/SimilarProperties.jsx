@@ -54,7 +54,6 @@ const SimilarProperties = () => {
     const randomNum = Math.floor(Math.random() * ids.length)
 
     const URL = `https://data.opendatasoft.com/api/records/1.0/search/?dataset=airbnb-listings%40public&q=&rows=1&facet=id&refine.id=${ids[randomNum]}`
-    console.log(URL)
     axios.get(URL).then(response => {
       SetRandomData2(prevState => ({
         ...prevState,

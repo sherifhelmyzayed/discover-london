@@ -7,9 +7,9 @@ import Divider from '@mui/material/Divider';
 
 const ProductPricingCard = (props) => {
     const { amenities, hostImage, host, price, accomadates, bathrooms
-        , bedrooms, reviews, neighbourhood, city, title } = props
+        , bedrooms, reviews, neighbourhood, city, title, amenitiesString } = props
 
-  
+    const featuresArr = amenitiesString.split(',')
 
 
     return (
@@ -71,9 +71,7 @@ const ProductPricingCard = (props) => {
                 <Box sx={{ width: '100%' }} mb={3}>
                     <Typography sx={{ fontFamily: 'syne', fontSize: '1.4rem', fontWeight: 600, marginBottom: 2, color: 'primary.main' }}>FEATURES & AMENIITES</Typography>
                     <ul className="features-list">
-                        {amenities.map((item, i) => {
-                            return <li key={i}>{item}</li>
-                        })}
+                        {amenities.length === 0 ? featuresArr.map((item, i) => <li key={i}>{item}</li>) : amenities.map((item, i) => <li key={i}>{item}</li>)}
                     </ul>
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between' }} mt={2} mb={2}>
@@ -88,9 +86,9 @@ const ProductPricingCard = (props) => {
 
                 </Box>
 
-                  
+
             </Box>
-           
+
 
         </>
     )
