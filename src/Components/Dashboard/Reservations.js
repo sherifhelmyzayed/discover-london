@@ -206,296 +206,55 @@ const Reservations = () => {
   const [selected, setSelected] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(3);
-  const [reserv , setReserv] = useState({})
+  const [reserv , setReserv] = useState([])
   const [guest , setGuest] = useState({})
   const [list , setList] = useState({})
   useEffect(()=>{
     axios.get(`http://localhost:4000/booking/host/${uid}`).then((res)=>{
-      setReserv(res.data)
+    // console.log(res.data)
+    setReserv(res.data)
     }).then(()=>{
-      reserv.map((el)=>(
-        axios.get(`http://localhost:4000/user/${el.guest}`).then((res)=>{
-          // console.log(res)
-          setReserv((current)=>({...current, "guest": res.data}))
-
-        })
-      ))
-      reserv.map((el)=>(
-        axios.get(`http://localhost:4000/list/${el.property}`).then((res)=>{
-          // console.log(res)
-          setReserv((current)=>({...current, "property": res.data}))
-          console.log(reserv)
-        })
-      ))
+      axios.get(`http://localhost:4000/user/62437c78ba23545b6c3c946d`).then((res)=>{
+        // console.log(res)
+        console.log(reserv)
+        setGuest(res.data)
+      })
+    }).then(()=>{
+      axios.get(`http://localhost:4000/list/624494eaac4fa8e379d1ebec`).then((res)=>{
+        // console.log(res)
+        setList(res.data)
+      })
     })
-
-    },[])
-
-    const rows = [
-      // reserv.map((R)=>{
-        
-      // })
-      // {
-      //   id: '62367dcca242a102c8e7f4ea',
-      //   confirmation: 2467891,
-      //   checkin: '2022-03-15',
-      //   checkout: '2022-03-24',
-      //   listing: {
-      //     id: '625',
-      //     title: "new ",
-      //     description: "description of this property",
-      //     image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
-      //   },
-      //   guest: {
-      //     id: '622098a84f93748a635ffde2',
-      //     photo: "https://material-ui.com/static/images/avatar/3.jpg",
-      //     firstName: "Mostafa",
-      //     lastName: "Amar",
-      //     city: 'Egypt'
-      //   },
-      //   approved: 'true',
-      // },
-      // {
-      //   id: '62367dcca242a102c8e7f4ea22',
-      //   confirmation: 2467892,
-      //   checkin: '2022-03-15',
-      //   checkout: '2022-03-24',
-      //   listing: {
-      //     id: '625',
-      //     title: "new ",
-      //     description: "description of this property",
-      //     image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
-      //   },
-      //   guest: {
-      //     id: '622098a84f93748a635ffde23',
-      //     photo: "https://material-ui.com/static/images/avatar/3.jpg",
-      //     firstName: "Mostafa",
-      //     lastName: "Amar",
-      //     city: 'Egypt'
-      //   },
-      //   approved: 'false',
-      // },
-      // {
-      //   id: '62367dcca242a102c8e7f4e44a',
-      //   confirmation: 2467893,
-      //   checkin: '2022-03-15',
-      //   checkout: '2022-03-24',
-      //   listing: {
-      //     id: '625',
-      //     title: "new ",
-      //     description: "description of this property",
-      //     image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
-      //   },
-      //   guest: {
-      //     id: '622098a84f93748a635ffde12',
-      //     photo: "https://material-ui.com/static/images/avatar/3.jpg",
-      //     firstName: "Mostafa",
-      //     lastName: "Amar",
-      //     city: 'Egypt'
-      //   },
-      //   approved: 'true',
-      // },
-      // {
-      //   id: '62367dcca242a102c8e7f24ea',
-      //   confirmation: 2467894,
-      //   checkin: '2022-03-15',
-      //   checkout: '2022-03-24',
-      //   listing: {
-      //     id: '625',
-      //     title: "new ",
-      //     description: "description of this property",
-      //     image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
-      //   },
-      //   guest: {
-      //     id: '622098a84f93748a63512ffde2',
-      //     photo: "https://material-ui.com/static/images/avatar/3.jpg",
-      //     firstName: "Mostafa",
-      //     lastName: "Amar",
-      //     city: 'Egypt'
-      //   },
-      //   approved: true,
-      // },
-      // {
-      //   id: '62367dcca242a102c8e7f24ea',
-      //   confirmation: 2467895,
-      //   checkin: '2022-03-15',
-      //   checkout: '2022-03-24',
-      //   listing: {
-      //     id: '625',
-      //     title: "new ",
-      //     description: "description of this property",
-      //     image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
-      //   },
-      //   guest: {
-      //     id: '622098a84f93748a6235ffde2',
-      //     photo: "https://material-ui.com/static/images/avatar/3.jpg",
-      //     firstName: "Mostafa",
-      //     lastName: "Amar",
-      //     city: 'Egypt'
-      //   },
-      //   approved: 'true',
-      // },
-      // {
-      //   id: '62367dcca242a102c821e7f4ea',
-      //   confirmation: 2467896,
-      //   checkin: '2022-03-15',
-      //   checkout: '2022-03-24',
-      //   listing: {
-      //     id: '625',
-      //     title: "new ",
-      //     description: "description of this property",
-      //     image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
-      //   },
-      //   guest: {
-      //     id: '622098a84f93748a635ff1de2',
-      //     photo: "https://material-ui.com/static/images/avatar/3.jpg",
-      //     firstName: "Mostafa",
-      //     lastName: "Amar",
-      //     city: 'Egypt'
-      //   },
-      //   approved: true,
-      // },
-      // {
-      //   id: '62367dcca242a102c8e127f4ea',
-      //   confirmation: 2467897,
-      //   checkin: '2022-03-15',
-      //   checkout: '2022-03-24',
-      //   listing: {
-      //     id: '625',
-      //     title: "new ",
-      //     description: "description of this property",
-      //     image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
-      //   },
-      //   guest: {
-      //     id: '622098a84f93748a635ff12de2',
-      //     photo: "https://material-ui.com/static/images/avatar/3.jpg",
-      //     firstName: "Mostafa",
-      //     lastName: "Amar",
-      //     city: 'Egypt'
-      //   },
-      //   approved: 'true',
-      // },
-      // {
-      //   id: '62367dcca242a102c812e7f4ea',
-      //   confirmation: 2467898,
-      //   checkin: '2022-03-15',
-      //   checkout: '2022-03-24',
-      //   listing: {
-      //     id: '625',
-      //     title: "new ",
-      //     description: "description of this property",
-      //     image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
-      //   },
-      //   guest: {
-      //     id: '622098a84f9374128a635ffde2',
-      //     photo: "https://material-ui.com/static/images/avatar/3.jpg",
-      //     firstName: "Mostafa",
-      //     lastName: "Amar",
-      //     city: 'Egypt'
-      //   },
-      //   approved: true,
-      // },
-      // {
-      //   id: '62367dcca24122a102c8e7f4ea',
-      //   confirmation: 2467899,
-      //   checkin: '2022-03-15',
-      //   checkout: '2022-03-24',
-      //   listing: {
-      //     id: '625',
-      //     title: "new ",
-      //     description: "description of this property",
-      //     image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
-      //   },
-      //   guest: {
-      //     id: '622098a8124f93748a635ffde2',
-      //     photo: "https://material-ui.com/static/images/avatar/3.jpg",
-      //     firstName: "Mostafa",
-      //     lastName: "Amar",
-      //     city: 'Egypt'
-      //   },
-      //   approved: true,
-      // },
-      // {
-      //   id: '62367dcca24212a102c8e7f4ea',
-      //   confirmation: 2467900,
-      //   checkin: '2022-03-15',
-      //   checkout: '2022-03-24',
-      //   listing: {
-      //     id: '625',
-      //     title: "new ",
-      //     description: "description of this property",
-      //     image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
-      //   },
-      //   guest: {
-      //     id: '622098a84f9123748a635ffde2',
-      //     photo: "https://material-ui.com/static/images/avatar/3.jpg",
-      //     firstName: "Mostafa",
-      //     lastName: "Amar",
-      //     city: 'Egypt'
-      //   },
-      //   approved: true,
-      // },
-      // {
-      //   id: '62367dcca24122a102c8e7f4ea',
-      //   confirmation: 246901,
-      //   checkin: '2022-03-15',
-      //   checkout: '2022-03-24',
-      //   listing: {
-      //     id: '625',
-      //     title: "new ",
-      //     description: "description of this property",
-      //     image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
-      //   },
-      //   guest: {
-      //     id: '622098a84f9371248a635ffde2',
-      //     photo: "https://material-ui.com/static/images/avatar/3.jpg",
-      //     firstName: "Mostafa",
-      //     lastName: "Amar",
-      //     city: 'Egypt'
-      //   },
-      //   approved: true,
-      // },
-      // {
-      //   id: '6231267dcca242a102c8e7f4ea',
-      //   confirmation: 246902,
-      //   checkin: '2022-03-15',
-      //   checkout: '2022-03-24',
-      //   listing: {
-      //     id: '625',
-      //     title: "new ",
-      //     description: "description of this property",
-      //     image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
-      //   },
-      //   guest: {
-      //     id: '622098a84f9123748a635ffde2',
-      //     photo: "https://material-ui.com/static/images/avatar/3.jpg",
-      //     firstName: "Mostafa",
-      //     lastName: "Amar",
-      //     city: 'Egypt'
-      //   },
-      //   approved: true,
-      // },
-      // {
-      //   id: '2162367dcca242a102c8e7f4ea',
-      //   confirmation: 246903,
-      //   checkin: '2022-03-15',
-      //   checkout: '2022-03-24',
-      //   approved: 'true',
-      //   listing: {
-      //     id: '625',
-      //     title: "new ",
-      //     description: "description of this property",
-      //     image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
-      //   },
-      //   guest: {
-      //     id: '622098a84f93748a635f2fde2',
-      //     photo: "https://material-ui.com/static/images/avatar/3.jpg",
-      //     firstName: "Mostafa",
-      //     lastName: "Amar",
-      //     city: 'Egypt'
-      //   },
-      // },
-    ]
+    },[list])
+    const x = 
+      reserv.map((e)=>{return ( 
+        {
+          id : e._id,
+          confirmation : 2467891,
+          checkin: e.checkIn,
+          checkout: e.checkOut,
+          aprroved: e.aprroved,
+          listing:{
+                id : list._id,
+                summary : list.summary,
+                description : list.description,
+                image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg"
+          },
+          guest: {
+                id: guest._id,
+                photo: "https://material-ui.com/static/images/avatar/3.jpg",
+                firstName: guest.firstName,
+                lastName: guest.lastName,
+                city: guest.city
+              },
+              
+          
+        })
+      })
+    
+    console.log(x)
+   
+  
     
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -505,7 +264,7 @@ const Reservations = () => {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.name);
+      const newSelecteds = x.map((n) => n.name);
       setSelected(newSelecteds);
       return;
     }
@@ -526,7 +285,7 @@ const Reservations = () => {
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - x.length) : 0;
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -544,49 +303,49 @@ const Reservations = () => {
               orderBy={orderBy}
               onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
-              rowCount={rows.length}
+              rowCount={x.length}
             />
             <TableBody>
               {/* if you don't need to support IE11, you can replace the `stableSort` call with:
                  rows.slice().sort(getComparator(order, orderBy)) */}
-              {rows
+              {x
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row, index) => {
+                .map((x, index) => {
 
                   return (
                     <TableRow
                       hover
-                      key={row.confirmation}
+                      key={x.confirmation}
 
                     >
                       <TableCell >
-                        <Typography variant="subtitle5" component="p" textAlign="center">{row.confirmation}</Typography>
+                        <Typography variant="subtitle5" component="p" textAlign="center">{x.confirmation}</Typography>
                       </TableCell>
                       <TableCell
                         component="th"
                         scope="row"
                         padding={0}
                       >
-                        <Typography variant="subtitle5" component="p" textAlign="center">{row.checkin}</Typography>
+                        <Typography variant="subtitle5" component="p" textAlign="center">{x.checkin}</Typography>
                       </TableCell>
                       <TableCell
                         component="th"
                         align="right"
                         padding={0}
                       >
-                        <Typography variant="subtitle5" component="p" textAlign="center">{row.checkout}</Typography>
+                        <Typography variant="subtitle5" component="p" textAlign="center">{x.checkout}</Typography>
                       </TableCell>
                       <TableCell align="right">
                         <Grid container>
                           <Grid item md={7} display="flex" justifyContent="center" alignItems="center" paddingRight={'1px'}>
                             <Box>
-                              <Typography variant="subtitle4" component="p" textAlign="left">{row.listing.title}</Typography>
-                              <Typography variant="subtitle5" component="p" textAlign="left">{row.listing.description}</Typography>
+                              <Typography variant="subtitle4" component="p" textAlign="left">{x.listing.title}</Typography>
+                              <Typography variant="subtitle5" component="p" textAlign="left">{x.listing.description}</Typography>
                               <Typography variant="clickable" component="p" textAlign="left" color={"primary.light"}>View listing</Typography>
                             </Box>
                           </Grid>
                           <Grid item md={5}>
-                            <Image src={row.listing.image} alt={row.listing.title}
+                            <Image src={x.listing.image} alt={x.listing.title}
                             />
                           </Grid>
                         </Grid>
@@ -595,18 +354,18 @@ const Reservations = () => {
                         <Grid container fullWidth>
                           <Grid item md={9} display="flex" justifyContent="center" alignItems="center" paddingX={'1px'}>
                             <Box>
-                              <Typography variant="subtitle4" component="p" textAlign="left">{row.guest.firstName} {row.guest.lastName}</Typography>
-                              <Typography variant="subtitle5" component="p" textAlign="left">{row.guest.city}</Typography>
+                              <Typography variant="subtitle4" component="p" textAlign="left">{x.guest.firstName} {x.guest.lastName}</Typography>
+                              <Typography variant="subtitle5" component="p" textAlign="left">{x.guest.city}</Typography>
                               <Typography variant="clickable" component="p" textAlign="left" color={"primary.light"}>View Profile</Typography>
                             </Box>
                           </Grid>
                           <Grid item md={3} display="flex" justifyContent="center" alignItems="center">
-                            <ImageGuest src={row.guest.photo} alt={row.listing.title}
+                            <ImageGuest src={x.guest.photo} alt={x.listing.title}
                             />
                           </Grid>
                         </Grid>
                       </TableCell>
-                      <TableCell align="right">{row.approved ==='true'? (
+                      <TableCell align="right">{x.approved ==='true'? (
                      <Grid display="flex" flexDirection="column" justifyContent="center" alignItems="center" >
                        <Button size="small" variant="contained" color="secondary" marginX='auto'>Accept</Button>
                        <Button>Decline</Button>
@@ -633,7 +392,7 @@ const Reservations = () => {
         <TablePagination
           rowsPerPageOptions={[3,6, 9]}
           component="div"
-          count={rows.length}
+          count={x.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
