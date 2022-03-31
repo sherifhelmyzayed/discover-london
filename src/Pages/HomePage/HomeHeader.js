@@ -3,6 +3,13 @@ import house from '../../assets/house.jpg'
 import { Box, Typography, Button, Grid } from '@mui/material';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useNavigate } from 'react-router-dom';
+import Carousel from 'react-material-ui-carousel'
+import insideShot from '../../images/insideShot.jpg'
+import living from '../../images/living.jpg'
+import view2 from '../../images/view2.jpg'
+import houseShot from '../../images/houseShot.jpg'
+
+
 
 
 const HomeHeader = () => {
@@ -25,23 +32,58 @@ const HomeHeader = () => {
         justifyContent: 'center',
         alignItems: 'center'
       }}>
-        <Grid container spacing={2} ml={5} mt={15}  justifyContent="center">
           <Grid item xs={12}>
+          <Carousel sx={{ width: '50vw', height: '600px' }} IndicatorIcon={false} fullHeightHover={false} >
+
             <Box sx={{
               backgroundImage: `url(${house
-                })`, height: '25em', width: '50%',
+                })`, height: '25em', width: '100%',
               backgroundSize: 'cover',
               backgroundRepeat: 'no-repeat',
               backgroundPosition: 'center', borderRadius: 5, boxShadow: 3
-            }} >
+            }} mt={20}>
             </Box>
+            <Box sx={{
+              backgroundImage: `url(${insideShot
+                })`, height: '25em', width: '100%',
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center', borderRadius: 5, boxShadow: 3
+            }} mt={20}>
+            </Box>
+            <Box sx={{
+              backgroundImage: `url(${living
+                })`, height: '25em', width: '100%',
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center', borderRadius: 5, boxShadow: 3
+            }} mt={20} >
+            </Box>
+            <Box sx={{
+              backgroundImage: `url(${view2
+                })`, height: '25em', width: '100%',
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center', borderRadius: 5, boxShadow: 3
+            }} mt={20}>
+            </Box>
+            <Box sx={{
+              backgroundImage: `url(${houseShot
+                })`, height: '25em', width: '100%',
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center', borderRadius: 5, boxShadow: 3
+            }} mt={20}>
+            </Box>
+          </Carousel>
+
           </Grid>
           <Grid item xs={12} >
 
             <Typography sx={{
               fontWeight: '800',
               fontSize: '1.8em',
-              fontFamily: 'lato',
+              fontFamily: 'syne',
               textShadow: "-1px 11px 25px rgba(9,9,9,0.9)",
               color: 'white',
 
@@ -65,7 +107,6 @@ const HomeHeader = () => {
             </Box>
             </Grid>
 
-          </Grid>
       </Box>
 
 
