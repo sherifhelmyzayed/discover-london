@@ -7,7 +7,6 @@ import HeaderSherif from '../Components/HeaderSherif';
 import listings from '../shared/airbnb-listings (1).json'
 // let auth = localStorage.getItem('auth')
 import axios from 'axios';
-import { NestCamWiredStandTwoTone } from '@mui/icons-material';
 
 
 
@@ -62,16 +61,18 @@ const Discover = () => {
             // res.date.map((item) => (setNewData((current) => ({ ...current, "fields": item }))))
             setNewData(res.data.fields.listings)
         })
-    }, [newData])
-
-
-
+    }, [trigger, priceFilter, filterAmenities, moreFilters])
 
     // filter functions
     const sortAndSlice = (importedData) => (
-        importedData.concat(newData)
+        (newData) ? (
+            importedData
+                .sort((a, b) => (b.fields.number_of_reviews - a.fields.number_of_reviews))
+                .slice(0, 20)
+        ) :
+        (   importedData
             .sort((a, b) => (b.fields.number_of_reviews - a.fields.number_of_reviews))
-            .slice(0, 20)
+            .slice(0, 20))
     )
 
     const filterPrice = (importedData) => (
@@ -154,7 +155,6 @@ const Discover = () => {
             .filter(item => item.fields.geolocation[0] > lat2 && item.fields.geolocation[0] < lat1 && item.fields.geolocation[1] > log2 && item.fields.geolocation[1] < log1)
         setData(sortAndSlice(filterPrice(filterAmenity(filterMore(importedData)))))
         setinitialView(true)
-        console.log(importedData)
     }, [trigger, priceFilter, filterAmenities, moreFilters])
 
     return (
