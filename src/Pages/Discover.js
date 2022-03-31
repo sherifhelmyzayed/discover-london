@@ -139,12 +139,8 @@ const Discover = () => {
             .filter(item => item.fields.geolocation[0] > lat2 && item.fields.geolocation[0] < lat1 && item.fields.geolocation[1] > log2 && item.fields.geolocation[1] < log1)
         setData(sortAndSlice(filterPrice(filterAmenity(filterMore(importedData)))))
         setinitialView(true)
-<<<<<<< HEAD
-    }, [trigger, priceFilter, filterAmenities, moreFilters ])
-=======
         console.log(importedData)
     }, [trigger, priceFilter, filterAmenities, moreFilters])
->>>>>>> 5af1480b4ca68ad2cf07bb6f11938a8efc628e37
 
     return (
         <>
