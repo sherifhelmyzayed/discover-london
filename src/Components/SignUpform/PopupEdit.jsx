@@ -36,7 +36,7 @@ export default function PopupEdit(props) {
     axios
       .patch(
         `http://localhost:4000/user`,
-        { headers: { Authorization: `Bearer ${token}` } },
+        { headers: { authorization: token } },
         newData
       )
 

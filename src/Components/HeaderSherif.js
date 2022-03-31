@@ -13,7 +13,6 @@ const Header = (props) => {
     const [anchorElUser, setAnchorElUser] = useState(null);
     const [active, setActive] = useState(1);
 
-    console.log(localStorage.auth)
 
     let navigate = useNavigate();
 
@@ -130,7 +129,7 @@ const Header = (props) => {
                         component="div"
                         sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
                     >
-                        LOGO
+                        DISCOVER LONDON
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
                         {pages.map((page, key) => (
@@ -140,7 +139,7 @@ const Header = (props) => {
                                 onClick={changeRoute}
                                 id={key}
                                 val={page}
-                                marginTop={0} paddingTop={0}
+                                margintop={0} paddingtop={0}
                                 sx={{
                                     color: 'grey',
                                     borderBottom: (key == active) ? '1px solid #808080' : 'none',
@@ -183,8 +182,8 @@ const Header = (props) => {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={()=>handleCloseUserMenu(setting)}>
+                            {settings.map((setting,i) => (
+                                <MenuItem key={i} onClick={()=>handleCloseUserMenu(setting)}>
                                     <Typography textAlign="center">{setting}</Typography>
                                 </MenuItem>
                             ))}
