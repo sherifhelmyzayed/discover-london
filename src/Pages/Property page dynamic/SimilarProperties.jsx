@@ -39,7 +39,8 @@ const SimilarProperties = () => {
       SetRandomData(prevState => ({
         ...prevState,
         priceCard: response.data.records[0].fields.price,
-        pictureCard: response.data.records[0].fields.xl_picture_url
+        pictureCard: response.data.records[0].fields.xl_picture_url, 
+
       }))
 
     }).catch(error => {
@@ -53,6 +54,7 @@ const SimilarProperties = () => {
     const randomNum = Math.floor(Math.random() * ids.length)
 
     const URL = `https://data.opendatasoft.com/api/records/1.0/search/?dataset=airbnb-listings%40public&q=&rows=1&facet=id&refine.id=${ids[randomNum]}`
+    console.log(URL)
     axios.get(URL).then(response => {
       SetRandomData2(prevState => ({
         ...prevState,
@@ -93,7 +95,7 @@ const SimilarProperties = () => {
         <Box sx={{
           boxShadow: 2, width: '30%', transition: '0.3s', borderRadius: 5, padding: 2, height: '21em', display: 'flex', flexDirection: 'column'
         }}>
-         
+
 
           <Box sx={{
             backgroundImage: `url(${randomCardData.pictureCard})`,
@@ -123,7 +125,7 @@ const SimilarProperties = () => {
         <Box sx={{
           boxShadow: 2, width: '30%', transition: '0.3s', borderRadius: 5, padding: 2, height: '21em', display: 'flex', flexDirection: 'column'
         }}>
-         
+
 
           <Box sx={{
             backgroundImage: `url(${randomCardData2.pictureCard})`,
@@ -154,7 +156,7 @@ const SimilarProperties = () => {
         <Box sx={{
           boxShadow: 2, width: '30%', transition: '0.3s', borderRadius: 5, padding: 2, height: '21em', display: 'flex', flexDirection: 'column'
         }}>
-          
+
 
           <Box sx={{
             backgroundImage: `url(${randomCardData3.pictureCard})`,

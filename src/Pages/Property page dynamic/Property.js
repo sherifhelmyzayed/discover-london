@@ -35,6 +35,7 @@ const PropertyV2 = () => {
 
     useEffect(() => {
         axios.get(URL).then(response => {
+            console.log(response.status)
             setTitle(response.data.name)
             setCity(response.data.city)
             setNeighbourhood(response.data.neighbourhood_cleansed)
