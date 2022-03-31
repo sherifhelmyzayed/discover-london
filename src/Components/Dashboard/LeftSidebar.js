@@ -8,13 +8,13 @@ const LeftSidebar = () => {
       justifyContent="start"
       alignItems="start"
       minHeight="100vh"
-    
+
     >
       <Typography variant="h6" component="h5">
         Good afternoon,
       </Typography>
       <Typography variant="h5" component="h5">
-        Sherif
+        {localStorage.name}
       </Typography>
 
       <Grid container marginBottom={3} marginTop={3}>

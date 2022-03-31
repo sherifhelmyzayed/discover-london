@@ -78,7 +78,7 @@ const CreateListing = (props) => {
   }, [])
 
   const saveHandler = () => {
-    axios.post(`https://http://localhost:4000/list/host/${id}`, {
+    axios.post(`http://localhost:4000/list/new/${id}`, {
       amenities: createProperty.amenities,
       bathrooms: createProperty.bathrooms,
       bedrooms: createProperty.bedrooms,
@@ -95,7 +95,7 @@ const CreateListing = (props) => {
       host_thumbnail_url: userData.photo,
       host_name: userData.firstName,
       cancellation_policy: "strict"
-        }).then((response) => {
+    }).then((response) => {
       console.log(response)
     })
   }
@@ -121,8 +121,8 @@ const CreateListing = (props) => {
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
               Add a new listing
             </Typography>
-            <Button autoFocus color="inherit" 
-            onClick={saveHandler}
+            <Button autoFocus color="inherit"
+              onClick={saveHandler}
             >
               save
             </Button>
