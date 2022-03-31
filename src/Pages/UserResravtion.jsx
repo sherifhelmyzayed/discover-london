@@ -5,25 +5,23 @@ import axios from 'axios';
 
 const UserResravation =()=>{
 const [isLoding  , setIsLoding] = useState(true )
-const [data , setdata] = useState([]) 
+const [data , setdata] = useState([1.2]) 
 
     useEffect(()=>{
         let id = "622098a84f93748a635ffde3"
         axios.get(`http://localhost:4000/booking/my-bookings/${id}`)
         .then(function (response) {
-           setdata(response.data)
+           console.log(response)
            setIsLoding(false)
         })
-        
-        .catch(function (error) {
-            console.log("s")
-            
-        })
+     
+        // .catch(function (error) {
+        //     console.log("s")        
+        // })
     })
 
 const deletHandel=(id)=>{
     console.log(id)
-
 }
     
    let repet = data.map((el)=>{
@@ -36,6 +34,7 @@ const deletHandel=(id)=>{
                         padding : "10px 5%",
                         alignItems : "center",}}>
               { !isLoding ? repet : null  }
+              tt
             </Box>
     
 
