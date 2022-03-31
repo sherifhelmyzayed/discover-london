@@ -7,11 +7,8 @@ import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
-import Divider from '@mui/material/Divider';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import GoogleIcon from '@mui/icons-material/Google';
-import AppleIcon from '@mui/icons-material/Apple';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import Rating from '@mui/material/Rating';
+import StarIcon from '@mui/icons-material/Star';
 import axios from "axios";
 import { useNavigate  } from "react-router-dom";
 const Modal_styles = {
@@ -35,11 +32,51 @@ const Overlay = {
     backgroundColor:'rgba(0,0,0,.5)',
     zIndex:1000
 }
+const head = {
+    color:"black" ,
+    position: 'relative',
+    left: '25%',
+    display:'inline-block',
+    marginBottom: '20px'
+    
+}
+const labels = {
+    0.5: 'Useless',
+    1: 'Useless+',
+    1.5: 'Poor',
+    2: 'Poor+',
+    2.5: 'Ok',
+    3: 'Ok+',
+    3.5: 'Good',
+    4: 'Good+',
+    4.5: 'Excellent',
+    5: 'Excellent+',
+  };
+  
+  function getLabelText(value) {
+    return `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
+  }
 
 
 export default function Feedback({open}) {
-let history = useNavigate ();
-  
+
+    const [value, setValue] = React.useState(2);
+    const [hover, setHover] = React.useState(-1);
+    const [valuee, setValuee] = React.useState('Controlled');
+
+  const handleChange = (event) => {
+    setValuee(event.target.value);
+  };    
+     let history = useNavigate ();
+    const submit = ()=>{
+         axios.post('http://localhost:4000/review/',{
+            "userId": "62437c78ba23545b6c3c946d",
+            "propId": "624494eaac4fa8e379d1ebec",
+            "description": `${valuee}`
+         }).then((res)=>{
+           history('../')
+         })
+     }
 
     if(!open) return null
     return ReactDOM.createPortal ( <>
@@ -49,42 +86,51 @@ let history = useNavigate ();
          <Button variant="text" onClick={()=>{
            history('../')
          }}><CloseIcon/></Button>
-         <h3 >log in</h3>
+         <h3 style={head} >Give feedback</h3>
          
          </Paper>
          
-         <h2 style={{marginTop:'0px',marginBottom:'5%'}}>Welcome to Discover</h2>
-         <Grid container direction="column"
+         <h2 style={{marginTop:'0px',marginBottom:'5%'}}>How was your stay</h2>
+         <Grid container direction="row"
                 justify="center"
                 columnSpacing={{ xs: 1, sm: 2, md: 3 }}
                >
   
-    <Grid item md={2} >
-    <TextField
-            required
-            id="outlined-required"
-            label="Email"
-            defaultValue=""
-            fullWidth
-           
-          />
-          <br/>
-          <br/>
+    <Grid item md={6} >
+        
+    <Rating
+        name="hover-feedback"
+        value={value}
+        precision={0.5}
+          defaultValue={2}
+           size="large" 
+        getLabelText={getLabelText}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+        onChangeActive={(event, newHover) => {
+          setHover(newHover);
+        }}
+        emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
+      />
+      {value !== null && (
+        <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
+      )}
+      
     </Grid>
-    <Grid item md={2} >
+    <Grid item md={6} >
     <TextField
-            id="outlined-password-input"
-            label="Password"
-            type="password"
-            autoComplete="current-password"
-            fullWidth 
-           
-            
-          />
+          id="outlined-multiline-flexible"
+          label="feedback"
+          multiline
+          maxRows={4}
+          value={valuee}
+          onChange={handleChange}
+        />
     </Grid>
   </Grid>
   
-  <Button style={{marginTop:'8%',marginBottom:'5%'}} variant="contained" fullWidth>submit</Button>
+  <Button onClick={submit} style={{marginTop:'8%',marginBottom:'5%'}} variant="contained" fullWidth>submit</Button>
   
   
           </div>
