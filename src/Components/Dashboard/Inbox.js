@@ -1,13 +1,15 @@
-import { useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import { Grid, Paper, Divider, TextField, Typography, List, ListItem, ListItemIcon, Avatar, Fab } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import SendIcon from '@mui/icons-material/Send';
 import { styled } from '@mui/material/styles';
 import Badge from '@mui/material/Badge';
 import CircularProgress from '@mui/material/CircularProgress';
-
+import axios from 'axios';
 
 import { messages, responders, responderOnline } from '../../shared/Data';
+
+let id = localStorage.getItem('id')
 
 
 
@@ -84,8 +86,26 @@ const Inbox = (props) => {
     const [input, setInput] = useState('')
     const [chat, setChat] = useState(responders[0])
     const [message, setMessage] = useState(messages.filter((el) => ((el.from === chat && el.to === 'sherif') || (el.from === 'sherif' && el.to === chat))))
+    const [messagess, setMessagess] = useState(null)
     const { theme } = props
     const classes = useStyles(theme);
+
+
+    // useEffect(() => {
+    //     axios.get(`http://localhost:4000/messages/sender/${id}`).then((res) => {
+    //         const arr = [messagess]
+    //         const newArr = [res.data, ...arr]
+    //         setMessagess(newArr)
+    //         console.log(messagess)
+    //     })
+    //     axios.get(`http://localhost:4000/messages/receiver/${id}`).then((res) => {
+    //         const arrr = [...messagess]
+    //         const newArrr = [...res.data, ...arrr]
+    //         setMessagess(newArrr)
+    //         console.log(messagess)
+    //     })
+    // }, [messagess])
+
 
 
     useEffect(() => {
@@ -93,7 +113,7 @@ const Inbox = (props) => {
         setMessage(messages.filter((el) => ((el.from === chat && el.to === 'sherif') || (el.from === 'sherif' && el.to === chat))))
         return () => {
         }
-    }, [messages])
+    }, [message])
 
 
     const submit = (e) => {
@@ -112,7 +132,7 @@ const Inbox = (props) => {
         e.target.value = ''
     }
 
-    const handleSubmit = ()=>{
+    const handleSubmit = () => {
         let ref = messages
         const date = new Date()
         const obj = {
@@ -129,7 +149,7 @@ const Inbox = (props) => {
 
     }
 
-    const changeHanlder= (e)=>{
+    const changeHanlder = (e) => {
         setInput(e.target.value)
     }
 
@@ -209,10 +229,10 @@ const Inbox = (props) => {
                                     if (ev.key === 'Enter') {
                                         submit(ev)
                                     }
-                                }} size="small" id="outlined-basic-email" 
-                                label="Type Something" 
-                                onChange={changeHanlder}
-                                fullWidth/>
+                                }} size="small" id="outlined-basic-email"
+                                    label="Type Something"
+                                    onChange={changeHanlder}
+                                    fullWidth />
                             </Grid>
                             <Grid xs={1} align="right">
                                 <Fab color="primary.light" aria-label="add" size="small" width={1} onClick={handleSubmit}><SendIcon /></Fab>

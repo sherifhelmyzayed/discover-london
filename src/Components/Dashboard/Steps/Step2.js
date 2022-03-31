@@ -9,10 +9,13 @@ const Step2 = (props) => {
     const { createProperty, setCreateProperty } = props
     const [coordinates, setCoordinates] = useState(null)
     const inputEl = useRef(null)
+
+
+
     const clickHandler = (e) => {
         setCoordinates([e.lngLat.lat, e.lngLat.lng])
-        setCreateProperty((current) => ({ ...current, 'geolocation': coordinates }))
-        console.log(createProperty)
+        setCreateProperty((current) => ({ ...current, 'geolocation': [e.lngLat.lat, e.lngLat.lng] }))
+        console.log(createProperty.geolocation)
     }
     return (
         <>
@@ -33,7 +36,11 @@ const Step2 = (props) => {
                     showCompass={true} />
                 {(coordinates) ? (
                     <Marker longitude={coordinates[1]} latitude={coordinates[0]}></Marker>
-                ) : ''}
+                ) :  (createProperty.geolocation) ? (
+                    <Marker longitude={createProperty.geolocation[1]} latitude={createProperty.geolocation[0]}></Marker>
+                    )
+                    : ''
+                }
             </Map>
         </>
     )

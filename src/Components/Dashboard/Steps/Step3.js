@@ -32,20 +32,13 @@ const Step0 = (props) => {
         if (e.target.value.length < 6) {
             setError2(true)
         } else {
-            console.log("true")
             setError2(false)
             setCreateProperty((current) => ({ ...current, 'summary': e.target.value }));
         }
     }
 
     const priceHandler = (e) => {
-        if (e.target.value.length < 6) {
-            setError2(true)
-        } else {
-            console.log("true")
-            setError2(false)
             setCreateProperty((current) => ({ ...current, 'price': e.target.value }));
-        }
     }
 
 
@@ -65,6 +58,8 @@ const Step0 = (props) => {
                     helperText={error1 ? "Minumum of 2 characters" : ''}
                     onChange={cityHandler}
                     required={true}
+                    defaultValue={createProperty.city}
+
                     margin="normal"
                     size="medium"
                     InputProps={{ style: { fontSize: 16, fontWeight: 400 } }}
@@ -81,6 +76,8 @@ const Step0 = (props) => {
                     onChange={summaryhoodHandler}
                     required={true}
                     margin="normal"
+                    defaultValue={createProperty.summary}
+
                     size="medium"
                     InputProps={{ style: { fontSize: 16, fontWeight: 400 } }}
                     InputLabelProps={{ style: { fontSize: 14, fontWeight: 400 } }}
@@ -95,6 +92,8 @@ const Step0 = (props) => {
                     required={true}
                     margin="normal"
                     size="medium"
+                    defaultValue={createProperty.price}
+
                     type='number'
                     InputProps={{ style: { fontSize: 16, fontWeight: 400, startAdornment: <InputAdornment position="start">kgsss</InputAdornment>, } }}
                     InputLabelProps={{ style: { fontSize: 14, fontWeight: 400 } }}

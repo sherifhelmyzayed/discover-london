@@ -211,24 +211,20 @@ const Reservations = () => {
   const [list , setList] = useState({})
   useEffect(()=>{
     axios.get(`http://localhost:4000/booking/host/${uid}`).then((res)=>{
-      setReserv(res.data)
+    // console.log(res.data)
+    setReserv(res.data)
     }).then(()=>{
-      reserv.map((el)=>(
-        axios.get(`http://localhost:4000/user/${el.guest}`).then((res)=>{
-          // console.log(res)
-          setReserv((current)=>({...current, "guest": res.data}))
-
-        })
-      ))
-      reserv.map((el)=>(
-        axios.get(`http://localhost:4000/list/${el.property}`).then((res)=>{
-          // console.log(res)
-          setReserv((current)=>({...current, "property": res.data}))
-          console.log(reserv)
-        })
-      ))
+      axios.get(`http://localhost:4000/user/62437c78ba23545b6c3c946d`).then((res)=>{
+        // console.log(res)
+        console.log(reserv)
+        setGuest(res.data)
+      })
+    }).then(()=>{
+      axios.get(`http://localhost:4000/list/622098a84f93748a635ffde1`).then((res)=>{
+        console.log(res.data)
+        setList(res.data)
+      })
     })
-
     },[])
 
     const rows = [
