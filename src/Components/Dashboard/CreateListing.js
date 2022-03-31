@@ -98,6 +98,7 @@ const CreateListing = (props) => {
     }).then((response) => {
       console.log(response)
     })
+    clickHandler(false)
   }
 
   return (

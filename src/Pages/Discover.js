@@ -7,6 +7,7 @@ import HeaderSherif from '../Components/HeaderSherif';
 import listings from '../shared/airbnb-listings (1).json'
 // let auth = localStorage.getItem('auth')
 import axios from 'axios';
+import { NestCamWiredStandTwoTone } from '@mui/icons-material';
 
 
 
@@ -59,27 +60,16 @@ const Discover = () => {
         axios.get(`http://localhost:4000/list`).then((res) => {
             console.log(res.data)
             // res.date.map((item) => (setNewData((current) => ({ ...current, "fields": item }))))
-            setNewData(res.data)
-            console.log(newData)
-
+            setNewData(res.data.fields.listings)
         })
-    }, [])
-    useEffect(() => {
-        if (newData.length === 20) {
+    }, [newData])
 
-            // newData.fields.listings.map((item) => (setNewListing((current) => ({ ...current, "fields": item }))))
 
-            setNewListing(newData.fields.listings.map(
-                a => a))
-            console.log(newListing)
-            // console.log(newData.fields.listings)
-        }
 
-    }, [newData, newListing])
 
     // filter functions
     const sortAndSlice = (importedData) => (
-        importedData
+        importedData.concat(newData)
             .sort((a, b) => (b.fields.number_of_reviews - a.fields.number_of_reviews))
             .slice(0, 20)
     )
