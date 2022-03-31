@@ -62,43 +62,43 @@ const CreateListing = (props) => {
   }
   const { stateDialog, clickHandler } = props
 
-  // useEffect(() => {
-  //   console.log(id)
-  //   axios.get(`http://localhost:4000/user/host-data/622098a84f93748a635ffde2`).then((res) => {
-  //     // console.log(res.data)
-  //     console.log(res.data)
-  //   })
+  useEffect(() => {
+    console.log(id)
+    axios.get(`http://localhost:4000/user/host-data/622098a84f93748a635ffde2`).then((res) => {
+      // console.log(res.data)
+      console.log(res.data)
+    })
 
-  //   console.log(id)
-  //   axios.get(`http://localhost:4000/user/${id}`).then((res) => {
-  //     setUserData(res.data)
-  //   })
+    console.log(id)
+    axios.get(`http://localhost:4000/user/${id}`).then((res) => {
+      setUserData(res.data)
+    })
 
 
-  // }, [])
+  }, [])
 
-  // const saveHandler = () => {
-  //   axios.post(`https://http://localhost:4000/user/host-data/62437c78ba23545b6c3c946d/${id}`, {
-  //     amenities: createProperty.amenities,
-  //     bathrooms: createProperty.bathrooms,
-  //     bedrooms: createProperty.bedrooms,
-  //     city: createProperty.city,
-  //     description: createProperty.description,
-  //     geo_location: createProperty.geolocation,
-  //     guests_included: createProperty.guests_included,
-  //     name: createProperty.name,
-  //     neighbourhood_cleansed: createProperty.neighbourhood_cleansed,
-  //     price: createProperty.price,
-  //     summary: createProperty.summary,
-  //     number_of_reviews: 0,
-  //     xl_picture_url: "",
-  //     host_thumbnail_url: userData.photo,
-  //     host_name: userData.firstName,
-  //     cancellation_policy: "strict"
-  //   }).then((response) => {
-  //     console.log(response)
-  //   })
-  // }
+  const saveHandler = () => {
+    axios.post(`https://http://localhost:4000/list/host/${id}`, {
+      amenities: createProperty.amenities,
+      bathrooms: createProperty.bathrooms,
+      bedrooms: createProperty.bedrooms,
+      city: createProperty.city,
+      description: createProperty.description,
+      geo_location: createProperty.geolocation,
+      guests_included: createProperty.guests_included,
+      name: createProperty.name,
+      neighbourhood_cleansed: createProperty.neighbourhood_cleansed,
+      price: createProperty.price,
+      summary: createProperty.summary,
+      number_of_reviews: 0,
+      xl_picture_url: "",
+      host_thumbnail_url: userData.photo,
+      host_name: userData.firstName,
+      cancellation_policy: "strict"
+        }).then((response) => {
+      console.log(response)
+    })
+  }
 
   return (
     <div>
@@ -122,7 +122,7 @@ const CreateListing = (props) => {
               Add a new listing
             </Typography>
             <Button autoFocus color="inherit" 
-            // onClick={saveHandler}
+            onClick={saveHandler}
             >
               save
             </Button>
