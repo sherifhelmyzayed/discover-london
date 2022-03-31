@@ -9,7 +9,7 @@ const SecondSection = () => {
     return (
         <>
             <Box sx={{
-                background: 'linear-gradient(to top, rgb(10, 27, 47), rgb(0, 0, 0))', width: '100vw',
+                background: 'rgb(10, 27, 47)', width: '100vw',
                 height: '100vh',
                 display: "flex",
                 flexDirection: 'column'

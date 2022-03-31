@@ -23,6 +23,10 @@ import Step4 from './Steps/Step4';
 import Step5 from './Steps/Step5';
 import Step6 from './Steps/Step6';
 import { StarBorderPurple500 } from '@mui/icons-material';
+import axios from 'axios';
+let id = localStorage.getItem('id')
+
+console.log(localStorage)
 
 
 // transitional slide
@@ -37,11 +41,17 @@ const TransitionFade = forwardRef(function Transition(props, ref) {
 const CreateListing = (props) => {
 
   const [step, setStep] = useState(0)
+  const [userData, setUserData] = useState(null)
   const [createProperty, setCreateProperty] = useState({
     guests_included: 0,
     bedrooms: 0,
     bathrooms: 0,
-    amenities: []
+    amenities: [],
+    geolocation: '',
+    name: "",
+    neighbourhood_cleansed: '',
+    summary: '',
+    description: ''
   })
 
   const nextStep = () => {
@@ -51,6 +61,44 @@ const CreateListing = (props) => {
     setStep(step + -1)
   }
   const { stateDialog, clickHandler } = props
+
+  useEffect(() => {
+    console.log(id)
+    axios.get(`http://localhost:4000/user/host-data/622098a84f93748a635ffde2`).then((res) => {
+      // console.log(res.data)
+      console.log(res.data)
+    })
+
+    console.log(id)
+    axios.get(`http://localhost:4000/user/${id}`).then((res) => {
+      setUserData(res.data)
+    })
+
+
+  }, [])
+
+  const saveHandler = () => {
+    axios.post(`http://localhost:4000/list/new/${id}`, {
+      amenities: createProperty.amenities,
+      bathrooms: createProperty.bathrooms,
+      bedrooms: createProperty.bedrooms,
+      city: createProperty.city,
+      description: createProperty.description,
+      geo_location: createProperty.geolocation,
+      guests_included: createProperty.guests_included,
+      name: createProperty.name,
+      neighbourhood_cleansed: createProperty.neighbourhood_cleansed,
+      price: createProperty.price,
+      summary: createProperty.summary,
+      number_of_reviews: 0,
+      xl_picture_url: "",
+      host_thumbnail_url: userData.photo,
+      host_name: userData.firstName,
+      cancellation_policy: "strict"
+    }).then((response) => {
+      console.log(response)
+    })
+  }
 
   return (
     <div>
@@ -73,7 +121,9 @@ const CreateListing = (props) => {
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
               Add a new listing
             </Typography>
-            <Button autoFocus color="inherit" onClick={() => { clickHandler(false) }}>
+            <Button autoFocus color="inherit"
+              onClick={saveHandler}
+            >
               save
             </Button>
           </Toolbar>
@@ -102,30 +152,30 @@ const CreateListing = (props) => {
           </Box>
           <Box sx={{ height: 'calc(100vh - 120px)', width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: 'auto', marginBottom: 'auto' }}>
 
-            {(step === 0) ? 
-            (<Step0 createProperty={createProperty} setCreateProperty={setCreateProperty}/>)
+            {(step === 0) ?
+              (<Step0 createProperty={createProperty} setCreateProperty={setCreateProperty} />)
               :
               (step === 1)
                 ? (
-                  <Step1 createProperty={createProperty} setCreateProperty={setCreateProperty}/>
+                  <Step1 createProperty={createProperty} setCreateProperty={setCreateProperty} />
                 )
                 : (step === 2)
-                  ? (<Step2 createProperty={createProperty} setCreateProperty={setCreateProperty}/>)
+                  ? (<Step2 createProperty={createProperty} setCreateProperty={setCreateProperty} />)
                   : (step === 3)
-                    ? (<Step3 createProperty={createProperty} setCreateProperty={setCreateProperty}/>)
+                    ? (<Step3 createProperty={createProperty} setCreateProperty={setCreateProperty} />)
                     : (step === 4)
-                      ? (<Step4 createProperty={createProperty} setCreateProperty={setCreateProperty}/>)
+                      ? (<Step4 createProperty={createProperty} setCreateProperty={setCreateProperty} />)
                       : (step === 5)
-                        ? (<Step5 createProperty={createProperty} setCreateProperty={setCreateProperty}/>)
+                        ? (<Step5 createProperty={createProperty} setCreateProperty={setCreateProperty} />)
                         : (step === 6)
-                          ? (<Step6 createProperty={createProperty} setCreateProperty={setCreateProperty}/>)
+                          ? (<Step6 createProperty={createProperty} setCreateProperty={setCreateProperty} />)
                           : ''
-                          }
+            }
           </Box>
         </Grid>
 
       </Dialog>
-    </div>
+    </div >
   )
 }
 

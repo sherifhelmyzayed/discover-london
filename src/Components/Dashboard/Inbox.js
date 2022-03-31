@@ -1,13 +1,18 @@
-import { useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import { Grid, Paper, Divider, TextField, Typography, List, ListItem, ListItemIcon, Avatar, Fab } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import SendIcon from '@mui/icons-material/Send';
 import { styled } from '@mui/material/styles';
 import Badge from '@mui/material/Badge';
 import CircularProgress from '@mui/material/CircularProgress';
+import axios from 'axios';
 
+// import {
+//     // messages, 
+//     // responders,
+// } from '../../shared/Data';
 
-import { messages, responders, responderOnline } from '../../shared/Data';
+let id = localStorage.getItem('id')
 
 
 
@@ -82,54 +87,84 @@ const useStyles = makeStyles(() => ({
 
 const Inbox = (props) => {
     const [input, setInput] = useState('')
-    const [chat, setChat] = useState(responders[0])
-    const [message, setMessage] = useState(messages.filter((el) => ((el.from === chat && el.to === 'sherif') || (el.from === 'sherif' && el.to === chat))))
+    const [chat, setChat] = useState(null)
+    // const [message, setMessage] = useState(messages.filter((el) => ((el.from === chat && el.to === 'sherif') || (el.from === 'sherif' && el.to === chat))))
+    const [message, setMessage] = useState(null)
+    const [messages, setMessages] = useState(null)
+    const [newMsg, setNewMsg] = useState([])
+    const [msgReceived, setMsgReceived] = useState([])
+    const [allMesg, setAllMsg] = useState([])
+    const [responders, setResponders] = useState([])
+    const [users, setUsers] = useState([])
     const { theme } = props
     const classes = useStyles(theme);
 
 
     useEffect(() => {
+        axios.get(`http://localhost:4000/messages/sender/${id}`).then((res) => {
+            setNewMsg(res.data)
+        }).then(
+            axios.get(`http://localhost:4000/messages/receiver/${id}`).then((res) => {
+                setMsgReceived(res.data)
+                setResponders(res.data)
+            })
+        )
+    }, [])
 
-        setMessage(messages.filter((el) => ((el.from === chat && el.to === 'sherif') || (el.from === 'sherif' && el.to === chat))))
-        return () => {
-        }
-    }, [messages])
+    useEffect(() => {
+        const newArr = newMsg.concat(msgReceived)
+        setAllMsg(newArr.sort((a, b) => (a.date - b.date)))
+    }, [newMsg, msgReceived])
 
 
-    const submit = (e) => {
-        let ref = messages
-        const date = new Date()
-        const obj = {
-            from: "sherif",
-            to: chat,
-            text: e.target.value,
-            date: `${date.getHours()} ${date.getMinutes()}`,
-            read: false
-        };
-        ref.push(obj)
-        let arr = ref.filter((el) => ((el.from === chat && el.to === 'sherif') || (el.from === 'sherif' && el.to === chat)))
-        setMessage(arr)
-        e.target.value = ''
-    }
+    useEffect(() => {
+        setUsers(msgReceived.map(
+            a => a.from))
+    }, [newMsg, msgReceived])
 
-    const handleSubmit = ()=>{
-        let ref = messages
-        const date = new Date()
-        const obj = {
-            from: "sherif",
-            to: chat,
-            text: input,
-            date: `${date.getHours()} ${date.getMinutes()}`,
-            read: false
-        };
-        ref.push(obj)
-        let arr = ref.filter((el) => ((el.from === chat && el.to === 'sherif') || (el.from === 'sherif' && el.to === chat)))
-        setMessage(arr)
-        setInput()
 
-    }
 
-    const changeHanlder= (e)=>{
+    // useEffect(() => {
+
+    //     setMessage(messages.filter((el) => ((el.from === chat && el.to === 'sherif') || (el.from === 'sherif' && el.to === chat))))
+    //     return () => {
+    //     }
+    // }, [chat])
+
+
+    // const submit = (e) => {
+    //     let ref = messages
+    //     const date = new Date()
+    //     const obj = {
+    //         from: "sherif",
+    //         to: chat,
+    //         text: e.target.value,
+    //         date: `${date.getHours()} ${date.getMinutes()}`,
+    //         read: false
+    //     };
+    //     ref.push(obj)
+    //     let arr = ref.filter((el) => ((el.from === chat && el.to === 'sherif') || (el.from === 'sherif' && el.to === chat)))
+    //     setMessage(arr)
+    //     e.target.value = ''
+    // }
+
+    // const handleSubmit = () => {
+    //     let ref = messages
+    //     const date = new Date()
+    //     const obj = {
+    //         from: "sherif",
+    //         to: chat,
+    //         text: input,
+    //         date: `${date.getHours()} ${date.getMinutes()}`,
+    //         read: false
+    //     };
+    //     ref.push(obj)
+    //     let arr = ref.filter((el) => ((el.from === chat && el.to === 'sherif') || (el.from === 'sherif' && el.to === chat)))
+    //     setMessage(arr)
+    //     setInput()
+    // }
+
+    const changeHanlder = (e) => {
         setInput(e.target.value)
     }
 
@@ -138,6 +173,7 @@ const Inbox = (props) => {
         const msg = messages.filter((el) => ((el.from === e && el.to === 'sherif') || (el.from === 'sherif' && el.to === e)))
         setMessage(msg)
     }
+
 
     return (
         <>
@@ -151,30 +187,16 @@ const Inbox = (props) => {
                         <Divider />
                         <List>
                             {
-                                ((responders) ?
-                                    responders.map((guest, key) => (
-                                        (responderOnline.includes(guest))
-                                            ? (<ListItem button key={key} onClick={() => changeChat(guest)} sx={{ backgroundColor: (chat === guest) ? 'grey1' : 'white' }}>
+                                ((users) ?
+                                    [...new Set(users)].map((guest, key) => (
+                                        (
+                                            <ListItem button key={key} onClick={() => changeChat(guest)} sx={{ backgroundColor: (chat === guest) ? 'grey1' : 'white' }}>
                                                 <ListItemIcon>
-                                                    <StyledBadge
-                                                        overlap="circular"
-                                                        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                                                        variant="dot"
-                                                    >
-                                                        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                                                    </StyledBadge>
+                                                    <Avatar alt="Alice" src="https://material-ui.com/static/images/avatar/3.jpg" />
                                                 </ListItemIcon>
                                                 <Typography variant="subtitle3" component="h5">{guest}</Typography>
                                             </ListItem>
-                                            )
-                                            : (
-                                                <ListItem button key={key} onClick={() => changeChat(guest)} sx={{ backgroundColor: (chat === guest) ? 'grey1' : 'white' }}>
-                                                    <ListItemIcon>
-                                                        <Avatar alt="Alice" src="https://material-ui.com/static/images/avatar/3.jpg" />
-                                                    </ListItemIcon>
-                                                    <Typography variant="subtitle3" component="h5">{guest}</Typography>
-                                                </ListItem>
-                                            )
+                                        )
                                     ))
                                     : <CircularProgress />
                                 )
@@ -184,22 +206,21 @@ const Inbox = (props) => {
                     <Grid item xs={9}>
                         <List className={classes.messageArea}>
                             {
-                                (messages)
-                                    ? (message) ? (message.map((msg, key) => (
-                                        <ListItem key={key}>
-                                            <Grid container className={msg.from === chat ? classes.msgReceived : classes.msgSent}>
-                                                <Grid item xs={12}>
-                                                    <Typography align={msg.from === chat ? 'left' : 'right'} variant="subtitle4" component="h2" marginBottom={2}>{msg.text}</Typography>
-                                                </Grid>
-                                                <Grid item xs={12}>
-                                                    <Typography align={msg.from === chat ? 'left' : 'right'} variant="subtitle5" component="h3">{msg.date}</Typography>
-
-                                                </Grid>
+                                (allMesg) ? (allMesg.filter((el) => ((el.from === chat && el.to === id) || (el.from === id && el.to === chat))).map((msg, key) => (
+                                    <ListItem key={key}>
+                                        <Grid container className={msg.from === id ? classes.msgReceived : classes.msgSent}>
+                                            <Grid item xs={12}>
+                                                <Typography align={msg.from === id ? 'left' : 'right'} variant="subtitle4" component="h2" marginBottom={2}>{msg.text}</Typography>
                                             </Grid>
-                                        </ListItem>
-                                    )
-                                    )) : ''
-                                    : ''
+                                            <Grid item xs={12}>
+                                                <Typography align={msg.from === id ? 'left' : 'right'} variant="subtitle5" component="h3">{msg.date}</Typography>
+
+                                            </Grid>
+                                        </Grid>
+                                    </ListItem>
+                                )
+                                )) : ''
+
                             }
                         </List>
                         <Divider />
@@ -207,15 +228,17 @@ const Inbox = (props) => {
                             <Grid item xs={11}>
                                 <TextField onKeyPress={(ev) => {
                                     if (ev.key === 'Enter') {
-                                        submit(ev)
+                                        // submit(ev)
                                     }
-                                }} size="small" id="outlined-basic-email" 
-                                label="Type Something" 
-                                onChange={changeHanlder}
-                                fullWidth/>
+                                }} size="small" id="outlined-basic-email"
+                                    label="Type Something"
+                                    onChange={changeHanlder}
+                                    fullWidth />
                             </Grid>
                             <Grid xs={1} align="right">
-                                <Fab color="primary.light" aria-label="add" size="small" width={1} onClick={handleSubmit}><SendIcon /></Fab>
+                                <Fab color="primary.light" aria-label="add" size="small" width={1}
+                                //  onClick={handleSubmit}
+                                ><SendIcon /></Fab>
                             </Grid>
                         </Grid>
                     </Grid>

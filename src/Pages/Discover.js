@@ -6,6 +6,8 @@ import Filter from '../Components/Map/Filter';
 import HeaderSherif from '../Components/HeaderSherif';
 import listings from '../shared/airbnb-listings (1).json'
 // let auth = localStorage.getItem('auth')
+import axios from 'axios';
+
 
 
 const Discover = () => {
@@ -15,6 +17,8 @@ const Discover = () => {
     const [hovered, setHovered] = useState(null)
     const [initialView, setinitialView] = useState(false)
     const [cameraZoom, setCameraZoom] = useState(null)
+    const [newData, setNewData] = useState(null)
+    const [newListing, setNewListing] = useState(null)
 
     // const equation = ()=>{
     //     161759-123814e^0.0182408x
@@ -51,6 +55,27 @@ const Discover = () => {
         }
     })
 
+    useEffect(() => {
+        axios.get(`http://localhost:4000/list`).then((res) => {
+            console.log(res.data)
+            // res.date.map((item) => (setNewData((current) => ({ ...current, "fields": item }))))
+            setNewData(res.data)
+            console.log(newData)
+
+        })
+    }, [])
+    useEffect(() => {
+        if (newData.length === 20) {
+
+            // newData.fields.listings.map((item) => (setNewListing((current) => ({ ...current, "fields": item }))))
+
+            setNewListing(newData.fields.listings.map(
+                a => a))
+            console.log(newListing)
+            // console.log(newData.fields.listings)
+        }
+
+    }, [newData, newListing])
 
     // filter functions
     const sortAndSlice = (importedData) => (
@@ -118,8 +143,8 @@ const Discover = () => {
     const hoverCardHandlerRemove = () => {
         setHovered(null)
     }
-    
-   
+
+
 
     useEffect(() => {
         // axios.get(URL).then(response => {
@@ -129,7 +154,7 @@ const Discover = () => {
         // }).catch(error => {
         //     console.log(error)
         // })
-        
+
         const lat1 = (boundaries) ? boundaries.northEast.lat : 51.489119889002126
         const lat2 = (boundaries) ? boundaries.southWest.lat : 51.261667988171695
         const log1 = (boundaries) ? boundaries.northEast.lng : -0.01115745233397547
@@ -153,7 +178,7 @@ const Discover = () => {
                 moreFilters={moreFilters}
                 setMoreFilters={setMoreFilters}
             />
-            <Grid container spacing={1} sx={{paddingLeft: 1}} >
+            <Grid container spacing={1} sx={{ paddingLeft: 1 }} >
                 <Grid item xs={12} md={6} sx={{ height: 'calc(100vh - 140px)', overflow: 'auto' }}>
                     <MapList data={data} hoverCardHandler={hoverCardHandler} hoverCardHandlerRemove={hoverCardHandlerRemove} />
                 </Grid>
