@@ -20,6 +20,7 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import { Typography, Grid, Button } from '@mui/material';
 import axios from 'axios'
+import Feedback from '../Feedback';
 
 let uid = localStorage.getItem('id')
 
@@ -209,6 +210,8 @@ const Reservations = () => {
   const [reserv , setReserv] = useState([])
   const [guest , setGuest] = useState({})
   const [list , setList] = useState({})
+  const [isOpen , setIsOpen]= useState(false);
+
   useEffect(()=>{
     axios.get(`http://localhost:4000/booking/host/${uid}`).then((res)=>{
     // console.log(res.data)
@@ -216,7 +219,7 @@ const Reservations = () => {
     }).then(()=>{
       axios.get(`http://localhost:4000/user/62437c78ba23545b6c3c946d`).then((res)=>{
         // console.log(res)
-        console.log(reserv)
+       
         setGuest(res.data)
       })
     }).then(()=>{
@@ -226,11 +229,12 @@ const Reservations = () => {
       })
     })
     },[list])
+    let tes = 2467891;
     const x = 
       reserv.map((e)=>{return ( 
         {
           id : e._id,
-          confirmation : 2467891,
+          confirmation : tes++,
           checkin: e.checkIn,
           checkout: e.checkOut,
           aprroved: e.aprroved,
@@ -252,7 +256,7 @@ const Reservations = () => {
         })
       })
     
-    console.log(x)
+   
    
   
     
@@ -288,6 +292,7 @@ const Reservations = () => {
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - x.length) : 0;
 
   return (
+    <>
     <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
         <EnhancedTableToolbar numSelected={selected.length} />
@@ -372,7 +377,9 @@ const Reservations = () => {
                      </Grid>
                   
                       ) : (
-                        <Button size="small" color="secondary" variant="contained" >Give feedback</Button>
+                        <Button onClick={()=>{
+                          setIsOpen(true)
+                        }} size="small" color="secondary" variant="contained" >Give feedback</Button>
                       )}</TableCell>
                     </TableRow>
                   );
@@ -400,6 +407,9 @@ const Reservations = () => {
         />
       </Paper>
     </Box>
+    <Feedback open={isOpen} onClose={()=> setIsOpen(false)}> </Feedback>
+
+    </>
   );
 }
 

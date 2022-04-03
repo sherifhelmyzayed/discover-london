@@ -37,7 +37,7 @@ const MapBox = (props) => {
     let navigate = useNavigate();
 
     const clickHandler = (e) => {
-        navigate(`../propertyV2/${e}`)
+        navigate(`../property/${e}`)
     }
 
     useEffect(() => {

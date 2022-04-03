@@ -18,7 +18,6 @@ const Discover = () => {
     const [initialView, setinitialView] = useState(false)
     const [cameraZoom, setCameraZoom] = useState(null)
     const [newData, setNewData] = useState(null)
-    const [newListing, setNewListing] = useState(null)
 
     // const equation = ()=>{
     //     161759-123814e^0.0182408x
@@ -57,31 +56,23 @@ const Discover = () => {
 
     useEffect(() => {
         axios.get(`http://localhost:4000/list`).then((res) => {
-            console.log(res.data)
+       
             // res.date.map((item) => (setNewData((current) => ({ ...current, "fields": item }))))
-            setNewData(res.data)
-            console.log(newData)
-
+            setNewData(res.data.fields.listings)
+            console.log(res.data.fields.listings)
         })
-    }, [])
-    useEffect(() => {
-        if (newData.length === 20) {
-
-            // newData.fields.listings.map((item) => (setNewListing((current) => ({ ...current, "fields": item }))))
-
-            setNewListing(newData.fields.listings.map(
-                a => a))
-            console.log(newListing)
-            // console.log(newData.fields.listings)
-        }
-
-    }, [newData, newListing])
+    }, [trigger, priceFilter, filterAmenities, moreFilters])
 
     // filter functions
     const sortAndSlice = (importedData) => (
-        importedData
+        (newData) ? (
+            importedData
+                .sort((a, b) => (b.fields.number_of_reviews - a.fields.number_of_reviews))
+                .slice(0, 20)
+        ) :
+        (   importedData
             .sort((a, b) => (b.fields.number_of_reviews - a.fields.number_of_reviews))
-            .slice(0, 20)
+            .slice(0, 20))
     )
 
     const filterPrice = (importedData) => (
@@ -164,7 +155,6 @@ const Discover = () => {
             .filter(item => item.fields.geolocation[0] > lat2 && item.fields.geolocation[0] < lat1 && item.fields.geolocation[1] > log2 && item.fields.geolocation[1] < log1)
         setData(sortAndSlice(filterPrice(filterAmenity(filterMore(importedData)))))
         setinitialView(true)
-        console.log(importedData)
     }, [trigger, priceFilter, filterAmenities, moreFilters])
 
     return (
