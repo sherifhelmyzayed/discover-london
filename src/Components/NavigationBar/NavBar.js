@@ -1,8 +1,6 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material';
 import BasicMenu from './NavMenu'
-import ProfileIcon from './ProfileIcon';
-import HostRegister from './HostRegister';
 
 const NavBar = () => {
     const [navBar, setNavbar] = React.useState(false)
@@ -44,8 +42,6 @@ const NavBar = () => {
                     marginRight: 5
                 }}>
 
-                    <HostRegister />
-                    <ProfileIcon />
                     <BasicMenu />
 
                 </Box>

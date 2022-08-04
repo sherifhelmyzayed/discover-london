@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import {AppBar, Box, Toolbar, Typography, IconButton, Menu, Container, Avatar, Button, Tooltip, MenuItem} from '@mui/material';
-import LogInModal from '../Buttons/form/LogInModal';
 import MenuIcon  from '@mui/icons-material/Menu';
 
 let auth = localStorage.getItem('auth')
