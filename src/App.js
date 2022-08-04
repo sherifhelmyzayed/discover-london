@@ -14,7 +14,6 @@ export const ThemeContext = createContext();
 
 const mainTheme = createTheme({
   palette: {
-    // essam choice of color set is presented here:
     primary: {
       main: '#0c2442',
       light: '#4f7492'
@@ -34,7 +33,6 @@ const mainTheme = createTheme({
     red: "#FF0000",
   },
 
-  // Typography should be edit according to layout
   typography: {
     fontFamily: 'Montserrat',
     fontWeightRegular: 500,

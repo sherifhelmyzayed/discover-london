@@ -130,7 +130,7 @@ const Header = (props) => {
                                 marginTop={0} paddingTop={0}
                                 sx={{
                                     color: 'grey',
-                                    borderBottom: (key == active) ? '1px solid #808080' : 'none',
+                                    borderBottom: (key === active) ? '1px solid #808080' : 'none',
                                     padding: 0,
                                     margin: 0,
                                     borderRadius: 0,

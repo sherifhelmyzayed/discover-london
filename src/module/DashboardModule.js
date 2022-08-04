@@ -1,7 +1,7 @@
 import React, { createContext, useMemo, useEffect, useContext, Suspense, useState } from 'react'
 import axios from "axios";
 import { Routes, Route } from "react-router-dom";
-import CircularProgress from '@mui/material/CircularProgress';
+// import CircularProgress from '@mui/material/CircularProgress';
 
 
 // Dashboard component routes are here
