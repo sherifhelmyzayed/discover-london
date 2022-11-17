@@ -129,12 +129,7 @@ function App() {
     <Suspense fallback={<h1>LOOOOOOOOOOAAADINGGGG</h1>}>
       <ThemeProvider theme={mainTheme}>
         <ThemeContext.Provider value={{ mainTheme }}>
-          <BrowserRouter>
-
-            <Routes>
-              <Route path="/" element={<Discover />} />
-            </Routes>
-          </BrowserRouter>
+          <Discover />
         </ThemeContext.Provider>
       </ThemeProvider>
     </Suspense>

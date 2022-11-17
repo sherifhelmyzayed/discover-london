@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router';
 import { Card, Box, CardContent, Typography, Grid, Divider } from '@material-ui/core'
 import StarIcon from '@mui/icons-material/Star';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -11,16 +10,13 @@ const MapList = (props) => {
         hoverCardHandlerRemove
     } = props
 
-    let navigate = useNavigate();
 
-    const clickHandler = (e) => {
-        navigate(`../propertyV2/${e}`)
-    }
+
     return (
         <>
             {(data) ? (data.map((listing, key) => (
                 <>
-                    <Box sx={{ cursor: "pointer" }} onClick={() => { clickHandler(listing.fields.id) }} onMouseLeave={()=>{hoverCardHandlerRemove()}} onMouseEnter={() => { hoverCardHandler(listing.fields.id) }}>
+                    <Box sx={{ cursor: "pointer" }} onMouseLeave={()=>{hoverCardHandlerRemove()}} onMouseEnter={() => { hoverCardHandler(listing.fields.id) }}>
                         <Card sx={{ display: 'flex', width: '100%', margin: 50 }} >
                             <Grid container spacing={3} >
                                 <Grid item md={5}>

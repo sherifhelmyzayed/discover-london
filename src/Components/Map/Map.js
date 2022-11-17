@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router';
 import Map, { Marker, NavigationControl, Popup } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { Paper, Box, Typography, Card } from '@mui/material';
@@ -34,11 +33,7 @@ const MapBox = (props) => {
         setPopupOpen(false)
         setData(null)
     }
-    let navigate = useNavigate();
 
-    const clickHandler = (e) => {
-        navigate(`../property/${e}`)
-    }
 
     useEffect(() => {
         if (inputEl.current) {
@@ -86,7 +81,7 @@ const MapBox = (props) => {
                             >
                                 {
                                     <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', height: '100%', margin: 0 }}>
-                                        <Box onClick={() => { clickHandler(popupContent.id) }} sx={{
+                                        <Box sx={{
                                             height: 120,
                                             width: '100%',
                                             margin: 0,
