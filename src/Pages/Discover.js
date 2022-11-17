@@ -5,8 +5,7 @@ import MapList from '../Components/Map/MapList';
 import Filter from '../Components/Map/Filter';
 import HeaderSherif from '../Components/HeaderSherif';
 import listings from '../shared/airbnb-listings (1).json'
-// let auth = localStorage.getItem('auth')
-import axios from 'axios';
+
 
 
 
@@ -17,12 +16,8 @@ const Discover = () => {
     const [hovered, setHovered] = useState(null)
     const [initialView, setinitialView] = useState(false)
     const [cameraZoom, setCameraZoom] = useState(null)
-    const [newData, setNewData] = useState(null)
 
-    // const equation = ()=>{
-    //     161759-123814e^0.0182408x
-    // }
-
+    
 
     // filter states
     const [filterAmenities, setFilterAmenities] = useState({
@@ -54,25 +49,13 @@ const Discover = () => {
         }
     })
 
-    useEffect(() => {
-        axios.get(`http://localhost:4000/list`).then((res) => {
-       
-            // res.date.map((item) => (setNewData((current) => ({ ...current, "fields": item }))))
-            setNewData(res.data.fields.listings)
-            console.log(res.data.fields.listings)
-        })
-    }, [trigger, priceFilter, filterAmenities, moreFilters])
 
     // filter functions
     const sortAndSlice = (importedData) => (
-        (newData) ? (
-            importedData
-                .sort((a, b) => (b.fields.number_of_reviews - a.fields.number_of_reviews))
-                .slice(0, 20)
-        ) :
-        (   importedData
+        (importedData
             .sort((a, b) => (b.fields.number_of_reviews - a.fields.number_of_reviews))
-            .slice(0, 20))
+            .slice(0, 20)
+        )
     )
 
     const filterPrice = (importedData) => (
@@ -118,15 +101,6 @@ const Discover = () => {
         return (data1)
     }
 
-
-
-    // let URL = (cameraZoom) 
-    // ? `https://data.opendatasoft.com/api/records/1.0/search/?dataset=airbnb-listings%40public&q=&rows=20&facet=host_response_time&facet=host_response_rate&facet=host_verifications&facet=city&facet=country&facet=property_type&facet=room_type&facet=bed_type&facet=amenities&facet=availability_365&facet=cancellation_policy&facet=features&facet=number_of_reviews&exclude.number_of_reviews=0&geofilter.distance=${cameraZoom.point[0]}%2C+${cameraZoom.point[1]}%2C+${cameraZoom.zoom}`
-    // : 'https://data.opendatasoft.com/api/records/1.0/search/?dataset=airbnb-listings%40public&q=&rows=20&sort=number_of_reviews&facet=host_response_time&facet=host_response_rate&facet=host_verifications&facet=city&facet=country&facet=property_type&facet=room_type&facet=bed_type&facet=amenities&facet=availability_365&facet=cancellation_policy&facet=features&geofilter.distance=51.50118837862644%2C+-0.09768202553641459%2C+10185'
-
-    // let URL = 'https://data.opendatasoft.com/api/records/1.0/search/?dataset=airbnb-listings%40public&q=&rows=20&sort=number_of_reviews&facet=host_response_time&facet=host_response_rate&facet=host_verifications&facet=city&facet=country&facet=property_type&facet=room_type&facet=bed_type&facet=amenities&facet=availability_365&facet=cancellation_policy&facet=features&geofilter.distance=51.50118837862644%2C+-0.09768202553641459%2C+10185'
-
-
     const hoverCardHandler = (e) => {
         setHovered(e)
     }
@@ -138,14 +112,6 @@ const Discover = () => {
 
 
     useEffect(() => {
-        // axios.get(URL).then(response => {
-        //     setData(response.data.records)
-        //     setinitialView([response.data.records[0].fields.geolocation[0], response.data.records[0].fields.geolocation[1]])
-        //     console.log(data)
-        // }).catch(error => {
-        //     console.log(error)
-        // })
-
         const lat1 = (boundaries) ? boundaries.northEast.lat : 51.489119889002126
         const lat2 = (boundaries) ? boundaries.southWest.lat : 51.261667988171695
         const log1 = (boundaries) ? boundaries.northEast.lng : -0.01115745233397547

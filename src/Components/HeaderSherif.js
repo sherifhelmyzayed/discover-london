@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useState } from 'react';
 import {AppBar, Box, Toolbar, Typography, IconButton, Menu, Container, Avatar, Button, Tooltip, MenuItem} from '@mui/material';
 import MenuIcon  from '@mui/icons-material/Menu';
 
@@ -8,18 +7,10 @@ const pages = ['home', 'discover'];
 
 const settings = [(localStorage.token) ? 'Profile' : '', (localStorage.token) ? 'Logout' : 'Login', (localStorage.token) ? 'Dashboard' : ''];
 
-const Header = (props) => {
+const Header = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
     const [active, setActive] = useState(1);
-
-
-    let navigate = useNavigate();
-
-    const clickHandler = ()=>{
-        navigate(`../hosting`)
-    }
-
 
 
     const handleOpenNavMenu = (event) => {
@@ -33,35 +24,10 @@ const Header = (props) => {
         setAnchorElNav(null);
     };
 
-    const handleCloseUserMenu = (e) => {
-        if (e === 'Logout') {
-            localStorage.clear()
-            navigate(`../discover`)
-            console.log(e)
-        }
-        if (e === 'Dashboard') {
-
-            navigate(`../dashboard`)
-
-        }
-        if (e === 'Login') {
-
-            navigate(`../login`)
-
-        }
-        if (e === 'Profile') {
-
-            navigate(`../user-profile`)
-
-        }
-        setAnchorElUser(null);
-    };
-
     const changeRoute = (event) => {
         event.stopPropagation();
         setActive(event.target.getAttribute('id'))
         handleCloseNavMenu()
-        navigate(`../${event.target.getAttribute('val')}`)
     };
    
     
@@ -158,7 +124,7 @@ const Header = (props) => {
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
-                        <Button onClick={()=>{clickHandler(true)}} size="small" variant="contained" color="primary" sx={{
+                        <Button size="small" variant="contained" color="primary" sx={{
                             marginRight: 2
                         }}>BECOME A HOST</Button>
                         <Tooltip title="Open settings">
@@ -180,10 +146,9 @@ const Header = (props) => {
                                 horizontal: 'right',
                             }}
                             open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
                         >
                             {settings.map((setting,i) => (
-                                <MenuItem key={i} onClick={()=>handleCloseUserMenu(setting)}>
+                                <MenuItem key={i} >
                                     <Typography textAlign="center">{setting}</Typography>
                                 </MenuItem>
                             ))}

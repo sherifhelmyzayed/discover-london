@@ -3,11 +3,7 @@ import { createContext, Suspense } from 'react';
 import { Routes, Route, BrowserRouter } from "react-router-dom"
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 
-import Home from './Pages/Home';
-import PropertyV2 from './Pages/Property page dynamic/Property';
-import DashboardModule from './module/DashboardModule';
 import Discover from './Pages/Discover';
-import NavBar from './Components/NavigationBar/NavBar';
 
 export const ThemeContext = createContext();
 
@@ -52,9 +48,6 @@ const mainTheme = createTheme({
     },
     h2: {
 
-    },
-    essamText: {
-      fontFamily: 'syne'
     },
     headline: {
       fontFamily: 'syne',
@@ -134,20 +127,16 @@ function App() {
   return (
 
     <Suspense fallback={<h1>LOOOOOOOOOOAAADINGGGG</h1>}>
-        <ThemeProvider theme={mainTheme}>
-          <ThemeContext.Provider value={{ mainTheme }}>
-            <BrowserRouter>
-              <NavBar />
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/home" element={<Home />} />
-                <Route path="dashboard/*" element={<DashboardModule />} />
-                <Route path="propertyv2/:id" element={<PropertyV2 />} />
-                <Route path="/discover" element={<Discover />} />
-              </Routes>
-            </BrowserRouter>
-          </ThemeContext.Provider>
-        </ThemeProvider>
+      <ThemeProvider theme={mainTheme}>
+        <ThemeContext.Provider value={{ mainTheme }}>
+          <BrowserRouter>
+
+            <Routes>
+              <Route path="/" element={<Discover />} />
+            </Routes>
+          </BrowserRouter>
+        </ThemeContext.Provider>
+      </ThemeProvider>
     </Suspense>
   )
 }
